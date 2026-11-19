@@ -69,6 +69,16 @@ def main():
         with open(hp, encoding="utf-8") as f:
             home = yaml.safe_load(f) or {}
     tpl = tpl.replace("__HOME__", json.dumps(home, ensure_ascii=False).replace("</", "<\\/"))
+    about = {}
+    ap = os.path.join(ROOT, "content", "about.yml")
+    if os.path.exists(ap):
+        with open(ap, encoding="utf-8") as f:
+            about = yaml.safe_load(f) or {}
+    md = lambda t: markdown.markdown(str(t or ""), extensions=["nl2br", "sane_lists"])
+    about["body"] = md(about.get("body"))
+    about["boxes"] = [{"title": str(b.get("title") or ""), "text": md(b.get("text"))}
+                      for b in (about.get("boxes") or []) if isinstance(b, dict)]
+    tpl = tpl.replace("__ABOUT__", json.dumps(about, ensure_ascii=False).replace("</", "<\\/"))
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(tpl.replace("__DATA__", data))
     cats = {}

@@ -188,6 +188,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <script>
 const ARTS = __DATA__;
 const HOME = Object.assign({eyebrow:'',headline:'',intro:'',latest_title:'最新文章',latest_count:6,topics_title:'依主題閱讀',series_title:'',series_text:'',series_keyword:'考前',series_category:'證照考試'}, __HOME__);
+const ABOUT = __ABOUT__;
 function rich(t){ return esc(String(t||'')).replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>'); }
 const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊戲學習","生活記憶","理財情報","老後提案"];
 const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
@@ -387,14 +388,11 @@ function travel(){
 }
 
 function hello(){
-  return `<div class="article"><div class="lead">HELLO</div><h1>你好，我是 Ray</h1>
-  <div class="prose"><p>在大學旅運系教書，教的是領隊導遊、郵輪旅遊和觀光法規。教書之前在中華徵信所和旅行業工作過，大學時在民生東路的老旅行社騎機車送簽證，那兩年的故事寫在「駱老闆和他的朋友們」系列裡。</p>
-  <p>這個網站整理我在方格子沙龍「隨峰而趣 Rayfong's Travelogue」和 Facebook 上寫的文章，也放課程講義與證照資源。</p></div></div>
-  <section><div class="cols">
-    <div class="box hand">${doodle('每日晨讀')}<h3>個人簡歷</h3><p>CV（待補：從 Google Sites 搬過來）</p></div>
-    <div class="box hand">${doodle('技職教育')}<h3>任教學校</h3><p>醒吾科大旅運系（HWU）<br>臺灣觀光學院（THT）</p></div>
-    <div class="box hand">${doodle('生活記憶')}<h3>找到我</h3><p><a href="https://www.facebook.com/chenrayfong" target="_blank" rel="noopener">Facebook</a> · <a href="https://vocus.cc/salon/rayfong" target="_blank" rel="noopener">方格子</a><br>Instagram、YouTube（待補）</p></div>
-  </div><p class="note">MY BOOKS 的內容目前在 Google Sites 上，正式網站會搬過來。</p></section>`;
+  const icons=['每日晨讀','技職教育','生活記憶','旅行郵輪','證照考試','遊戲學習'];
+  const ext=h=>h.replace(/<a href="http/g,'<a target="_blank" rel="noopener" href="http');
+  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-about="1" title="在後台修改關於頁">✎ 修改關於頁</span></div>`:''}<div class="article">${ABOUT.lead?`<div class="lead">${esc(ABOUT.lead)}</div>`:''}<h1>${esc(ABOUT.title||'')}</h1>
+  <div class="prose">${ext(ABOUT.body||'')}</div></div>
+  <section>${(ABOUT.boxes||[]).length?`<div class="cols">${ABOUT.boxes.map((x,i)=>`<div class="box hand">${doodle(icons[i%icons.length])}<h3>${esc(x.title)}</h3>${ext(x.text)}</div>`).join('')}</div>`:''}${ABOUT.note?`<p class="note">${esc(ABOUT.note)}</p>`:''}</section>`;
 }
 
 function route(){
@@ -410,6 +408,7 @@ app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value;
 app.addEventListener('click', e=>{
   const ed = e.target.closest('[data-edit]');
   if(ed){ e.preventDefault(); e.stopPropagation(); window.open('admin/#/collections/articles/entries/'+ed.dataset.edit,'_blank'); return; }
+  if(e.target.closest('[data-edit-about]')){ e.preventDefault(); window.open('admin/#/collections/settings/entries/about','_blank'); return; }
   if(e.target.closest('[data-edit-home]')){ e.preventDefault(); window.open('admin/#/collections/settings/entries/home','_blank'); return; }
   const hd = e.target.closest('[data-hide]');
   if(hd){ e.preventDefault(); e.stopPropagation();

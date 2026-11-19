@@ -33,6 +33,22 @@ collections:
             label: 點系列標題時要打開的分類
             widget: select
             options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
+      - name: about
+        label: 關於頁（HELLO）
+        file: content/about.yml
+        fields:
+          - { name: lead, label: 標題上方的小字, widget: string, required: false, hint: 例如 HELLO，留空就不顯示 }
+          - { name: title, label: 大標題, widget: string }
+          - { name: body, label: 自我介紹, widget: markdown, hint: 空一行就是新的段落 }
+          - name: boxes
+            label: 下方小卡片
+            label_singular: 卡片
+            widget: list
+            required: false
+            fields:
+              - { name: title, label: 卡片標題, widget: string }
+              - { name: text, label: 卡片內容, widget: markdown, hint: 按 Enter 換行；可以加連結 }
+          - { name: note, label: 最下方的小字備註, widget: string, required: false, hint: 留空就不顯示 }
   - name: articles
     label: 文章
     label_singular: 文章
