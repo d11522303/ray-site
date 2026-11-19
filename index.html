@@ -191,7 +191,8 @@ const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊�
 const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
 const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let filt = {q:'', cat:'', sub:'', det:'', year:'', n:24};
+const PER=8;
+let filt = {q:'', cat:'', sub:'', det:'', year:'', n:PER};
 
 function doodle(cat, cls='doodle'){
   const [i,c] = ICON[cat]||ICON["生活記憶"];
@@ -290,7 +291,7 @@ function writing(){
     <div class="wmain">
       <div class="crumbs" id="crumbs"></div>
       <div class="count" id="count"></div><div class="cards" id="list"></div>
-      <div style="text-align:center;margin-top:22px"><button class="chip" type="button" id="more" style="font-size:16px;padding:6px 22px">再看 24 篇</button></div>
+      <div style="text-align:center;margin-top:22px"><button class="chip" type="button" id="more" style="font-size:16px;padding:6px 22px">更多文章 ↓</button></div>
     </div>
   </div>`;
 }
@@ -307,7 +308,7 @@ function renderSide(){
   let h = `<h4>撰寫年份</h4><div class="years">${btn('year','','全部',forYears.length,!filt.year,'y')}${ys.map(([y,n])=>btn('year',y,y,n,filt.year===y,'y')).join('')}</div>`;
   h += `<h4>分類</h4><ul class="tree">${`<li>${btn('cat','','全部分類',forCats.length,!filt.cat)}</li>`}`;
   const cc = tally(forCats, a=>a.cat);
-  for(const c of CATS){
+  for(const c of [...CATS].sort((x,y)=>(cc.get(y)||0)-(cc.get(x)||0))){
     if(!cc.get(c)) continue;
     const open = filt.cat===c;
     h += `<li>${btn('cat',c,`<b class="dot" style="background:${(ICON[c]||ICON['生活記憶'])[1]}"></b>${c}`,cc.get(c),open&&!filt.sub)}`;
@@ -401,7 +402,7 @@ function route(){
   else app.innerHTML = ({home,teaching,travel,hello})[v]();
   window.scrollTo(0,0);
 }
-app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=24; renderList(); }});
+app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=PER; renderList(); }});
 app.addEventListener('click', e=>{
   const ed = e.target.closest('[data-edit]');
   if(ed){ e.preventDefault(); e.stopPropagation(); window.open('admin/#/collections/articles/entries/'+ed.dataset.edit,'_blank'); return; }
@@ -415,17 +416,17 @@ app.addEventListener('click', e=>{
     else if(k==='cat'){ filt.cat=v; filt.sub=''; filt.det=''; }
     else if(k==='sub'){ filt.sub=v; filt.det=''; }
     else if(k==='det'){ filt.det=v; }
-    filt.n=24; renderList(); return; }
+    filt.n=PER; renderList(); return; }
   if(e.target.id==='seeres'){ document.getElementById('sidebox').open=false; document.getElementById('crumbs').scrollIntoView({behavior:'smooth'}); return; }
   const cl = e.target.closest('[data-clear]');
   if(cl){ const k=cl.dataset.clear;
     if(k==='year'||k==='all') filt.year='';
     if(k==='cat'||k==='all'){ filt.cat=''; filt.sub=''; filt.det=''; }
     if(k==='q'||k==='all'){ filt.q=''; const qi=document.getElementById('q'); if(qi) qi.value=''; }
-    filt.n=24; renderList(); return; }
-  if(e.target.id==='more'){ filt.n+=24; renderList(); return; }
+    filt.n=PER; renderList(); return; }
+  if(e.target.id==='more'){ filt.n+=PER; renderList(); return; }
   const g = e.target.closest('[data-go]');
-  if(g){ filt.cat=g.dataset.go; filt.sub=''; filt.det=''; filt.year=''; filt.q=''; filt.n=24; location.hash='writing'; }
+  if(g){ filt.cat=g.dataset.go; filt.sub=''; filt.det=''; filt.year=''; filt.q=''; filt.n=PER; location.hash='writing'; }
 });
 window.addEventListener('hashchange', route);
 route();
