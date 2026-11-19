@@ -74,6 +74,15 @@ section{padding-block:34px 0}
 .article .back{font-size:15px}
 .article h1{font-size:clamp(28px,4.6vw,40px);margin:18px 0 12px}
 .article .meta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--muted);padding-bottom:16px;margin-bottom:22px;border-bottom:2px dashed rgba(138,106,82,.45)}
+.edit-tools{display:inline-flex;gap:6px;margin-left:auto}
+.edit-tools.big{float:right}
+.edit-btn{display:inline-block;padding:2px 12px;font-size:14px;color:var(--ink);background:var(--butter);border:2px solid var(--ink);border-radius:14px 6px 14px 6px;cursor:pointer;white-space:nowrap}
+.big .edit-btn{font-size:16px;padding:4px 14px}
+.hide-btn{background:var(--paper-2)}
+.hide-btn.armed{background:var(--rose);font-weight:700}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);max-width:min(92vw,520px);padding:12px 18px;background:var(--paper-2);border:2px solid var(--ink);font-size:15px;opacity:0;transition:.25s;z-index:50;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.edit-btn:hover{transform:rotate(-2deg)}
 .prose{font-size:18px;line-height:2;overflow-wrap:anywhere}
 .prose p{margin:0 0 1.1em}
 .prose h2,.prose h3{font-size:22px;margin:1.6em 0 .6em}
@@ -160,10 +169,35 @@ function doodle(cat, cls='doodle'){
   return `<svg class="${cls}" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="31" ry="28" fill="${c}" opacity=".75" filter="url(#wash)"/><g class="sk"><use href="#i-${i}"/></g></svg>`;
 }
 function tag(cat){ const c=(ICON[cat]||ICON["生活記憶"])[1]; return `<span class="tag" style="background:${c}99">${esc(cat)}</span>`; }
+let EDIT=false; try{ EDIT = localStorage.getItem('rf-edit')==='1' || Object.keys(localStorage).some(k=>k.startsWith('sveltia-cms.user')); }catch(e){}
+function editBtn(a,cls){ return EDIT&&a.file?`<span class="edit-tools ${cls||''}"><span class="edit-btn" role="link" tabindex="0" data-edit="${a.file}" title="在後台修改這篇">✎ 修改</span><span class="edit-btn hide-btn" role="button" tabindex="0" data-hide="${a.file}" title="從網站上隱藏這篇">隱藏</span></span>`:''; }
+const REPO='d11522303/ray-site';
+function ghToken(){ try{ for(const k of Object.keys(localStorage)){ const v=localStorage.getItem(k)||''; const m=v.match(/(github_pat_[A-Za-z0-9_]+|gh[pousr]_[A-Za-z0-9]+)/); if(m) return m[1]; } }catch(e){} return ''; }
+const b64dec=t=>new TextDecoder().decode(Uint8Array.from(atob(t.replace(/\n/g,'')),c=>c.charCodeAt(0)));
+function b64enc(str){ const u=new TextEncoder().encode(str); let s=''; for(let i=0;i<u.length;i+=8192) s+=String.fromCharCode.apply(null,u.subarray(i,i+8192)); return btoa(s); }
+async function hideArticle(file, btn){
+  const tok=ghToken();
+  if(!tok){ location.href='admin/#/collections/articles/entries/'+file; return; }
+  btn.textContent='隱藏中…';
+  const url=`https://api.github.com/repos/${REPO}/contents/content/articles/${encodeURIComponent(file)}.md`;
+  const H={Authorization:'Bearer '+tok, Accept:'application/vnd.github+json'};
+  try{
+    const r=await fetch(url+'?ref=main',{headers:H}); if(!r.ok) throw new Error(r.status);
+    const j=await r.json(); let t=b64dec(j.content);
+    t=/^published:.*$/m.test(t)? t.replace(/^published:.*$/m,'published: false') : t.replace(/^---\n/,'---\npublished: false\n');
+    const w=await fetch(url,{method:'PUT',headers:H,body:JSON.stringify({message:'隱藏文章：'+file,content:b64enc(t),sha:j.sha,branch:'main'})});
+    if(!w.ok) throw new Error(w.status);
+    const i=ARTS.findIndex(a=>a.file===file); if(i>=0) ARTS.splice(i,1);
+    btn.textContent='已隱藏'; btn.classList.remove('armed');
+    toast('已經隱藏，網站大約 1～2 分鐘後更新。想恢復可以到後台把「公開」打開。');
+    setTimeout(()=>{ if(location.hash.startsWith('#a-')) location.hash='#writing'; else route(); },1200);
+  }catch(err){ btn.textContent='隱藏'; btn.classList.remove('armed'); toast('隱藏失敗（'+err.message+'），請改到後台把「公開」關掉。'); }
+}
+function toast(msg){ let t=document.getElementById('toast'); if(!t){ t=document.createElement('div'); t.id='toast'; t.className='toast hand'; document.body.appendChild(t);} t.textContent=msg; t.classList.add('on'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('on'),6000); }
 function card(a){
   return `<a class="card-a hand" href="#a-${a.id}">${doodle(a.cat)}
     <div style="min-width:0"><h3>${esc(a.title)}</h3><p>${esc(a.ex)}</p>
-      <div class="meta">${tag(a.cat)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.src==='Facebook'?'Facebook':'方格子'}</span></div></div></a>`;
+      <div class="meta">${tag(a.cat)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.src==='Facebook'?'Facebook':'方格子'}</span>${editBtn(a)}</div></div></a>`;
 }
 function countBy(){const c={};ARTS.forEach(a=>c[a.cat]=(c[a.cat]||0)+1);return c}
 
@@ -235,7 +269,7 @@ function renderList(){
 function article(id){
   const i = ARTS.findIndex(a=>a.id===id); if(i<0) return `<p class="empty">找不到這篇文章。<a href="#writing">回文章列表</a></p>`;
   const a = ARTS[i], prev = ARTS[i+1], next = ARTS[i-1];
-  return `<article class="article"><a class="back" href="#writing">← 全部文章</a>
+  return `<article class="article"><a class="back" href="#writing">← 全部文章</a>${editBtn(a,'big')}
     <div style="margin-top:14px">${doodle(a.cat)}</div>
     <h1>${esc(a.title)}</h1>
     <div class="meta">${tag(a.cat)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
@@ -290,6 +324,12 @@ function route(){
 }
 app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=24; renderList(); }});
 app.addEventListener('click', e=>{
+  const ed = e.target.closest('[data-edit]');
+  if(ed){ e.preventDefault(); e.stopPropagation(); location.href='admin/#/collections/articles/entries/'+ed.dataset.edit; return; }
+  const hd = e.target.closest('[data-hide]');
+  if(hd){ e.preventDefault(); e.stopPropagation();
+    if(!hd.classList.contains('armed')){ hd.classList.add('armed'); hd.textContent='確定隱藏？'; setTimeout(()=>{ if(hd.classList.contains('armed')){ hd.classList.remove('armed'); hd.textContent='隱藏'; } },4000); return; }
+    hideArticle(hd.dataset.hide, hd); return; }
   const b = e.target.closest('[data-cat]');
   if(b){ filt.cat=b.dataset.cat; filt.n=24; document.querySelectorAll('#chips .chip').forEach(x=>x.classList.toggle('on',x===b)); renderList(); return; }
   if(e.target.id==='more'){ filt.n+=24; renderList(); return; }

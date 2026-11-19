@@ -42,6 +42,7 @@ def load():
         stem = os.path.splitext(os.path.basename(path))[0]
         arts.append({
             "id": re.sub(r"^\d{4}-\d{2}-\d{2}-", "", stem),
+            "file": stem,
             "date": str(fm.get("date", ""))[:10],
             "title": str(fm.get("title", stem)),
             "cat": fm.get("category", "生活記憶"),
