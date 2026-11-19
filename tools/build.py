@@ -46,6 +46,8 @@ def load():
             "date": str(fm.get("date", ""))[:10],
             "title": str(fm.get("title", stem)),
             "cat": fm.get("category", "生活記憶"),
+            "sub": str(fm.get("subcategory") or ""),
+            "det": str(fm.get("detail") or ""),
             "src": fm.get("source", ""),
             "url": fm.get("source_url", ""),
             "ex": str(fm.get("excerpt") or text[:90]),

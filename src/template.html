@@ -68,6 +68,32 @@ section{padding-block:34px 0}
 .chip.on{color:var(--ink);background:var(--butter)}
 .chip i{font-style:normal;font-size:12px;margin-left:4px;opacity:.75}
 .count{font-size:14px;color:var(--muted);margin-bottom:10px}
+.wlayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:26px;align-items:start}
+.wlayout .cards{grid-template-columns:minmax(0,1fr)}
+.side{position:sticky;top:14px;display:flex;flex-direction:column;gap:12px;max-height:calc(100vh - 28px);overflow:auto;padding-bottom:6px}
+.side input{font:inherit;font-size:16px;padding:8px 14px;background:var(--paper-2);color:var(--ink);min-width:0;width:100%}
+.side-box{background:var(--paper-2);padding:10px 14px 14px}
+.side-box summary{cursor:pointer;font-size:15px;color:var(--muted);list-style:none}
+.side-box summary::-webkit-details-marker{display:none}
+.side-box summary::before{content:"▸ ";}
+.side-box[open] summary::before{content:"▾ ";}
+.side h4{font-size:15px;margin:14px 0 6px;color:var(--ink);border-bottom:2px dashed rgba(138,106,82,.35);padding-bottom:4px}
+.years{display:flex;flex-wrap:wrap;gap:4px}
+.tree,.tree ul{list-style:none;margin:0;padding:0}
+.tree ul{margin:2px 0 4px 14px;border-left:2px dotted rgba(138,106,82,.45);padding-left:6px}
+.tb{display:flex;align-items:center;gap:6px;width:100%;font:inherit;font-size:15px;text-align:left;background:none;border:0;padding:3px 8px;border-radius:12px 5px 12px 5px;color:var(--ink);cursor:pointer}
+.tb span{flex:1;min-width:0;display:flex;align-items:center;gap:6px}
+.tb i{font-style:normal;font-size:12px;color:var(--muted)}
+.tb:hover{background:rgba(242,212,136,.35)}
+.tb.on{background:var(--butter);font-weight:700}
+.tb.y{width:auto;padding:2px 8px;font-size:14px;border:1.5px solid rgba(138,106,82,.5)}
+.tb.t2{font-size:14px}.tb.t3{font-size:13.5px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;border:1.5px solid var(--ink)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.crumbs:empty{display:none}
+.see-res{display:none;width:100%;margin-top:14px;font-size:16px;padding:6px;background:var(--butter);color:var(--ink)}
+.crumb{font:inherit;font-size:14px;padding:2px 12px;background:var(--butter);border:2px solid var(--ink);cursor:pointer;color:var(--ink)}
+.crumb.clear-all{background:transparent;border-style:dashed}
 .empty{color:var(--muted);padding:24px 0}
 /* article */
 .article{max-width:40em;margin:0 auto}
@@ -110,6 +136,9 @@ section{padding-block:34px 0}
 footer{padding-block:24px;font-size:14px;color:var(--muted);border-top:2px dashed rgba(138,106,82,.45)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media (max-width:760px){
+  .wlayout{grid-template-columns:minmax(0,1fr);gap:14px}
+  .side{position:static;max-height:none;overflow:visible}
+  .see-res{display:block}
   .hero{grid-template-columns:1fr}
   .hero .art{max-width:300px;order:-1}
   .cards,.cols{grid-template-columns:1fr}
@@ -162,7 +191,7 @@ const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊�
 const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
 const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let filt = {q:'', cat:'', src:'', n:24};
+let filt = {q:'', cat:'', sub:'', det:'', year:'', n:24};
 
 function doodle(cat, cls='doodle'){
   const [i,c] = ICON[cat]||ICON["生活記憶"];
@@ -249,21 +278,71 @@ function home(){
 }
 
 function writing(){
-  const c = countBy();
   return `<div class="sec-head"><h1 style="font-size:34px">文章</h1></div>
-  <div class="tools"><input id="q" class="hand" type="search" placeholder="搜尋標題或內容，例如：高鐵、保險、郵輪" value="${esc(filt.q)}" aria-label="搜尋文章">
-    <div class="chips" id="chips"><button class="chip ${filt.cat?'':'on'}" type="button" data-cat="">全部<i>${ARTS.length}</i></button>
-    ${CATS.map(k=>`<button class="chip ${filt.cat===k?'on':''}" type="button" data-cat="${k}">${k}<i>${c[k]||0}</i></button>`).join('')}</div></div>
-  <div class="count" id="count"></div><div class="cards" id="list"></div>
-  <div style="text-align:center;margin-top:22px"><button class="chip" type="button" id="more" style="font-size:16px;padding:6px 22px">再看 24 篇</button></div>`;
+  <div class="wlayout">
+    <aside class="side">
+      <input id="q" class="hand" type="search" placeholder="搜尋標題或內容" value="${esc(filt.q)}" aria-label="搜尋文章">
+      <details class="side-box hand" id="sidebox" ${matchMedia('(min-width:761px)').matches?'open':''}>
+        <summary>篩選：年份與分類</summary>
+        <div id="side"></div>
+      </details>
+    </aside>
+    <div class="wmain">
+      <div class="crumbs" id="crumbs"></div>
+      <div class="count" id="count"></div><div class="cards" id="list"></div>
+      <div style="text-align:center;margin-top:22px"><button class="chip" type="button" id="more" style="font-size:16px;padding:6px 22px">再看 24 篇</button></div>
+    </div>
+  </div>`;
+}
+const year = a => a.date.slice(0,4);
+function matchQ(a){ const q=filt.q.trim(); return !q || a.title.includes(q) || a.body.includes(q); }
+function inYear(a){ return !filt.year || year(a)===filt.year; }
+function inCat(a){ return (!filt.cat||a.cat===filt.cat) && (!filt.sub||a.sub===filt.sub) && (!filt.det||a.det===filt.det); }
+function tally(list, key){ const m=new Map(); list.forEach(a=>{ const k=key(a); if(k) m.set(k,(m.get(k)||0)+1); }); return m; }
+function renderSide(){
+  const base = ARTS.filter(matchQ);
+  const forYears = base.filter(inCat), forCats = base.filter(inYear);
+  const ys = [...tally(forYears, year).entries()].sort((a,b)=>b[0].localeCompare(a[0]));
+  const btn = (f,v,label,n,on,cls='') => `<button type="button" class="tb ${cls} ${on?'on':''}" data-f="${f}" data-v="${esc(v)}"><span>${label}</span><i>${n}</i></button>`;
+  let h = `<h4>撰寫年份</h4><div class="years">${btn('year','','全部',forYears.length,!filt.year,'y')}${ys.map(([y,n])=>btn('year',y,y,n,filt.year===y,'y')).join('')}</div>`;
+  h += `<h4>分類</h4><ul class="tree">${`<li>${btn('cat','','全部分類',forCats.length,!filt.cat)}</li>`}`;
+  const cc = tally(forCats, a=>a.cat);
+  for(const c of CATS){
+    if(!cc.get(c)) continue;
+    const open = filt.cat===c;
+    h += `<li>${btn('cat',c,`<b class="dot" style="background:${(ICON[c]||ICON['生活記憶'])[1]}"></b>${c}`,cc.get(c),open&&!filt.sub)}`;
+    if(open){
+      const inC = forCats.filter(a=>a.cat===c);
+      const subs = [...tally(inC, a=>a.sub).entries()].sort((a,b)=>b[1]-a[1]);
+      h += `<ul>${subs.map(([sb,n])=>{
+        const so = filt.sub===sb;
+        let li = `<li>${btn('sub',sb,sb,n,so&&!filt.det,'t2')}`;
+        if(so){
+          const dets=[...tally(inC.filter(a=>a.sub===sb), a=>a.det).entries()].sort((a,b)=>b[1]-a[1]);
+          if(dets.length) li += `<ul>${dets.map(([d,m])=>`<li>${btn('det',d,d,m,filt.det===d,'t3')}</li>`).join('')}</ul>`;
+        }
+        return li+'</li>';
+      }).join('')}</ul>`;
+    }
+    h += '</li>';
+  }
+  h += '</ul>';
+  const total = ARTS.filter(a => matchQ(a) && inYear(a) && inCat(a)).length;
+  h += `<button type="button" class="chip see-res" id="seeres">看 ${total} 篇文章 ↓</button>`;
+  document.getElementById('side').innerHTML = h;
+  const parts=[];
+  if(filt.year) parts.push(['year',filt.year+' 年']);
+  if(filt.cat) parts.push(['cat',[filt.cat,filt.sub,filt.det].filter(Boolean).join(' › ')]);
+  if(filt.q.trim()) parts.push(['q','搜尋「'+filt.q.trim()+'」']);
+  document.getElementById('crumbs').innerHTML = parts.map(([k,t])=>`<button type="button" class="crumb hand" data-clear="${k}">${esc(t)} <span aria-hidden="true">✕</span></button>`).join('') + (parts.length>1?`<button type="button" class="crumb clear-all" data-clear="all">全部清除</button>`:'');
 }
 function renderList(){
-  const q = filt.q.trim();
-  const r = ARTS.filter(a => (!filt.cat||a.cat===filt.cat) && (!q || a.title.includes(q) || a.body.includes(q)));
+  const r = ARTS.filter(a => matchQ(a) && inYear(a) && inCat(a));
   const shown = r.slice(0, filt.n);
   document.getElementById('count').textContent = `共 ${r.length} 篇${r.length>shown.length?`，目前顯示 ${shown.length} 篇`:''}`;
-  document.getElementById('list').innerHTML = r.length ? shown.map(card).join('') : `<p class="empty">找不到符合「${esc(q)}」的文章，換個關鍵字試試。</p>`;
+  document.getElementById('list').innerHTML = r.length ? shown.map(card).join('') : `<p class="empty">找不到符合條件的文章，換個關鍵字或分類試試。</p>`;
   document.getElementById('more').hidden = r.length <= shown.length;
+  renderSide();
 }
 
 function article(id){
@@ -330,11 +409,23 @@ app.addEventListener('click', e=>{
   if(hd){ e.preventDefault(); e.stopPropagation();
     if(!hd.classList.contains('armed')){ hd.classList.add('armed'); hd.textContent='確定隱藏？'; setTimeout(()=>{ if(hd.classList.contains('armed')){ hd.classList.remove('armed'); hd.textContent='隱藏'; } },4000); return; }
     hideArticle(hd.dataset.hide, hd); return; }
-  const b = e.target.closest('[data-cat]');
-  if(b){ filt.cat=b.dataset.cat; filt.n=24; document.querySelectorAll('#chips .chip').forEach(x=>x.classList.toggle('on',x===b)); renderList(); return; }
+  const f = e.target.closest('[data-f]');
+  if(f){ const k=f.dataset.f, v=f.dataset.v;
+    if(k==='year') filt.year=v;
+    else if(k==='cat'){ filt.cat=v; filt.sub=''; filt.det=''; }
+    else if(k==='sub'){ filt.sub=v; filt.det=''; }
+    else if(k==='det'){ filt.det=v; }
+    filt.n=24; renderList(); return; }
+  if(e.target.id==='seeres'){ document.getElementById('sidebox').open=false; document.getElementById('crumbs').scrollIntoView({behavior:'smooth'}); return; }
+  const cl = e.target.closest('[data-clear]');
+  if(cl){ const k=cl.dataset.clear;
+    if(k==='year'||k==='all') filt.year='';
+    if(k==='cat'||k==='all'){ filt.cat=''; filt.sub=''; filt.det=''; }
+    if(k==='q'||k==='all'){ filt.q=''; const qi=document.getElementById('q'); if(qi) qi.value=''; }
+    filt.n=24; renderList(); return; }
   if(e.target.id==='more'){ filt.n+=24; renderList(); return; }
   const g = e.target.closest('[data-go]');
-  if(g){ filt.cat=g.dataset.go; filt.q=''; filt.n=24; location.hash='writing'; }
+  if(g){ filt.cat=g.dataset.go; filt.sub=''; filt.det=''; filt.year=''; filt.q=''; filt.n=24; location.hash='writing'; }
 });
 window.addEventListener('hashchange', route);
 route();
