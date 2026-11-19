@@ -64,6 +64,7 @@ collections:
                 label: 放在哪一大類
                 widget: select
                 options: [學經歷, 專業與榮譽, 研究與著作]
+              - { name: show, label: 先顯示幾筆, widget: number, value_type: int, min: 1, max: 30, required: false, hint: 其餘的收在「展開其餘」按鈕裡；留白就自動決定 }
               - name: items
                 label: 項目
                 label_singular: 項目

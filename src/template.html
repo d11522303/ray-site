@@ -423,7 +423,7 @@ function cvBlock(){
   const row=it=>`<li>${it.year?`<span class="y">${esc(String(it.year))}</span>`:''}<span class="t">${esc(String(it.text||''))}${it.note?`<span class="n">${esc(String(it.note))}</span>`:''}</span></li>`;
   const sec=x=>{
     const its=x.items, noy=!its.some(it=>it.year), avg=its.reduce((n,it)=>n+String(it.text||'').length,0)/its.length;
-    const wide=avg>60||its.length>10, MAX=wide?6:8;
+    const wide=avg>60||its.length>10, MAX=(+x.show>0)?+x.show:(wide?6:8);
     const cls='cv-list'+(noy?' noyear':'');
     return `<div class="cv-sec hand${wide?' wide':''}" id="${x._id}"><h4>${esc(x.title)}<span>${its.length} 項</span></h4>
       <ul class="${cls}">${its.slice(0,MAX).map(row).join('')}</ul>

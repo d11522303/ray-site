@@ -15,6 +15,7 @@ cv_updated: 2025.12.9
 cv:
   - title: 學歷
     group: 學經歷
+    show: 3
     items:
       - year: 2026～
         text: 國立臺灣科技大學 應用科技研究所 博士生
@@ -27,6 +28,7 @@ cv:
         note: ''
   - title: 教職經歷
     group: 學經歷
+    show: 3
     items:
       - year: 2021.04～迄今
         text: 醒吾科技大學 旅運管理系 副教授
@@ -48,6 +50,7 @@ cv:
         note: 教學資源中心主任暨出版組組長、校長室秘書、研究發展處學術發展組長、代理技合處處長、研究發展組長、實習就業輔導組長等
   - title: 業界經歷
     group: 學經歷
+    show: 3
     items:
       - year: 2005.03～2006.03
         text: 信欣國際系統公司 副總經理、專案經理
@@ -66,6 +69,7 @@ cv:
         note: ''
   - title: 兼職經歷
     group: 學經歷
+    show: 3
     items:
       - year: 2006～2008
         text: 信欣旅行社 專案經理
