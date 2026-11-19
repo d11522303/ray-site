@@ -204,7 +204,7 @@ function home(){
     <div><div class="lead">旅運系老師的筆記本</div>
       <h1>走過的路、<br>帶過的學生、<br><em>記得的事</em>。</h1>
       <p>這裡收著我在課堂、旅途和生活裡寫下的文章：高鐵實習怎麼準備、領隊考試怎麼讀、郵輪甲板上的遊戲，還有台北老旅行社裡的那兩年。</p>
-      <div class="facts"><span class="hand">${ARTS.length} 篇文章</span><span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span><span class="hand">方格子＋Facebook</span></div></div>
+      <div class="facts"><span class="hand">${ARTS.length} 篇文章</span><span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span></div></div>
     ${CHIBI}</div>
   <section><div class="sec-head"><h2>最新文章</h2><a href="#writing">看全部 ${ARTS.length} 篇 →</a></div>
     <div class="cards">${ARTS.slice(0,6).map(card).join('')}</div></section>
