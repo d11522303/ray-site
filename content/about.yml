@@ -1,264 +1,263 @@
 lead: HELLO
-title: 你好，我是 Ray
+title: 你好
 body: |-
-  在大學旅運系教書，教的是領隊導遊、郵輪旅遊和觀光法規。教書之前在中華徵信所和旅行業工作過，大學時在民生東路的老旅行社騎機車送簽證，那兩年的故事寫在「駱老闆和他的朋友們」系列裡。
-
-  這個網站整理我在方格子沙龍「隨峰而趣 Rayfong's Travelogue」和 Facebook 上寫的文章，也放課程講義與證照資源。
+  職涯前十年在中華徵信所、台北市青少年育樂中心和旅行資訊業工作過。
+  職涯進行式已經在技職學院當教師兼行政工作快二十年。
 boxes:
-- title: 任教學校
-  text: |-
-    醒吾科大旅運系（HWU）
-    臺灣觀光學院（THT）
-- title: 找到我
-  text: |-
-    [Facebook](https://www.facebook.com/chenrayfong) · [方格子](https://vocus.cc/salon/rayfong)
-    Instagram、YouTube（待補）
+  - title: 任教學校
+    text: |-
+      醒吾科大旅運系（HWU）
+      臺灣觀光學院（THT）
+  - title: 找到我
+    text: |-
+      [Facebook](https://www.facebook.com/chenrayfong) · [方格子](https://vocus.cc/salon/rayfong)
+      Instagram、YouTube（待補）
 note: MY BOOKS 的內容目前在 Google Sites 上，正式網站會搬過來。
 cv_title: 個人簡歷 CV
 cv_updated: 2025.12.9
 cv:
-- title: 學歷
-  group: 學經歷
-  items:
-  - year: 2026～
-    text: 國立臺灣科技大學 應用科技研究所 博士生
-  - year: '2001'
-    text: 中國文化大學 觀光事業研究所 碩士
-  - year: '1995'
-    text: 天主教輔仁大學 社會學系 學士
-- title: 教職經歷
-  group: 學經歷
-  items:
-  - year: 2021.04～迄今
-    text: 醒吾科技大學 旅運管理系 副教授
-    note: 部定副字第 148041 號
-  - year: 2018.08～2021.07
-    text: 醒吾科技大學 旅運管理系 系主任、副主任
-  - year: 2014.02～2021.03
-    text: 醒吾科技大學 旅運管理系 助理教授
-  - year: 2013.03～2014.01
-    text: 臺灣觀光學院 餐旅管理系 助理教授
-    note: 部定助理字第 037267 號
-  - year: 2006.08～2013.03
-    text: 臺灣觀光學院 旅遊管理系 講師
-    note: 部定講字第 076147 號
-  - year: 2006.08～2014.01
-    text: 臺灣觀光學院 行政兼職
-    note: 教學資源中心主任暨出版組組長、校長室秘書、研究發展處學術發展組長、代理技合處處長、研究發展組長、實習就業輔導組長等
-- title: 業界經歷
-  group: 學經歷
-  items:
-  - year: 2005.03～2006.03
-    text: 信欣國際系統公司 副總經理、專案經理
-  - year: 2001.07～2005.02
-    text: 台北市青少年育樂中心 行銷處總監
-  - year: 2000.03～2001.02
-    text: 信欣國際系統公司 總經理特別助理
-  - year: 1997.07～1998.10
-    text: 中華徵信所 助理研究員、市場研究部主任
-  - year: 1995.07～1997.07
-    text: 陸軍六軍團 義務役通信兵
-- title: 兼職經歷
-  group: 學經歷
-  items:
-  - year: 2006～2008
-    text: 信欣旅行社 專案經理
-  - year: '2008'
-    text: 花蓮縣瑞穗數位機會中心 講師
-  - year: '2005'
-    text: 醒吾技術學院觀光系夜間部 兼任講師
-  - year: 2002～2004
-    text: 中國海專觀光夜間部 兼任講師
-  - year: 2000～2002
-    text: 博客來網路書店 觀光旅遊、企管行銷類導讀撰文
-  - year: 1999～2000
-    text: 婦女會暨國民黨資訊中心 電腦軟體教師
-  - year: 1994～1995
-    text: 民調專案研究助理：聯合報民調中心、知行文教基金會
-  - year: 1992～1993
-    text: 東方點子旅行社、大亞旅行社 簽證送件人員
-- title: 證照
-  group: 專業與榮譽
-  items:
-  - year: ''
-    text: 中華民國英語導遊證照
-    note: (105) 專普導字第 004733 號
-  - year: ''
-    text: 中華民國外語領隊證照
-    note: (97) 專普領字第 000177 號
-  - year: ''
-    text: 旅行業經理人協會 第九期結業
-    note: 民國 94 年
-  - year: ''
-    text: 會議展覽專業人員初階認證考試及格
-    note: 貿展字第 1010015942 號
-  - year: ''
-    text: WSET 葡萄酒品評一級及二級考試及格
-  - year: ''
-    text: ISO 14064-1:2018 溫室氣體盤查主導查證員訓練合格
-  - year: ''
-    text: 證基會永續發展基礎能力測驗合格
-- title: 獲獎與榮譽
-  group: 專業與榮譽
-  items:
-  - year: 103、107 學年度
-    text: 醒吾科技大學 績優導師
-  - year: 105、106 學年度
-    text: 醒吾科技大學 教學優良教師
-  - year: '2011'
-    text: Indus 商業研究院國際研討會 (IC2011) 最佳論文獎
-  - year: 98、99 學年度
-    text: 臺灣觀光學院 績優導師
-  - year: 88 學年度
-    text: 文化大學華岡研究生全額獎學金
-- title: 專業服務
-  group: 專業與榮譽
-  items:
-  - year: 2024～2026
-    text: 交通部觀光署 導遊人員及領隊人員評量測驗 命審題委員
-  - year: 2022～2024
-    text: 中華觀光管理學會 第 14 屆監事
-  - year: 2019～2022
-    text: 台灣遊憩發展協會 第 1 屆理事
-  - year: 2017～2018
-    text: 中華觀光管理學會 第 9、12 屆監事
-  - year: 2014～2017
-    text: 中華觀光管理學會 第 10、11 屆秘書長
-  - year: '2012'
-    text: Current Issues in Tourism (SSCI) 審稿人
-  - year: '2012'
-    text: APTA 亞太觀光協會國際學術研討會（台北）國際交流組長
-  - year: '2010'
-    text: Asia Tourism Forum 亞洲觀光論壇研討會 承辦
-  - year: 2008～2013
-    text: 花東縱谷國家風景區管理處 協調委員會、績效評估委員會委員
-  - year: 2007～2010
-    text: 《臺灣觀光學報》第四至七期 執行編輯
-- title: 產學與研究計畫
-  group: 研究與著作
-  items:
-  - year: '2025'
-    text: 新北市環境保護局「環境永續推動參與式預算計畫」
-    note: 主持人
-  - year: '2019'
-    text: 南向國家郵輪旅遊產品社群行銷顧問計畫
-    note: 主持人
-  - year: '2016'
-    text: 觀光產業創新優質服務研習活動產學合作案
-    note: 主持人
-  - year: '2015'
-    text: 基隆港國際郵輪換客作業產學合作案
-    note: 共同主持人
-  - year: '2014'
-    text: 台灣中高等旅遊院校青年學生河南修學之旅案
-    note: 主持人
-  - year: '2005'
-    text: 經濟部工業局數位內容鑑價專案「台灣旅遊聯盟觀光旅遊資料庫」
-  - year: '2004'
-    text: 台北縣政府青少年藝文活動中心研究規劃服務建議案
-  - year: '2003'
-    text: 台中市政府中部旅遊服務中心委外服務規劃及經營招標案
-  - year: '2001'
-    text: 民進黨黨籍資料庫管理系統工程計畫書招標案
-  - year: '1998'
-    text: 台北捷運公司「大安捷運站聯合開發市場調查暨評估案」
-  - year: '1998'
-    text: 人事行政局「民眾對每月二次週休二日之認知」民意調查
-  - year: '1998'
-    text: 台灣省文化處「民眾對台灣文化節活動之認知」民意調查
-  - year: '1998'
-    text: 台鹽公司「乳酸飲料及藻醬油之行銷策略之研究」
-  - year: '1998'
-    text: 台茂開發公司「台茂南崁家庭娛樂購物中心」市場調查
-  - year: '1997'
-    text: 陸委會「兩岸交流」民意調查
-  - year: '1997'
-    text: 外交部「我國參與聯合國」民意調查
-  - year: '1997'
-    text: 台電「澎湖尖山發電廠擴建計劃」民意調查
-  - year: '1997'
-    text: 交通部觀光局「八十六年台灣地區觀光遊樂服務業調查」
-  - year: '1997'
-    text: 日本交流協會「加入 WTO 台灣地區產業結構轉變之研究」
-- title: 專書與譯著
-  group: 研究與著作
-  items:
-  - year: '2019'
-    text: 呂行、陳瑞峰 編著，《導遊領隊考前衝刺》，志光文化。ISBN 978-986-514-114-1
-  - year: '2013'
-    text: 陳瑞峰、呂品器 編著，《導遊領隊讀了就上》再版，志光文化。ISBN 9789861286280
-  - year: '2012'
-    text: 'Subhash K.B. & Chen Ruey Feng, Geography of Transnational Terrorism: An India Perspective. In India Emerging: Opportunities and Challenges (Ch. 13, pp. 106–124). Pragun Publication, New Delhi.'
-    note: 跨國極端主義的地理學：印度的觀點
-  - year: '2008'
-    text: 陳瑞峰 譯，《會展觀光理論與實務》（Convention Tourism, Karin Weber & Kaye Chon 著），華都出版社。ISBN 9789866860348
-  - year: '2008'
-    text: 陳瑞峰、林靜慧 譯，《活動行銷：節慶、會議、展覽與觀光專案》（Event Marketing, Leonard H. Hoyle 著），揚智出版社。ISBN 9789578188600
-- title: 期刊論文
-  group: 研究與著作
-  items:
-  - year: '2022'
-    text: Chang, J. J., Chen, R. F., & Lin, C. L. Exploring the driving factors of urban music festival tourism and service development strategies using the modified SIA-NRM approach. Sustainability, 14(12), 7498. (SSCI)
-    note: 以 SIA-NRM 法探討都會音樂季的驅動因素及服務發展策略
-  - year: '2019'
-    text: 李明儒、鄭喬箏、陳瑞峰*。澎湖家庭旅遊者之休閒動機、涉入對其休閒效益與幸福感之研究：以家庭支持為干擾。休閒產業管理學刊，12(1)，41–62。
-  - year: '2018'
-    text: 'Dsouza, R. S., Subhash, K. B., Chen, R. F., & Weiermair, K. Service Quality and Customer Satisfaction: An Empirical Analysis of Banking Sector in Goa. International Journal of Banking, Risk and Insurance, 6(2), 1–22.'
-    note: 印度果阿銀行之服務品質及顧客滿意之初探性研究
-  - year: '2017'
-    text: 陳瑞峰、呂江泉、Subhash, K. B.。臺灣郵輪港口之區位評選模式研究。醒吾學報，55，111–126。
-  - year: '2017'
-    text: 劉翠華、楊瑟蓮、陳瑞峰*。高職餐飲科就讀動機與續讀意願之研究：以 2K 世代為例。醒吾學報，56，115–129。
-  - year: '2016'
-    text: Kamat, K., Scaglione, M., Subhash, K. B., & Chen, R. F. The Socio, Economic, and Environmental Impacts of Casino Tourism in Goa. Revista Latino-Americana de Turismologia, 2(1), 44–54.
-    note: 賭場觀光對印度果阿地區的社會經濟及環境影響
-  - year: '2016'
-    text: 陳瑞峰、呂江泉、Subhash, K. B.。臺灣國際郵輪船隊及代理商產業個案之研究。醒吾學報，51，127–146。
-  - year: '2012'
-    text: 'Chen, R. F., Subhash, K. B.*, Vinu, G., & Weiermair, K. Learning Motivation, Performance and Satisfaction: A Comparison between Students Majoring in Tourism and Hospitality Programs from Taiwan and India. International Journal of Hospitality & Tourism Systems, 5(1), 1–11.'
-    note: 台灣與印度觀光餐旅學生在學習動機、表現及滿意度之差異性研究
-  - year: '2011'
-    text: 'Chen, R. F., Chuu, T. S., & Lin, Z. H. The Difference of Learning Motivation and Performance Between Full-Time and On-Job Students: A Case of Taiwan Students Majoring in Hospitality and Tourism. Journal of Higher Education Theory and Practice, 11(3), 33–42.'
-    note: 台灣觀光科系在職生與一般生在學習動機、表現及滿意度之差異性研究
-  - year: ''
-    text: Lu, C. C., & Chen, R. F.* Differences in Tourism Image among Cruise Passengers across the Taiwan Straits. Global Journal of Business Research, 5(5), 95–108. (EconLit)
-    note: 海峽兩岸郵輪旅客觀光意象之差異性研究
-  - year: ''
-    text: 'Subhash, K. B., Weiermair, K., & Chen, R. F. What Lies Beneath: The Untapped Health Tourism Market in India and the Role of Social Venture Capital in Rejuvenating Ayurveda Tradition. Global Journal of Contemporary Management, 1(1), 1–13.'
-    note: 印度醫療觀光市場及社會創投在傳統阿育吠陀療法的角色
-  - year: ''
-    text: 'Subhash, K. B., Smitha, B. G., Weiermair, K., & Chen, R. F. Rural Tourism: Catalyst of Socio-Economic Transformation in the Face of Global Warming and Financial Crisis. A Case Study of Goa. Asia Pacific Journal of Research in Business Management, 1(2).'
-    note: 農業觀光：全球暖化與金融危機下社會經濟轉變的催化劑，以印度果阿為例
-- title: 研討會論文
-  group: 研究與著作
-  items:
-  - year: '2023'
-    text: 陳瑞峰。利用 GIS 熱區分析學生就學選擇之地理偏好。觀光工廠 20 週年永續論壇暨中華觀光管理學會學術研討會，靜宜大學。
-  - year: '2018'
-    text: Gaonkar, D. N., Subhash, K. B., Castanha, J., Chang, L. C., & Chen, R. F. Importance-Performance Analysis of Telecommunication Industry. 6th International Seminar and Conference on Learning Organization, Bandung, Indonesia.
-    note: 資通訊產業之 IPA 分析
-  - year: '2014'
-    text: Kamat, K., Chen, R. F., D’Mello, C., Scaglione, M., Weiermair, K., & Subhash, K. B. Resident Attitudes towards Casino Tourism Development in Goa. 64th AIEST Conference, Plzeň, Czech Republic.
-    note: 印度果阿省居民對博奕產業之態度分析
-  - year: '2012'
-    text: 'Subhash, K. B., Weiermair, K., & Chen, R. F. Empowerment at the Bottom of the Pyramid: Poverty Reduction through Rural Tourism. 18th Asia Pacific Tourism Association Conference, Taipei.'
-    note: 藉由農業觀光消弭貧困：金字塔底層的力量
-  - year: '2012'
-    text: 呂江泉、陳瑞峰、鄭天明。Cruiser Perception on the Port Cities Tourism Image. 18th Asia Pacific Tourism Association Conference, Taipei.
-    note: 郵輪旅客對港市意象的觀點
-  - year: '2008'
-    text: Lu, C. C., & Chen, R. F. Cruisers’ Cognition on Leisure and Tourism Resources in Taiwan. 8th Biennial Conference of ANZALS, Melbourne, Australia.
-  - year: '2002'
-    text: 萬金生、陳瑞峰、劉元安。台灣地區旅遊網站顧客關係管理策略之探討研究。第二屆觀光休閒暨餐旅產業永續經營研討會，國立餐旅學院。
-  - year: '2001'
-    text: 劉元安、陳瑞峰、萬金生。旅遊網站經營中之顧客關係管理研究。第一屆觀光休閒暨餐旅產業永續經營研討會，國立餐旅學院。
-  - year: '2001'
-    text: 陳瑞峰。顧客關係運用於旅遊網站之研究。九十年度全國管理碩士論文獎暨研討會，中華民國管理科學學會。
-- title: 學位論文
-  group: 研究與著作
-  items:
-  - year: '2001'
-    text: 陳瑞峰。顧客關係管理運用於旅遊網站之研究。中國文化大學碩士論文。
-    note: 延伸為國科會專題研究計畫 NSC 90-2416-H-034-005（2001/8～2002/7，劉元安教授主持）
-  - year: '1995'
-    text: 陳瑞峰。青少年社會支持與學校生活適應關係之研究。輔仁大學畢業論文。
+  - group: 學經歷
+    items:
+      - text: 國立臺灣科技大學 應用科技研究所 博士生
+        year: 2026～
+      - text: 中國文化大學 觀光事業研究所 碩士
+        year: '2001'
+      - text: 天主教輔仁大學 社會學系 學士
+        year: '1995'
+    title: 學歷
+  - group: 學經歷
+    items:
+      - note: 部定副字第 148041 號
+        text: 醒吾科技大學 旅運管理系 副教授
+        year: 2021.04～迄今
+      - text: 醒吾科技大學 旅運管理系 系主任、副主任
+        year: 2018.08～2021.07
+      - text: 醒吾科技大學 旅運管理系 助理教授
+        year: 2014.02～2021.03
+      - note: 部定助理字第 037267 號
+        text: 臺灣觀光學院 餐旅管理系 助理教授
+        year: 2013.03～2014.01
+      - note: 部定講字第 076147 號
+        text: 臺灣觀光學院 旅遊管理系 講師
+        year: 2006.08～2013.03
+      - note: 教學資源中心主任暨出版組組長、校長室秘書、研究發展處學術發展組長、代理技合處處長、研究發展組長、實習就業輔導組長等
+        text: 臺灣觀光學院 行政兼職
+        year: 2006.08～2014.01
+    title: 教職經歷
+  - group: 學經歷
+    items:
+      - text: 信欣國際系統公司 副總經理、專案經理
+        year: 2005.03～2006.03
+      - text: 台北市青少年育樂中心 行銷處總監
+        year: 2001.07～2005.02
+      - text: 信欣國際系統公司 總經理特別助理
+        year: 2000.03～2001.02
+      - text: 中華徵信所 助理研究員、市場研究部主任
+        year: 1997.07～1998.10
+      - text: 陸軍六軍團 義務役通信兵
+        year: 1995.07～1997.07
+    title: 業界經歷
+  - group: 學經歷
+    items:
+      - text: 信欣旅行社 專案經理
+        year: 2006～2008
+      - text: 花蓮縣瑞穗數位機會中心 講師
+        year: '2008'
+      - text: 醒吾技術學院觀光系夜間部 兼任講師
+        year: '2005'
+      - text: 中國海專觀光夜間部 兼任講師
+        year: 2002～2004
+      - text: 博客來網路書店 觀光旅遊、企管行銷類導讀撰文
+        year: 2000～2002
+      - text: 婦女會暨國民黨資訊中心 電腦軟體教師
+        year: 1999～2000
+      - text: 民調專案研究助理：聯合報民調中心、知行文教基金會
+        year: 1994～1995
+      - text: 東方點子旅行社、大亞旅行社 簽證送件人員
+        year: 1992～1993
+    title: 兼職經歷
+  - group: 專業與榮譽
+    items:
+      - note: (105) 專普導字第 004733 號
+        text: 中華民國英語導遊證照
+        year: ''
+      - note: (97) 專普領字第 000177 號
+        text: 中華民國外語領隊證照
+        year: ''
+      - note: 民國 94 年
+        text: 旅行業經理人協會 第九期結業
+        year: ''
+      - note: 貿展字第 1010015942 號
+        text: 會議展覽專業人員初階認證考試及格
+        year: ''
+      - text: WSET 葡萄酒品評一級及二級考試及格
+        year: ''
+      - text: ISO 14064-1:2018 溫室氣體盤查主導查證員訓練合格
+        year: ''
+      - text: 證基會永續發展基礎能力測驗合格
+        year: ''
+    title: 證照
+  - group: 專業與榮譽
+    items:
+      - text: 醒吾科技大學 績優導師
+        year: 103、107 學年度
+      - text: 醒吾科技大學 教學優良教師
+        year: 105、106 學年度
+      - text: Indus 商業研究院國際研討會 (IC2011) 最佳論文獎
+        year: '2011'
+      - text: 臺灣觀光學院 績優導師
+        year: 98、99 學年度
+      - text: 文化大學華岡研究生全額獎學金
+        year: 88 學年度
+    title: 獲獎與榮譽
+  - group: 專業與榮譽
+    items:
+      - text: 交通部觀光署 導遊人員及領隊人員評量測驗 命審題委員
+        year: 2024～2026
+      - text: 中華觀光管理學會 第 14 屆監事
+        year: 2022～2024
+      - text: 台灣遊憩發展協會 第 1 屆理事
+        year: 2019～2022
+      - text: 中華觀光管理學會 第 9、12 屆監事
+        year: 2017～2018
+      - text: 中華觀光管理學會 第 10、11 屆秘書長
+        year: 2014～2017
+      - text: Current Issues in Tourism (SSCI) 審稿人
+        year: '2012'
+      - text: APTA 亞太觀光協會國際學術研討會（台北）國際交流組長
+        year: '2012'
+      - text: Asia Tourism Forum 亞洲觀光論壇研討會 承辦
+        year: '2010'
+      - text: 花東縱谷國家風景區管理處 協調委員會、績效評估委員會委員
+        year: 2008～2013
+      - text: 《臺灣觀光學報》第四至七期 執行編輯
+        year: 2007～2010
+    title: 專業服務
+  - group: 研究與著作
+    items:
+      - note: 主持人
+        text: 新北市環境保護局「環境永續推動參與式預算計畫」
+        year: '2025'
+      - note: 主持人
+        text: 南向國家郵輪旅遊產品社群行銷顧問計畫
+        year: '2019'
+      - note: 主持人
+        text: 觀光產業創新優質服務研習活動產學合作案
+        year: '2016'
+      - note: 共同主持人
+        text: 基隆港國際郵輪換客作業產學合作案
+        year: '2015'
+      - note: 主持人
+        text: 台灣中高等旅遊院校青年學生河南修學之旅案
+        year: '2014'
+      - text: 經濟部工業局數位內容鑑價專案「台灣旅遊聯盟觀光旅遊資料庫」
+        year: '2005'
+      - text: 台北縣政府青少年藝文活動中心研究規劃服務建議案
+        year: '2004'
+      - text: 台中市政府中部旅遊服務中心委外服務規劃及經營招標案
+        year: '2003'
+      - text: 民進黨黨籍資料庫管理系統工程計畫書招標案
+        year: '2001'
+      - text: 台北捷運公司「大安捷運站聯合開發市場調查暨評估案」
+        year: '1998'
+      - text: 人事行政局「民眾對每月二次週休二日之認知」民意調查
+        year: '1998'
+      - text: 台灣省文化處「民眾對台灣文化節活動之認知」民意調查
+        year: '1998'
+      - text: 台鹽公司「乳酸飲料及藻醬油之行銷策略之研究」
+        year: '1998'
+      - text: 台茂開發公司「台茂南崁家庭娛樂購物中心」市場調查
+        year: '1998'
+      - text: 陸委會「兩岸交流」民意調查
+        year: '1997'
+      - text: 外交部「我國參與聯合國」民意調查
+        year: '1997'
+      - text: 台電「澎湖尖山發電廠擴建計劃」民意調查
+        year: '1997'
+      - text: 交通部觀光局「八十六年台灣地區觀光遊樂服務業調查」
+        year: '1997'
+      - text: 日本交流協會「加入 WTO 台灣地區產業結構轉變之研究」
+        year: '1997'
+    title: 產學與研究計畫
+  - group: 研究與著作
+    items:
+      - text: 呂行、陳瑞峰 編著，《導遊領隊考前衝刺》，志光文化。ISBN 978-986-514-114-1
+        year: '2019'
+      - text: 陳瑞峰、呂品器 編著，《導遊領隊讀了就上》再版，志光文化。ISBN 9789861286280
+        year: '2013'
+      - note: 跨國極端主義的地理學：印度的觀點
+        text: 'Subhash K.B. & Chen Ruey Feng, Geography of Transnational Terrorism: An India Perspective. In India Emerging: Opportunities and Challenges (Ch. 13, pp. 106–124). Pragun Publication, New Delhi.'
+        year: '2012'
+      - text: 陳瑞峰 譯，《會展觀光理論與實務》（Convention Tourism, Karin Weber & Kaye Chon 著），華都出版社。ISBN 9789866860348
+        year: '2008'
+      - text: 陳瑞峰、林靜慧 譯，《活動行銷：節慶、會議、展覽與觀光專案》（Event Marketing, Leonard H. Hoyle 著），揚智出版社。ISBN 9789578188600
+        year: '2008'
+    title: 專書與譯著
+  - group: 研究與著作
+    items:
+      - note: 以 SIA-NRM 法探討都會音樂季的驅動因素及服務發展策略
+        text: Chang, J. J., Chen, R. F., & Lin, C. L. Exploring the driving factors of urban music festival tourism and service development strategies using the modified SIA-NRM approach. Sustainability, 14(12), 7498. (SSCI)
+        year: '2022'
+      - text: 李明儒、鄭喬箏、陳瑞峰*。澎湖家庭旅遊者之休閒動機、涉入對其休閒效益與幸福感之研究：以家庭支持為干擾。休閒產業管理學刊，12(1)，41–62。
+        year: '2019'
+      - note: 印度果阿銀行之服務品質及顧客滿意之初探性研究
+        text: 'Dsouza, R. S., Subhash, K. B., Chen, R. F., & Weiermair, K. Service Quality and Customer Satisfaction: An Empirical Analysis of Banking Sector in Goa. International Journal of Banking, Risk and Insurance, 6(2), 1–22.'
+        year: '2018'
+      - text: 陳瑞峰、呂江泉、Subhash, K. B.。臺灣郵輪港口之區位評選模式研究。醒吾學報，55，111–126。
+        year: '2017'
+      - text: 劉翠華、楊瑟蓮、陳瑞峰*。高職餐飲科就讀動機與續讀意願之研究：以 2K 世代為例。醒吾學報，56，115–129。
+        year: '2017'
+      - note: 賭場觀光對印度果阿地區的社會經濟及環境影響
+        text: Kamat, K., Scaglione, M., Subhash, K. B., & Chen, R. F. The Socio, Economic, and Environmental Impacts of Casino Tourism in Goa. Revista Latino-Americana de Turismologia, 2(1), 44–54.
+        year: '2016'
+      - text: 陳瑞峰、呂江泉、Subhash, K. B.。臺灣國際郵輪船隊及代理商產業個案之研究。醒吾學報，51，127–146。
+        year: '2016'
+      - note: 台灣與印度觀光餐旅學生在學習動機、表現及滿意度之差異性研究
+        text: 'Chen, R. F., Subhash, K. B.*, Vinu, G., & Weiermair, K. Learning Motivation, Performance and Satisfaction: A Comparison between Students Majoring in Tourism and Hospitality Programs from Taiwan and India. International Journal of Hospitality & Tourism Systems, 5(1), 1–11.'
+        year: '2012'
+      - note: 台灣觀光科系在職生與一般生在學習動機、表現及滿意度之差異性研究
+        text: 'Chen, R. F., Chuu, T. S., & Lin, Z. H. The Difference of Learning Motivation and Performance Between Full-Time and On-Job Students: A Case of Taiwan Students Majoring in Hospitality and Tourism. Journal of Higher Education Theory and Practice, 11(3), 33–42.'
+        year: '2011'
+      - note: 海峽兩岸郵輪旅客觀光意象之差異性研究
+        text: Lu, C. C., & Chen, R. F.* Differences in Tourism Image among Cruise Passengers across the Taiwan Straits. Global Journal of Business Research, 5(5), 95–108. (EconLit)
+        year: ''
+      - note: 印度醫療觀光市場及社會創投在傳統阿育吠陀療法的角色
+        text: 'Subhash, K. B., Weiermair, K., & Chen, R. F. What Lies Beneath: The Untapped Health Tourism Market in India and the Role of Social Venture Capital in Rejuvenating Ayurveda Tradition. Global Journal of Contemporary Management, 1(1), 1–13.'
+        year: ''
+      - note: 農業觀光：全球暖化與金融危機下社會經濟轉變的催化劑，以印度果阿為例
+        text: 'Subhash, K. B., Smitha, B. G., Weiermair, K., & Chen, R. F. Rural Tourism: Catalyst of Socio-Economic Transformation in the Face of Global Warming and Financial Crisis. A Case Study of Goa. Asia Pacific Journal of Research in Business Management, 1(2).'
+        year: ''
+    title: 期刊論文
+  - group: 研究與著作
+    items:
+      - text: 陳瑞峰。利用 GIS 熱區分析學生就學選擇之地理偏好。觀光工廠 20 週年永續論壇暨中華觀光管理學會學術研討會，靜宜大學。
+        year: '2023'
+      - note: 資通訊產業之 IPA 分析
+        text: Gaonkar, D. N., Subhash, K. B., Castanha, J., Chang, L. C., & Chen, R. F. Importance-Performance Analysis of Telecommunication Industry. 6th International Seminar and Conference on Learning Organization, Bandung, Indonesia.
+        year: '2018'
+      - note: 印度果阿省居民對博奕產業之態度分析
+        text: Kamat, K., Chen, R. F., D’Mello, C., Scaglione, M., Weiermair, K., & Subhash, K. B. Resident Attitudes towards Casino Tourism Development in Goa. 64th AIEST Conference, Plzeň, Czech Republic.
+        year: '2014'
+      - note: 藉由農業觀光消弭貧困：金字塔底層的力量
+        text: 'Subhash, K. B., Weiermair, K., & Chen, R. F. Empowerment at the Bottom of the Pyramid: Poverty Reduction through Rural Tourism. 18th Asia Pacific Tourism Association Conference, Taipei.'
+        year: '2012'
+      - note: 郵輪旅客對港市意象的觀點
+        text: 呂江泉、陳瑞峰、鄭天明。Cruiser Perception on the Port Cities Tourism Image. 18th Asia Pacific Tourism Association Conference, Taipei.
+        year: '2012'
+      - text: Lu, C. C., & Chen, R. F. Cruisers’ Cognition on Leisure and Tourism Resources in Taiwan. 8th Biennial Conference of ANZALS, Melbourne, Australia.
+        year: '2008'
+      - text: 萬金生、陳瑞峰、劉元安。台灣地區旅遊網站顧客關係管理策略之探討研究。第二屆觀光休閒暨餐旅產業永續經營研討會，國立餐旅學院。
+        year: '2002'
+      - text: 劉元安、陳瑞峰、萬金生。旅遊網站經營中之顧客關係管理研究。第一屆觀光休閒暨餐旅產業永續經營研討會，國立餐旅學院。
+        year: '2001'
+      - text: 陳瑞峰。顧客關係運用於旅遊網站之研究。九十年度全國管理碩士論文獎暨研討會，中華民國管理科學學會。
+        year: '2001'
+    title: 研討會論文
+  - group: 研究與著作
+    items:
+      - note: 延伸為國科會專題研究計畫 NSC 90-2416-H-034-005（2001/8～2002/7，劉元安教授主持）
+        text: 陳瑞峰。顧客關係管理運用於旅遊網站之研究。中國文化大學碩士論文。
+        year: '2001'
+      - text: 陳瑞峰。青少年社會支持與學校生活適應關係之研究。輔仁大學畢業論文。
+        year: '1995'
+    title: 學位論文
