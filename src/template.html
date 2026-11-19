@@ -177,7 +177,7 @@ const b64dec=t=>new TextDecoder().decode(Uint8Array.from(atob(t.replace(/\n/g,''
 function b64enc(str){ const u=new TextEncoder().encode(str); let s=''; for(let i=0;i<u.length;i+=8192) s+=String.fromCharCode.apply(null,u.subarray(i,i+8192)); return btoa(s); }
 async function hideArticle(file, btn){
   const tok=ghToken();
-  if(!tok){ location.href='admin/#/collections/articles/entries/'+file; return; }
+  if(!tok){ window.open('admin/#/collections/articles/entries/'+file,'_blank'); return; }
   btn.textContent='隱藏中…';
   const url=`https://api.github.com/repos/${REPO}/contents/content/articles/${encodeURIComponent(file)}.md`;
   const H={Authorization:'Bearer '+tok, Accept:'application/vnd.github+json'};
@@ -325,7 +325,7 @@ function route(){
 app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=24; renderList(); }});
 app.addEventListener('click', e=>{
   const ed = e.target.closest('[data-edit]');
-  if(ed){ e.preventDefault(); e.stopPropagation(); location.href='admin/#/collections/articles/entries/'+ed.dataset.edit; return; }
+  if(ed){ e.preventDefault(); e.stopPropagation(); window.open('admin/#/collections/articles/entries/'+ed.dataset.edit,'_blank'); return; }
   const hd = e.target.closest('[data-hide]');
   if(hd){ e.preventDefault(); e.stopPropagation();
     if(!hd.classList.contains('armed')){ hd.classList.add('armed'); hd.textContent='確定隱藏？'; setTimeout(()=>{ if(hd.classList.contains('armed')){ hd.classList.remove('armed'); hd.textContent='隱藏'; } },4000); return; }
