@@ -1,0 +1,301 @@
+<title>隨峰而趣</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&display=swap">
+<style>
+/* Layout: a picture book — cream watercolor paper, sketchy brown pencil lines, one chibi guide in the hero, small doodles per topic.
+   Deliberately single-theme (a printed picture book), so every color is set explicitly. */
+:root{
+  --paper:#f6eedc; --paper-2:#fbf6ea; --ink:#4a3426; --muted:#7c6352; --line:#8a6a52;
+  --sage:#a9c39d; --sky:#a9c9d9; --peach:#f1b79c; --butter:#f2d488; --rose:#eea3a0; --lilac:#c6b4d8;
+  --f-hand:"LXGW WenKai TC","Kaiti TC","STKaiti","DFKai-SB",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:var(--f-hand);font-size:17px;line-height:1.85;background-color:var(--paper);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .33 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .85 0 0 0 0 .66 0 0 0 .5 -.12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--ink);text-decoration-color:var(--peach);text-decoration-thickness:3px;text-underline-offset:4px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px dashed var(--ink);outline-offset:3px}
+h1,h2,h3{font-weight:700;text-wrap:balance;line-height:1.35;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.svgdefs{position:absolute;width:0;height:0}
+.sk{filter:url(#pencil)}
+/* hand-drawn box: irregular radius + slightly uneven border */
+.hand{border:2px solid var(--line);border-radius:255px 18px 225px 16px/16px 225px 18px 255px}
+header.top{border-bottom:2px dashed rgba(138,106,82,.45)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand b{font-size:26px;letter-spacing:.06em}
+.brand small{display:block;font-size:12px;color:var(--muted);letter-spacing:.08em;line-height:1.2}
+nav.main{display:flex;gap:6px;flex-wrap:wrap}
+nav.main a{text-decoration:none;color:var(--muted);padding:2px 12px;font-size:16px;position:relative}
+nav.main a small{font-size:11px;letter-spacing:.08em;margin-left:4px;opacity:.75}
+nav.main a.on{color:var(--ink)}
+nav.main a.on::after{content:"";position:absolute;left:8px;right:8px;bottom:2px;height:9px;background:var(--butter);opacity:.75;border-radius:40% 60% 50% 50%;z-index:-1}
+main{padding-block:28px 64px}
+.lead{color:var(--muted)}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:center;padding-block:4px 20px}
+.hero h1{font-size:clamp(32px,5.4vw,52px);letter-spacing:.04em}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 58%,rgba(242,212,136,.8) 58%,rgba(242,212,136,.8) 88%,transparent 88%)}
+.hero p{max-width:30em;margin:16px 0 0;color:var(--muted)}
+.hero .art{width:100%;max-width:400px;justify-self:center}
+.peek{display:block;width:72px;height:72px;margin:28px auto 0;transform:rotate(5deg)}
+.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.facts span{background:var(--paper-2);padding:4px 14px;font-size:15px}
+section{padding-block:34px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:26px;display:flex;align-items:center;gap:8px}
+.sec-head a{font-size:15px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card-a{display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px;align-items:start;padding:16px 18px;background:var(--paper-2);text-decoration:none;color:var(--ink);transition:transform .15s}
+.card-a:hover{transform:rotate(-.4deg) translateY(-2px)}
+.card-a:nth-child(even):hover{transform:rotate(.4deg) translateY(-2px)}
+.doodle{width:76px;height:76px}
+.cards,.card-a{overflow-x:clip}html,body{overflow-x:clip}
+.card-a h3{font-size:19px}
+.card-a p{margin:4px 0 0;font-size:15px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.7}
+.card-a .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:13px;color:var(--muted)}
+.tag{display:inline-block;padding:0 10px;font-size:13px;border-radius:12px 4px 12px 4px;color:var(--ink)}
+/* filters */
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.tools input{flex:1 1 240px;min-width:0;font:inherit;font-size:16px;padding:8px 16px;background:var(--paper-2);color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:inherit;font-size:15px;padding:2px 14px;border:2px solid var(--line);border-radius:20px 8px 20px 8px;background:transparent;color:var(--muted);cursor:pointer}
+.chip.on{color:var(--ink);background:var(--butter)}
+.chip i{font-style:normal;font-size:12px;margin-left:4px;opacity:.75}
+.count{font-size:14px;color:var(--muted);margin-bottom:10px}
+.empty{color:var(--muted);padding:24px 0}
+/* article */
+.article{max-width:40em;margin:0 auto}
+.article .back{font-size:15px}
+.article h1{font-size:clamp(28px,4.6vw,40px);margin:18px 0 12px}
+.article .meta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--muted);padding-bottom:16px;margin-bottom:22px;border-bottom:2px dashed rgba(138,106,82,.45)}
+.prose{font-size:18px;line-height:2;overflow-wrap:anywhere}
+.prose p{margin:0 0 1.1em}
+.prose h2,.prose h3{font-size:22px;margin:1.6em 0 .6em}
+.prose hr{border:0;border-top:2px dashed rgba(138,106,82,.45);margin:2em 0}
+.prose figure.ph{margin:1.4em 0;padding:30px 16px;text-align:center;font-size:14px;color:var(--muted);background:rgba(169,201,217,.28);border:2px dashed var(--line);border-radius:30px 10px 30px 10px}
+.prose img{max-width:100%;height:auto;border-radius:14px;margin:.6em 0}
+.origin{margin-top:32px;padding:14px 18px;font-size:15px;color:var(--muted);background:var(--paper-2)}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.pn a{display:block;padding:12px 16px;text-decoration:none;font-size:15px;background:var(--paper-2);min-width:0}
+.pn a span{display:block;font-size:12px;color:var(--muted)}
+.pn a.next{text-align:right}
+/* blocks */
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.box{padding:18px 20px;background:var(--paper-2);min-width:0}
+.box h3{font-size:20px;margin:6px 0 4px}
+.box p{margin:0;color:var(--muted);font-size:15px}
+.box ul{margin:6px 0 0;padding-left:1.2em;font-size:15px}
+.box .doodle{width:64px;height:64px}
+.note{font-size:14px;color:var(--muted);margin-top:16px}
+.series{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:20px;align-items:center;padding:20px 24px;background:rgba(169,195,157,.35)}
+.series h3{font-size:24px}
+.series p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.series .n{font-size:44px;font-weight:700;line-height:1;text-align:center}
+.series .n small{display:block;font-size:14px;font-weight:400;color:var(--muted)}
+footer{padding-block:24px;font-size:14px;color:var(--muted);border-top:2px dashed rgba(138,106,82,.45)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .hero .art{max-width:300px;order:-1}
+  .cards,.cols{grid-template-columns:1fr}
+  .series{grid-template-columns:72px minmax(0,1fr)}
+  .series .n{grid-column:1/-1;text-align:left}
+  .pn{grid-template-columns:1fr}
+  nav.main a small{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<!-- shared filters + doodles -->
+<svg class="svgdefs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="pencil" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter>
+    <filter id="wash" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="14" result="d"/><feGaussianBlur in="d" stdDeviation="1.4" result="b"/><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="1" result="g"/><feColorMatrix in="g" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.2 1.1" result="gm"/><feComposite in="b" in2="gm" operator="in"/></filter>
+    <g id="i-edu"><path d="M14 30 L38 20 L62 30 L38 40 Z" fill="#f2d488"/><path d="M24 35 v10 c8 6 20 6 28 0 v-10" fill="#fbf6ea"/><path d="M14 30 L38 20 L62 30 L38 40 Z M24 35 v10 c8 6 20 6 28 0 v-10 M62 30 v14" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="62" cy="46" r="2.6" fill="#4a3426"/></g>
+    <g id="i-exam"><rect x="20" y="14" width="34" height="46" rx="4" fill="#fbf6ea"/><path d="M27 26h20M27 34h20M27 42h12" stroke="#a9c39d" stroke-width="3" stroke-linecap="round"/><rect x="20" y="14" width="34" height="46" rx="4" fill="none" stroke="#4a3426" stroke-width="2.4"/><path d="M46 52 L60 30 L65 33 L51 55 L45 57 Z" fill="#f1b79c" stroke="#4a3426" stroke-width="2.2" stroke-linejoin="round"/></g>
+    <g id="i-ship"><path d="M12 46 h52 l-8 12 h-36 z" fill="#a9c9d9"/><rect x="22" y="32" width="30" height="14" rx="2" fill="#fbf6ea"/><rect x="30" y="22" width="10" height="10" fill="#f1b79c"/><path d="M12 46 h52 l-8 12 h-36 z M22 46 v-14 h30 v14 M30 32 v-10 h10 v10" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round"/><circle cx="29" cy="39" r="2" fill="#4a3426"/><circle cx="37" cy="39" r="2" fill="#4a3426"/><circle cx="45" cy="39" r="2" fill="#4a3426"/><path d="M8 64 q6 -4 12 0 t12 0 t12 0 t12 0 t12 0" fill="none" stroke="#7c9fb3" stroke-width="2.2" stroke-linecap="round"/></g>
+    <g id="i-read"><path d="M38 26 c-8 -6 -18 -6 -24 -3 v32 c6 -3 16 -3 24 3 c8 -6 18 -6 24 -3 v-32 c-6 -3 -16 -3 -24 3z" fill="#fbf6ea"/><path d="M14 23 v32" stroke="#c6b4d8" stroke-width="6"/><path d="M38 26 c-8 -6 -18 -6 -24 -3 v32 c6 -3 16 -3 24 3 c8 -6 18 -6 24 -3 v-32 c-6 -3 -16 -3 -24 3z M38 26 v32" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round"/><circle cx="58" cy="14" r="7" fill="#f2d488" stroke="#4a3426" stroke-width="2"/></g>
+    <g id="i-memo"><path d="M16 36 L38 18 L60 36 V60 H16 Z" fill="#fbf6ea"/><path d="M12 38 L38 16 L64 38" fill="none" stroke="#4a3426" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="31" y="44" width="12" height="16" fill="#f1b79c"/><rect x="21" y="40" width="8" height="8" fill="#a9c9d9"/><path d="M16 36 V60 H60 V36 M31 60 v-16 h12 v16 M21 40 h8 v8 h-8 z" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round"/><path d="M50 22 v-8 h6 v13" fill="#eea3a0" stroke="#4a3426" stroke-width="2.2" stroke-linejoin="round"/></g>
+    <g id="i-money"><ellipse cx="38" cy="50" rx="20" ry="7" fill="#f2d488"/><path d="M18 50 v-8 c0 -4 9 -7 20 -7 s20 3 20 7 v8" fill="#f2d488"/><ellipse cx="38" cy="42" rx="20" ry="7" fill="#f8e4ad"/><path d="M18 42 v8 c0 4 9 7 20 7 s20 -3 20 -7 v-8 M18 42 c0 -4 9 -7 20 -7 s20 3 20 7 c0 4 -9 7 -20 7 s-20 -3 -20 -7" fill="none" stroke="#4a3426" stroke-width="2.4"/><path d="M38 14 v14 M33 18 h8 M33 24 h8" stroke="#4a3426" stroke-width="2.4" stroke-linecap="round"/></g>
+    <g id="i-care"><path d="M22 34 h30 v14 c0 8 -6 12 -15 12 s-15 -4 -15 -12z" fill="#fbf6ea"/><path d="M22 34 h30 v14 c0 8 -6 12 -15 12 s-15 -4 -15 -12z M52 38 c8 0 8 10 0 10" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round"/><path d="M37 30 c-6 -6 -12 -2 -10 -7 c2 -4 7 -3 10 1 c3 -4 8 -5 10 -1 c2 5 -4 1 -10 7z" fill="#eea3a0" stroke="#4a3426" stroke-width="2" stroke-linejoin="round"/></g>
+    <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5" result="d"/><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="9" result="g"/><feColorMatrix in="g" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.2 1.9" result="gm"/><feComposite in="d" in2="gm" operator="in"/></filter>
+    <g id="i-game"><rect x="18" y="22" width="34" height="34" rx="6" fill="#fbf6ea"/><rect x="18" y="22" width="34" height="34" rx="6" fill="none" stroke="#4a3426" stroke-width="2.4"/><circle cx="27" cy="31" r="3" fill="#4a3426"/><circle cx="35" cy="39" r="3" fill="#4a3426"/><circle cx="43" cy="47" r="3" fill="#4a3426"/><path d="M50 40 l12 -14 l8 8 l-14 12 z" fill="#f1b79c" stroke="#4a3426" stroke-width="2.2" stroke-linejoin="round"/></g>
+  </defs>
+</svg>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#home"><svg width="40" height="40" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="30" ry="28" fill="#f1b79c" filter="url(#wash)" opacity=".8"/><g class="sk"><use href="#i-ship"/></g></svg><span><b>隨峰而趣</b><small>Rayfong's Travelogue</small></span></a>
+  <nav class="main" id="nav">
+    <a href="#home" data-v="home">首頁</a>
+    <a href="#writing" data-v="writing">文章<small>WRITING</small></a>
+    <a href="#teaching" data-v="teaching">教學<small>TEACHING</small></a>
+    <a href="#travel" data-v="travel">旅行<small>TRAVEL</small></a>
+    <a href="#hello" data-v="hello">關於<small>HELLO</small></a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="app"></main>
+
+<footer><div class="wrap">
+  <span>© 隨峰而趣 · www.rayfong.idv.tw</span>
+  <span>網站設計預覽 · 文章照片會在正式網站顯示</span>
+</div></footer>
+
+<script>
+const ARTS = __DATA__;
+const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊戲學習","生活記憶","理財情報","老後提案"];
+const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
+const app = document.getElementById('app');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let filt = {q:'', cat:'', src:'', n:24};
+
+function doodle(cat, cls='doodle'){
+  const [i,c] = ICON[cat]||ICON["生活記憶"];
+  return `<svg class="${cls}" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="31" ry="28" fill="${c}" opacity=".75" filter="url(#wash)"/><g class="sk"><use href="#i-${i}"/></g></svg>`;
+}
+function tag(cat){ const c=(ICON[cat]||ICON["生活記憶"])[1]; return `<span class="tag" style="background:${c}99">${esc(cat)}</span>`; }
+function card(a){
+  return `<a class="card-a hand" href="#a-${a.id}">${doodle(a.cat)}
+    <div style="min-width:0"><h3>${esc(a.title)}</h3><p>${esc(a.ex)}</p>
+      <div class="meta">${tag(a.cat)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.src==='Facebook'?'Facebook':'方格子'}</span></div></div></a>`;
+}
+function countBy(){const c={};ARTS.forEach(a=>c[a.cat]=(c[a.cat]||0)+1);return c}
+
+const CHIBI = `<svg class="art" viewBox="0 0 360 330" role="img" aria-label="手繪的二頭身老師，舉著導遊小旗，旁邊放著行李箱和書">
+  <ellipse cx="180" cy="180" rx="165" ry="140" fill="#a9c9d9" opacity=".45" filter="url(#wash)"/>
+  <ellipse cx="250" cy="110" rx="70" ry="55" fill="#f2d488" opacity=".55" filter="url(#wash)"/>
+  <ellipse cx="180" cy="300" rx="120" ry="16" fill="#a9c39d" opacity=".7" filter="url(#wash)"/>
+  <!-- washes (fills) -->
+  <g opacity=".92">
+    <rect x="232" y="214" width="62" height="78" rx="10" fill="#f1b79c"/>
+    <circle cx="250" cy="236" r="9" fill="#a9c9d9"/><rect x="266" y="252" width="18" height="12" rx="3" fill="#f2d488"/>
+    <path d="M146 196 q34 -14 68 0 l10 72 q-44 14 -88 0 z" fill="#a9c39d"/>
+    <rect x="152" y="262" width="22" height="30" rx="8" fill="#8a6a52"/><rect x="186" y="262" width="22" height="30" rx="8" fill="#8a6a52"/>
+    <ellipse cx="160" cy="294" rx="16" ry="7" fill="#4a3426"/><ellipse cx="200" cy="294" rx="16" ry="7" fill="#4a3426"/>
+    <circle cx="180" cy="120" r="74" fill="#fbe2cc"/>
+    <path d="M106 118 c-4 -58 40 -86 80 -82 c40 4 72 34 66 84 c-14 -22 -36 -34 -60 -36 c-8 14 -40 30 -86 34z" fill="#5b4031"/>
+    <ellipse cx="140" cy="140" rx="13" ry="8" fill="#eea3a0" opacity=".8"/><ellipse cx="220" cy="140" rx="13" ry="8" fill="#eea3a0" opacity=".8"/>
+    <path d="M86 84 L150 106 L86 128 z" fill="#f1b79c"/>
+  </g>
+  <!-- pencil lines -->
+  <g class="sk" fill="none" stroke="#4a3426" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="232" y="214" width="62" height="78" rx="10"/><path d="M250 214 v-16 h26 v16"/><path d="M244 292 v6 M282 292 v6"/>
+    <path d="M146 196 q34 -14 68 0 l10 72 q-44 14 -88 0 z"/>
+    <path d="M152 266 v22 a8 8 0 0 0 22 0 v-20 M186 268 v20 a8 8 0 0 0 22 0 v-22"/>
+    <circle cx="180" cy="120" r="74"/>
+    <path d="M106 118 c-4 -58 40 -86 80 -82 c40 4 72 34 66 84 c-14 -22 -36 -34 -60 -36 c-8 14 -40 30 -86 34"/>
+    <path d="M208 206 q22 6 22 26"/>
+    <path d="M150 204 q-34 8 -62 -26"/><circle cx="86" cy="176" r="7" fill="#fbe2cc"/>
+    <path d="M86 84 L150 106 L86 128 z"/><path d="M84 80 L84 236"/>
+    <path d="M168 150 q12 9 24 0" stroke-width="3.2"/>
+  </g>
+  <circle cx="152" cy="126" r="5.5" fill="#4a3426"/><circle cx="208" cy="126" r="5.5" fill="#4a3426"/>
+</svg>`;
+
+function home(){
+  const c = countBy();
+  return `<div class="hero">
+    <div><div class="lead">旅運系老師的筆記本</div>
+      <h1>走過的路、<br>帶過的學生、<br><em>記得的事</em>。</h1>
+      <p>這裡收著我在課堂、旅途和生活裡寫下的文章：高鐵實習怎麼準備、領隊考試怎麼讀、郵輪甲板上的遊戲，還有台北老旅行社裡的那兩年。</p>
+      <div class="facts"><span class="hand">${ARTS.length} 篇文章</span><span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span><span class="hand">方格子＋Facebook</span></div></div>
+    ${CHIBI}</div>
+  <section><div class="sec-head"><h2>最新文章</h2><a href="#writing">看全部 ${ARTS.length} 篇 →</a></div>
+    <div class="cards">${ARTS.slice(0,6).map(card).join('')}</div></section>
+  <section><div class="sec-head"><h2>依主題閱讀</h2></div>
+    <div class="chips">${CATS.map(k=>`<button class="chip" type="button" data-go="${k}">${k}<i>${c[k]||0}</i></button>`).join('')}</div></section>
+  <section><div class="series hand">${doodle('證照考試')}<div><h3><a href="#writing" data-go="證照考試" style="text-decoration:none">導遊領隊考前陪跑</a></h3><p>每年國考前，一天一題解析、一則提醒，陪學生走到考場。這個 Facebook 系列已經全部收進網站。</p></div>
+    <div class="n">${ARTS.filter(a=>/考前/.test(a.title)).length}<small>篇</small></div></div></section>`;
+}
+
+function writing(){
+  const c = countBy();
+  return `<div class="sec-head"><h1 style="font-size:34px">文章</h1></div>
+  <div class="tools"><input id="q" class="hand" type="search" placeholder="搜尋標題或內容，例如：高鐵、保險、郵輪" value="${esc(filt.q)}" aria-label="搜尋文章">
+    <div class="chips" id="chips"><button class="chip ${filt.cat?'':'on'}" type="button" data-cat="">全部<i>${ARTS.length}</i></button>
+    ${CATS.map(k=>`<button class="chip ${filt.cat===k?'on':''}" type="button" data-cat="${k}">${k}<i>${c[k]||0}</i></button>`).join('')}</div></div>
+  <div class="count" id="count"></div><div class="cards" id="list"></div>
+  <div style="text-align:center;margin-top:22px"><button class="chip" type="button" id="more" style="font-size:16px;padding:6px 22px">再看 24 篇</button></div>`;
+}
+function renderList(){
+  const q = filt.q.trim();
+  const r = ARTS.filter(a => (!filt.cat||a.cat===filt.cat) && (!q || a.title.includes(q) || a.body.includes(q)));
+  const shown = r.slice(0, filt.n);
+  document.getElementById('count').textContent = `共 ${r.length} 篇${r.length>shown.length?`，目前顯示 ${shown.length} 篇`:''}`;
+  document.getElementById('list').innerHTML = r.length ? shown.map(card).join('') : `<p class="empty">找不到符合「${esc(q)}」的文章，換個關鍵字試試。</p>`;
+  document.getElementById('more').hidden = r.length <= shown.length;
+}
+
+function article(id){
+  const i = ARTS.findIndex(a=>a.id===id); if(i<0) return `<p class="empty">找不到這篇文章。<a href="#writing">回文章列表</a></p>`;
+  const a = ARTS[i], prev = ARTS[i+1], next = ARTS[i-1];
+  return `<article class="article"><a class="back" href="#writing">← 全部文章</a>
+    <div style="margin-top:14px">${doodle(a.cat)}</div>
+    <h1>${esc(a.title)}</h1>
+    <div class="meta">${tag(a.cat)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
+    <div class="prose">${a.body}</div>
+    <div class="origin hand">本文最早發表於${a.src==='Facebook'?' Facebook':'方格子'}：<a href="${a.url}" target="_blank" rel="noopener">${esc(a.url)}</a></div>
+    <div class="pn">${prev?`<a class="hand" href="#a-${prev.id}"><span>上一篇</span>${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="hand next" href="#a-${next.id}"><span>下一篇</span>${esc(next.title)}</a>`:''}</div>
+  </article>`;
+}
+
+function teaching(){
+  const t = ARTS.filter(a=>['技職教育','證照考試'].includes(a.cat));
+  return `<h1 style="font-size:34px;margin-bottom:6px">教學</h1><p class="lead" style="margin:0">給醒吾旅運與觀光科系同學的課程資源、證照準備與實習經驗。</p>
+  <section><div class="cols">
+    <div class="box hand">${doodle('證照考試')}<h3>國考領隊證照專區</h3><ul><li>領隊導遊課程筆記</li><li>華語領隊模擬考題</li><li>導遊領隊考前陪跑（已收進文章）</li></ul></div>
+    <div class="box hand">${doodle('旅行郵輪')}<h3>郵輪、旅展與微學分</h3><ul><li>郵輪旅遊</li><li>ITF 台北國際旅展</li><li>微學分課程報名</li></ul></div>
+    <div class="box hand">${doodle('技職教育')}<h3>觀光法規案例</h3><ul><li>甘肅團與日本團案例比較</li><li>旅行社財務分析</li></ul></div>
+  </div><p class="note">這三區的內容目前在 Google Sites 上，正式網站會把講義、筆記和下載連結搬過來。</p></section>
+  <section><div class="sec-head"><h2>相關文章</h2></div><div class="cards">${t.map(card).join('')}</div></section>`;
+}
+
+function travel(){
+  const t = ARTS.filter(a=>a.cat==='旅行郵輪');
+  const place = (code,name,txt,col)=>`<div class="box hand"><svg class="doodle" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="31" ry="27" fill="${col}" opacity=".75" filter="url(#wash)"/><text x="38" y="47" text-anchor="middle" font-family="LXGW WenKai TC, serif" font-size="20" font-weight="700" fill="#4a3426">${code}</text></svg><h3>${name}</h3><p>${txt}</p></div>`;
+  return `<h1 style="font-size:34px;margin-bottom:6px">旅行</h1><p class="lead" style="margin:0">帶團、見學與自己出走的紀錄。</p>
+  <section><div class="cols">
+    ${place('BKK','泰國 Thailand','目前在 Google Sites 的 Thailand 頁，正式網站會搬過來。','#f2d488')}
+    ${place('NGO','名古屋 Nagoya','目前在 Google Sites 的 Nagoya 頁，正式網站會搬過來。','#f1b79c')}
+    ${place('YVR','加拿大 Canada','醒吾旅運學海築夢見學，溫哥華與維多利亞。','#a9c9d9')}
+  </div></section>
+  <section><div class="sec-head"><h2>旅行文章</h2></div><div class="cards">${t.map(card).join('')}</div></section>`;
+}
+
+function hello(){
+  return `<div class="article"><div class="lead">HELLO</div><h1>你好，我是 Ray</h1>
+  <div class="prose"><p>在大學旅運系教書，教的是領隊導遊、郵輪旅遊和觀光法規。教書之前在中華徵信所和旅行業工作過，大學時在民生東路的老旅行社騎機車送簽證，那兩年的故事寫在「駱老闆和他的朋友們」系列裡。</p>
+  <p>這個網站整理我在方格子沙龍「隨峰而趣 Rayfong's Travelogue」和 Facebook 上寫的文章，也放課程講義與證照資源。</p></div></div>
+  <section><div class="cols">
+    <div class="box hand">${doodle('每日晨讀')}<h3>個人簡歷</h3><p>CV（待補：從 Google Sites 搬過來）</p></div>
+    <div class="box hand">${doodle('技職教育')}<h3>任教學校</h3><p>醒吾科大旅運系（HWU）<br>臺灣觀光學院（THT）</p></div>
+    <div class="box hand">${doodle('生活記憶')}<h3>找到我</h3><p><a href="https://www.facebook.com/chenrayfong" target="_blank" rel="noopener">Facebook</a> · <a href="https://vocus.cc/salon/rayfong" target="_blank" rel="noopener">方格子</a><br>Instagram、YouTube（待補）</p></div>
+  </div><p class="note">MY BOOKS 的內容目前在 Google Sites 上，正式網站會搬過來。</p></section>`;
+}
+
+function route(){
+  const h = (location.hash||'#home').slice(1);
+  let v = h.startsWith('a-') ? 'writing' : (['home','writing','teaching','travel','hello'].includes(h)?h:'home');
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  if(h.startsWith('a-')) app.innerHTML = article(h.slice(2));
+  else if(v==='writing'){ app.innerHTML = writing(); renderList(); }
+  else app.innerHTML = ({home,teaching,travel,hello})[v]();
+  window.scrollTo(0,0);
+}
+app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=24; renderList(); }});
+app.addEventListener('click', e=>{
+  const b = e.target.closest('[data-cat]');
+  if(b){ filt.cat=b.dataset.cat; filt.n=24; document.querySelectorAll('#chips .chip').forEach(x=>x.classList.toggle('on',x===b)); renderList(); return; }
+  if(e.target.id==='more'){ filt.n+=24; renderList(); return; }
+  const g = e.target.closest('[data-go]');
+  if(g){ filt.cat=g.dataset.go; filt.q=''; filt.n=24; location.hash='writing'; }
+});
+window.addEventListener('hashchange', route);
+route();
+</script>

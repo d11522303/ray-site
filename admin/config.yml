@@ -1,0 +1,58 @@
+# 隨峰而趣網站後台設定（Sveltia CMS）
+backend:
+  name: github
+  repo: d11522303/ray-site
+  branch: main
+  commit_messages:
+    create: "新增文章：{{slug}}"
+    update: "修改文章：{{slug}}"
+    delete: "刪除文章：{{slug}}"
+    uploadMedia: "上傳圖片：{{path}}"
+
+media_folder: images/uploads
+public_folder: images/uploads
+
+collections:
+  - name: articles
+    label: 文章
+    label_singular: 文章
+    folder: content/articles
+    extension: md
+    format: frontmatter
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-w{{hour}}{{minute}}{{second}}"
+    summary: "{{date}}｜{{category}}｜{{title}}"
+    sortable_fields: [date, title, category]
+    view_filters:
+      - { label: 已公開, field: published, pattern: true }
+      - { label: 未公開, field: published, pattern: false }
+      - { label: 證照考試, field: category, pattern: 證照考試 }
+      - { label: 技職教育, field: category, pattern: 技職教育 }
+      - { label: 旅行郵輪, field: category, pattern: 旅行郵輪 }
+      - { label: 每日晨讀, field: category, pattern: 每日晨讀 }
+      - { label: 遊戲學習, field: category, pattern: 遊戲學習 }
+      - { label: 生活記憶, field: category, pattern: 生活記憶 }
+      - { label: 理財情報, field: category, pattern: 理財情報 }
+      - { label: 老後提案, field: category, pattern: 老後提案 }
+    fields:
+      - { name: title, label: 標題, widget: string }
+      - name: date
+        label: 日期
+        widget: datetime
+        format: YYYY-MM-DD
+        time_format: false
+      - name: category
+        label: 分類
+        widget: select
+        options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
+      - { name: published, label: 公開, widget: boolean, default: true, hint: 關掉就不會出現在網站上 }
+      - name: source
+        label: 來源
+        widget: select
+        options: [網站, 方格子, Facebook]
+        default: 網站
+      - { name: source_url, label: 原文網址, widget: string, required: false }
+      - { name: excerpt, label: 摘要, widget: text, required: false, hint: 留空會自動用內文前幾句 }
+      - { name: note, label: 備註（不會顯示在網站上）, widget: string, required: false }
+      - { name: body, label: 內文, widget: markdown }
