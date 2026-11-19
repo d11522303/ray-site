@@ -49,6 +49,30 @@ collections:
               - { name: title, label: 卡片標題, widget: string }
               - { name: text, label: 卡片內容, widget: markdown, hint: 按 Enter 換行；可以加連結 }
           - { name: note, label: 最下方的小字備註, widget: string, required: false, hint: 留空就不顯示 }
+          - { name: cv_title, label: 簡歷區塊標題, widget: string, required: false }
+          - { name: cv_updated, label: 簡歷更新日期, widget: string, required: false, hint: 例如 2025.12.9 }
+          - name: cv
+            label: 簡歷分類
+            label_singular: 分類
+            widget: list
+            required: false
+            summary: "{{fields.group}}｜{{fields.title}}"
+            hint: 每個分類是一張卡片，例如學歷、教職經歷、證照。可以拖曳調整順序
+            fields:
+              - { name: title, label: 分類名稱, widget: string }
+              - name: group
+                label: 放在哪一大類
+                widget: select
+                options: [學經歷, 專業與榮譽, 研究與著作]
+              - name: items
+                label: 項目
+                label_singular: 項目
+                widget: list
+                summary: "{{fields.year}}　{{fields.text}}"
+                fields:
+                  - { name: year, label: 年份或期間, widget: string, required: false, hint: 例如 2021.04～迄今，沒有可留白 }
+                  - { name: text, label: 內容, widget: text }
+                  - { name: note, label: 補充說明（小字）, widget: string, required: false, hint: 例如證號、中文題目、擔任角色 }
   - name: articles
     label: 文章
     label_singular: 文章
