@@ -13,6 +13,26 @@ media_folder: images/uploads
 public_folder: images/uploads
 
 collections:
+  - name: settings
+    label: 網站設定
+    files:
+      - name: home
+        label: 首頁文字
+        file: content/home.yml
+        fields:
+          - { name: eyebrow, label: 標題上方的小字, widget: string }
+          - { name: headline, label: 大標題, widget: text, hint: 一行一句。想用黃色螢光筆標示的字，前後加上 * ，例如 *記得的事* }
+          - { name: intro, label: 介紹文字, widget: text, hint: 同樣可以用 *文字* 加上螢光筆效果 }
+          - { name: latest_title, label: 「最新文章」區塊標題, widget: string }
+          - { name: latest_count, label: 首頁顯示幾篇最新文章, widget: number, value_type: int, min: 2, max: 12, default: 6 }
+          - { name: topics_title, label: 「依主題閱讀」區塊標題, widget: string }
+          - { name: series_title, label: 系列專區標題, widget: string, required: false, hint: 留空就不顯示系列專區 }
+          - { name: series_text, label: 系列專區說明, widget: text, required: false }
+          - { name: series_keyword, label: 系列文章標題裡的關鍵字（用來算篇數）, widget: string, required: false }
+          - name: series_category
+            label: 點系列標題時要打開的分類
+            widget: select
+            options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
   - name: articles
     label: 文章
     label_singular: 文章

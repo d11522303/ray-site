@@ -187,6 +187,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <script>
 const ARTS = __DATA__;
+const HOME = Object.assign({eyebrow:'',headline:'',intro:'',latest_title:'最新文章',latest_count:6,topics_title:'依主題閱讀',series_title:'',series_text:'',series_keyword:'考前',series_category:'證照考試'}, __HOME__);
+function rich(t){ return esc(String(t||'')).replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>'); }
 const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊戲學習","生活記憶","理財情報","老後提案"];
 const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
 const app = document.getElementById('app');
@@ -263,19 +265,21 @@ const CHIBI = `<svg class="art" viewBox="0 0 360 330" role="img" aria-label="手
 </svg>`;
 
 function home(){
-  const c = countBy();
-  return `<div class="hero">
-    <div><div class="lead">旅運系老師的筆記本</div>
-      <h1>走過的路、<br>帶過的學生、<br><em>記得的事</em>。</h1>
-      <p>這裡收著我在課堂、旅途和生活裡寫下的文章：高鐵實習怎麼準備、領隊考試怎麼讀、郵輪甲板上的遊戲，還有台北老旅行社裡的那兩年。</p>
+  const c = countBy(), H = HOME;
+  const n = Math.max(1, parseInt(H.latest_count)||6);
+  const series = H.series_title ? `<section><div class="series hand">${doodle(H.series_category||'證照考試')}<div><h3><a href="#writing" data-go="${esc(H.series_category||'證照考試')}" style="text-decoration:none">${esc(H.series_title)}</a></h3><p>${rich(H.series_text)}</p></div>
+    <div class="n">${ARTS.filter(a=>H.series_keyword && a.title.includes(H.series_keyword)).length}<small>篇</small></div></div></section>` : '';
+  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-home="1" title="在後台修改首頁文字">✎ 修改首頁文字</span></div>`:''}<div class="hero">
+    <div><div class="lead">${esc(H.eyebrow)}</div>
+      <h1>${rich(H.headline)}</h1>
+      <p>${rich(H.intro)}</p>
       <div class="facts"><span class="hand">${ARTS.length} 篇文章</span><span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span></div></div>
     ${CHIBI}</div>
-  <section><div class="sec-head"><h2>最新文章</h2><a href="#writing">看全部 ${ARTS.length} 篇 →</a></div>
-    <div class="cards">${ARTS.slice(0,6).map(card).join('')}</div></section>
-  <section><div class="sec-head"><h2>依主題閱讀</h2></div>
-    <div class="chips">${CATS.map(k=>`<button class="chip" type="button" data-go="${k}">${k}<i>${c[k]||0}</i></button>`).join('')}</div></section>
-  <section><div class="series hand">${doodle('證照考試')}<div><h3><a href="#writing" data-go="證照考試" style="text-decoration:none">導遊領隊考前陪跑</a></h3><p>每年國考前，一天一題解析、一則提醒，陪學生走到考場。這個 Facebook 系列已經全部收進網站。</p></div>
-    <div class="n">${ARTS.filter(a=>/考前/.test(a.title)).length}<small>篇</small></div></div></section>`;
+  <section><div class="sec-head"><h2>${esc(H.latest_title)}</h2><a href="#writing">看全部 ${ARTS.length} 篇 →</a></div>
+    <div class="cards">${ARTS.slice(0,n).map(card).join('')}</div></section>
+  <section><div class="sec-head"><h2>${esc(H.topics_title)}</h2></div>
+    <div class="chips">${[...CATS].sort((x,y)=>(c[y]||0)-(c[x]||0)).map(k=>`<button class="chip" type="button" data-go="${k}">${k}<i>${c[k]||0}</i></button>`).join('')}</div></section>
+  ${series}`;
 }
 
 function writing(){
@@ -406,6 +410,7 @@ app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value;
 app.addEventListener('click', e=>{
   const ed = e.target.closest('[data-edit]');
   if(ed){ e.preventDefault(); e.stopPropagation(); window.open('admin/#/collections/articles/entries/'+ed.dataset.edit,'_blank'); return; }
+  if(e.target.closest('[data-edit-home]')){ e.preventDefault(); window.open('admin/#/collections/settings/entries/home','_blank'); return; }
   const hd = e.target.closest('[data-hide]');
   if(hd){ e.preventDefault(); e.stopPropagation();
     if(!hd.classList.contains('armed')){ hd.classList.add('armed'); hd.textContent='確定隱藏？'; setTimeout(()=>{ if(hd.classList.contains('armed')){ hd.classList.remove('armed'); hd.textContent='隱藏'; } },4000); return; }

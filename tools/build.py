@@ -63,6 +63,12 @@ def main():
     with open(os.path.join(ROOT, "src", "template.html"), encoding="utf-8") as f:
         tpl = f.read()
     data = json.dumps(arts, ensure_ascii=False).replace("</", "<\\/")
+    home = {}
+    hp = os.path.join(ROOT, "content", "home.yml")
+    if os.path.exists(hp):
+        with open(hp, encoding="utf-8") as f:
+            home = yaml.safe_load(f) or {}
+    tpl = tpl.replace("__HOME__", json.dumps(home, ensure_ascii=False).replace("</", "<\\/"))
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(tpl.replace("__DATA__", data))
     cats = {}
