@@ -7,7 +7,7 @@
 - ['data-v="teaching">教學<small>TEACHING</small>', 'data-v="teaching">Teaching']
 - ['data-v="travel">旅行<small>TRAVEL</small>', 'data-v="travel">Travel']
 - ['data-v="hello">關於<small>HELLO</small>', 'data-v="hello">About']
-- ['<a href="en/" class="lang hand" data-lang="1" title="English version">EN</a>', '<a href="../" class="lang hand" data-lang="1" title="中文版">中文</a>']
+- ['<!--EN-->', '<a href="../" class="lang hand" data-lang="1" title="中文版">中文</a>']
 - ['© 隨峰而趣 · www.rayfong.idv.tw', "© Rayfong's Travelogue · www.rayfong.idv.tw"]
 - ['手繪繪本風 · 用心寫下的每一篇', 'Hand-drawn with care · every story written from the heart']
 - ["latest_title:'最新文章'", "latest_title:'Latest'"]
