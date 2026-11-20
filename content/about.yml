@@ -1,9 +1,9 @@
 lead: HELLO
 title: 我是瑞峰老師！
 body: |-
-  職涯前十年在中華徵信所、台北市青少年育樂中心和旅行資訊業工作過。
-  職涯進行式已經在技職學院當教師兼行政工作快二十年。
-  從此時此刻起，我要開創我的遊戲人生。
+  在中華徵信所、台北市青少年育樂中心和旅行資訊業工作近十年。
+  在技職科大當教師兼行政工作快二十年。
+  在此時，我要開創自己的人生遊戲。
 boxes:
   - title: 任教學校
     text: |-
@@ -97,6 +97,7 @@ cv:
         note: ''
   - title: 證照
     group: 專業與榮譽
+    show: null
     items:
       - year: ''
         text: 中華民國英語導遊證照
@@ -121,6 +122,7 @@ cv:
         note: ''
   - title: 獲獎與榮譽
     group: 專業與榮譽
+    show: null
     items:
       - year: 103、107 學年度
         text: 醒吾科技大學 績優導師
@@ -139,6 +141,7 @@ cv:
         note: ''
   - title: 專業服務
     group: 專業與榮譽
+    show: null
     items:
       - year: 2024～2026
         text: 交通部觀光署 導遊人員及領隊人員評量測驗 命審題委員
@@ -172,6 +175,7 @@ cv:
         note: ''
   - title: 產學與研究計畫
     group: 研究與著作
+    show: null
     items:
       - year: '2025'
         text: 新北市環境保護局「環境永續推動參與式預算計畫」
@@ -232,6 +236,7 @@ cv:
         note: ''
   - title: 專書與譯著
     group: 研究與著作
+    show: null
     items:
       - year: '2019'
         text: 呂行、陳瑞峰 編著，《導遊領隊考前衝刺》，志光文化。ISBN 978-986-514-114-1
@@ -250,6 +255,7 @@ cv:
         note: ''
   - title: 期刊論文
     group: 研究與著作
+    show: null
     items:
       - year: '2022'
         text: Chang, J. J., Chen, R. F., & Lin, C. L. Exploring the driving factors of urban music festival tourism and service development strategies using the modified SIA-NRM approach. Sustainability, 14(12), 7498. (SSCI)
@@ -289,6 +295,7 @@ cv:
         note: 農業觀光：全球暖化與金融危機下社會經濟轉變的催化劑，以印度果阿為例
   - title: 研討會論文
     group: 研究與著作
+    show: null
     items:
       - year: '2023'
         text: 陳瑞峰。利用 GIS 熱區分析學生就學選擇之地理偏好。觀光工廠 20 週年永續論壇暨中華觀光管理學會學術研討會，靜宜大學。
@@ -319,6 +326,7 @@ cv:
         note: ''
   - title: 學位論文
     group: 研究與著作
+    show: null
     items:
       - year: '2001'
         text: 陳瑞峰。顧客關係管理運用於旅遊網站之研究。中國文化大學碩士論文。
