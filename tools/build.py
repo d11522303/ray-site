@@ -54,6 +54,9 @@ def load():
             "ex": str(fm.get("excerpt") or text[:90]),
             "len": len(re.sub(r"\s", "", text)),
             "body": body,
+            "cover": str(fm.get("cover") or ""),
+            "photos": [{"src": str(x.get("image")), "cap": str(x.get("caption") or "")}
+                       for x in (fm.get("photos") or []) if isinstance(x, dict) and x.get("image")],
         })
     arts.sort(key=lambda a: a["date"], reverse=True)
     return arts

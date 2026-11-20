@@ -186,7 +186,17 @@ collections:
       - { name: source_url, label: 原文網址, widget: string, required: false }
       - { name: excerpt, label: 摘要, widget: text, required: false, hint: 留空會自動用內文前幾句 }
       - { name: note, label: 備註（不會顯示在網站上）, widget: string, required: false }
-      - { name: body, label: 內文, widget: markdown }
+      - { name: cover, label: 封面照片, widget: image, required: false, hint: 會放在文章最上面，也會變成文章列表上的小圖。按「選擇圖片」就能從電腦上傳 }
+      - name: photos
+        label: 相簿照片
+        label_singular: 照片
+        widget: list
+        required: false
+        hint: 會排在文章最下面。按「新增照片」一次加一張，可以拖曳調整順序
+        fields:
+          - { name: image, label: 照片, widget: image }
+          - { name: caption, label: 照片說明, widget: string, required: false }
+      - { name: body, label: 內文, widget: markdown, hint: 想把照片插在文章中間，把游標放在那一段，按工具列的「＋」再選「圖片」 }
   - name: articles_en
     label: 英文版文章 English
     label_singular: 英文文章

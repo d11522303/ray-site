@@ -116,6 +116,12 @@ section{padding-block:34px 0}
 .prose hr{border:0;border-top:2px dashed rgba(138,106,82,.45);margin:2em 0}
 .prose figure.ph{margin:1.4em 0;padding:30px 16px;text-align:center;font-size:14px;color:var(--muted);background:rgba(169,201,217,.28);border:2px dashed var(--line);border-radius:30px 10px 30px 10px}
 .prose img{max-width:100%;height:auto;border-radius:14px;margin:.6em 0}
+.article img.cover{display:block;width:100%;max-height:440px;object-fit:cover;border-radius:18px;margin:16px 0 4px;border:2px solid var(--line)}
+.card-a img.thumb{width:76px;height:76px;object-fit:cover;border-radius:14px;border:2px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:26px 0 8px}
+.gallery figure{margin:0}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:2px solid var(--line)}
+.gallery figcaption{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.6}
 .origin{margin-top:32px;padding:14px 18px;font-size:15px;color:var(--muted);background:var(--paper-2)}
 .pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
 .pn a{display:block;padding:12px 16px;text-decoration:none;font-size:15px;background:var(--paper-2);min-width:0}
@@ -260,10 +266,11 @@ async function hideArticle(file, btn){
 }
 function toast(msg){ let t=document.getElementById('toast'); if(!t){ t=document.createElement('div'); t.id='toast'; t.className='toast hand'; document.body.appendChild(t);} t.textContent=msg; t.classList.add('on'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('on'),6000); }
 function card(a){
-  return `<a class="card-a hand" href="#a-${a.id}">${doodle(a.cat)}
+  return `<a class="card-a hand" href="#a-${a.id}">${a.cover?`<img class="thumb" src="${esc(img(a.cover))}" alt="" loading="lazy">`:doodle(a.cat)}
     <div style="min-width:0"><h3>${esc(a.title)}</h3><p>${esc(a.ex)}</p>
       <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.src==='Facebook'?'Facebook':'方格子'}</span>${editBtn(a)}</div></div></a>`;
 }
+function img(u){ u=String(u||''); return /^(https?:)?\/\//.test(u)?u:u.replace(/^\/+/,''); }
 function countBy(){const c={};ARTS.forEach(a=>catsOf(a).forEach(k=>c[k]=(c[k]||0)+1));return c}
 function catsOf(a){ return a.cats&&a.cats.length?a.cats:[a.cat]; }
 function tags(a){ return catsOf(a).map(tag).join(''); }
@@ -389,10 +396,11 @@ function article(id){
   const i = ARTS.findIndex(a=>a.id===id); if(i<0) return `<p class="empty">找不到這篇文章。<a href="#writing">回文章列表</a></p>`;
   const a = ARTS[i], prev = ARTS[i+1], next = ARTS[i-1];
   return `<article class="article"><a class="back" href="#writing">← 全部文章</a>${editBtn(a,'big')}
-    <div style="margin-top:14px">${doodle(a.cat)}</div>
+    ${a.cover?`<img class="cover" src="${esc(img(a.cover))}" alt="">`:`<div style="margin-top:14px">${doodle(a.cat)}</div>`}
     <h1>${esc(a.title)}</h1>
     <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
     <div class="prose">${a.body}</div>
+    ${(a.photos||[]).length?`<div class="gallery">${a.photos.map(p=>`<figure><a href="${esc(img(p.src))}" target="_blank" rel="noopener"><img src="${esc(img(p.src))}" alt="${esc(p.cap)}" loading="lazy"></a>${p.cap?`<figcaption>${esc(p.cap)}</figcaption>`:''}</figure>`).join('')}</div>`:''}
     <div class="origin hand">本文最早發表於${a.src==='Facebook'?' Facebook':'方格子'}：<a href="${a.url}" target="_blank" rel="noopener">${esc(a.url)}</a></div>
     <div class="pn">${prev?`<a class="hand" href="#a-${prev.id}"><span>上一篇</span>${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="hand next" href="#a-${next.id}"><span>下一篇</span>${esc(next.title)}</a>`:''}</div>
   </article>`;
