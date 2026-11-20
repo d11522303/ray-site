@@ -25,7 +25,7 @@
 - ["toast('已經隱藏，網站大約 1～2 分鐘後更新。想恢復可以到後台把「公開」打開。')", "toast('Hidden. The site updates in 1–2 minutes. To restore it, switch “published” back on in the admin.')"]
 - ["btn.textContent='隱藏'; btn.classList.remove('armed'); toast('隱藏失敗（'+err.message+'），請改到後台把「公開」關掉。')", "btn.textContent='Hide'; btn.classList.remove('armed'); toast('Could not hide ('+err.message+'). Please switch “published” off in the admin.')"]
 - ["a.src==='Facebook'?'Facebook':'方格子'}</span>", "a.src==='Facebook'?'Facebook':'Vocus'}</span>"]
-- ['aria-label="手繪的二頭身老師，舉著導遊小旗，旁邊放著行李箱和書"', 'aria-label="A hand-drawn chibi teacher holding a tour flag, with a suitcase and books"']
+- ['aria-label="手繪的旅遊老師，穿深藍色 polo 衫和卡其褲，一手舉著導遊小旗，一手拿著夾板"', 'aria-label="A hand-drawn travel teacher in a navy polo and khaki trousers, holding a tour flag and a clipboard"']
 - ['<small>篇</small>', '<small>articles</small>']
 - ['title="在後台修改首頁文字">✎ 修改首頁文字', 'title="Edit home page text in admin">✎ Edit home page']
 - ['${ARTS.length} 篇文章</span>', '${ARTS.length} articles</span>']
