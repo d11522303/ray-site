@@ -42,7 +42,11 @@ main{padding-block:28px 64px}
 .hero h1{font-size:clamp(32px,5.4vw,52px);letter-spacing:.04em}
 .hero h1 em{font-style:normal;background:linear-gradient(transparent 58%,rgba(242,212,136,.8) 58%,rgba(242,212,136,.8) 88%,transparent 88%)}
 .hero p{max-width:30em;margin:16px 0 0;color:var(--muted)}
-.hero .art{width:100%;max-width:400px;justify-self:center}
+.hero.solo{grid-template-columns:1fr}
+.hero-photo{width:100%;max-width:440px;justify-self:center;aspect-ratio:4/5}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 100%)}
+.hero-photo.empty{display:grid;place-items:center;text-align:center;border:2px dashed var(--line);border-radius:40px;color:var(--muted);font-size:18px;line-height:1.8;cursor:pointer;background:var(--paper-2)}
+.hero-photo.empty span{font-size:16px}
 .peek{display:block;width:72px;height:72px;margin:28px auto 0;transform:rotate(5deg)}
 .facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 .facts span{background:var(--paper-2);padding:4px 14px;font-size:15px}
@@ -176,7 +180,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .side{position:static;max-height:none;overflow:visible}
   .see-res{display:block}
   .hero{grid-template-columns:1fr}
-  .hero .art{max-width:300px;order:-1}
+  .hero-photo{max-width:320px;order:-1}
   .cards,.cols{grid-template-columns:1fr}
   .series{grid-template-columns:72px minmax(0,1fr)}
   .series .n{grid-column:1/-1;text-align:left}
@@ -275,117 +279,22 @@ function countBy(){const c={};ARTS.forEach(a=>catsOf(a).forEach(k=>c[k]=(c[k]||0
 function catsOf(a){ return a.cats&&a.cats.length?a.cats:[a.cat]; }
 function tags(a){ return catsOf(a).map(tag).join(''); }
 
-const CHIBI = `<svg class="art" viewBox="0 0 360 400" role="img" aria-label="手繪的年輕旅遊老師站在郵輪碼頭前，穿深藍色 polo 衫和卡其褲，一手舉著導遊小旗，一手拿著夾板">
-  <defs>
-    <radialGradient id="scenefade" cx="50%" cy="50%" r="50%">
-      <stop offset=".62" stop-color="#fff"/><stop offset="1" stop-color="#000"/>
-    </radialGradient>
-    <mask id="scenemask" maskContentUnits="userSpaceOnUse"><rect x="0" y="0" width="360" height="400" fill="url(#scenefade)"/></mask>
-  </defs>
-  <g mask="url(#scenemask)">
-    <rect x="0" y="0" width="360" height="400" fill="#e4eef3"/>
-    <path d="M30 60 q20 -14 44 -4 q16 -10 32 2 q14 2 12 12 h-92 q-8 -6 4 -10 Z M250 30 q18 -12 38 -2 q14 -6 26 4 q10 4 6 10 h-78 q-4 -8 8 -12 Z" fill="#f4f7f8" opacity=".9"/>
-    <path d="M220 214 C250 186 290 180 320 192 C340 198 352 206 360 214 V240 H220 Z" fill="#9dbb94"/>
-    <rect x="0" y="226" width="360" height="52" fill="#8db3c8"/>
-    <path d="M0 246 q12 -4 24 0 t24 0 t24 0 M220 252 q12 -4 24 0 t24 0 t24 0 t24 0 M60 264 q12 -4 24 0 t24 0" fill="none" stroke="#c9dde8" stroke-width="2" stroke-linecap="round"/>
-    <!-- cruise ship -->
-    <g stroke="#7f8b95" stroke-width="1.6" stroke-linejoin="round">
-      <path d="M268 30 L300 30 L306 92 L262 92 Z" fill="#fbfbf8"/>
-      <path d="M268 30 L300 30 L301 42 L267 42 Z" fill="#3a3a3a"/>
-      <path d="M-10 104 L230 96 L330 102 L330 120 L-10 124 Z" fill="#fbfbf8"/>
-      <path d="M-10 124 L330 120 L338 228 L40 236 C14 236 -6 222 -10 200 Z" fill="#fbfbf8"/>
-      <path d="M-10 92 L120 84 L130 104 L-10 110 Z" fill="#fbfbf8"/>
-    </g>
-    <g fill="none" stroke="#7ea6c2" stroke-width="3">
-      <path d="M0 132 L330 128 M0 146 L332 142 M0 160 L333 156"/>
-    </g>
-    <g fill="none" stroke="#9fb8c9" stroke-width="2.2" stroke-dasharray="5 5">
-      <path d="M20 198 L334 194 M30 212 L336 208"/>
-    </g>
-    <g fill="#f08a52" stroke="#7f8b95" stroke-width="1.2">
-      <rect x="40" y="168" width="34" height="14" rx="6"/><rect x="92" y="167" width="34" height="14" rx="6"/><rect x="236" y="165" width="34" height="14" rx="6"/><rect x="288" y="164" width="34" height="14" rx="6"/>
-    </g>
-    <path d="M40 236 L338 228 L339 238 L46 246 Z" fill="#2f4f86"/>
-    <!-- pier -->
-    <rect x="0" y="278" width="360" height="122" fill="#dcd8d0"/>
-    <path d="M0 272 H360 V282 H0 Z" fill="#e8c23a"/>
-    <path d="M10 272 l10 10 M40 272 l10 10 M70 272 l10 10 M100 272 l10 10 M130 272 l10 10 M160 272 l10 10 M190 272 l10 10 M220 272 l10 10 M250 272 l10 10 M280 272 l10 10 M310 272 l10 10 M340 272 l10 10" stroke="#3a3a3a" stroke-width="5"/>
-    <path d="M0 330 L120 318 M250 314 L360 304" stroke="#e7c76a" stroke-width="4" fill="none"/>
-    <ellipse cx="190" cy="384" rx="96" ry="10" fill="#b9b3a8" opacity=".7"/>
-  </g>
-  <g stroke="#3a2a20" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-    <!-- flag: held out to the side, cloth points away from the head -->
-    <path d="M104 204 L88 46" fill="none" stroke-width="4"/>
-    <circle cx="88" cy="42" r="5" fill="#e9e4dc"/>
-    <path d="M89 50 C70 46 50 58 24 54 L28 108 C52 112 72 100 93 104 Z" fill="#9fcbe8"/>
-    <!-- legs / khaki trousers -->
-    <path d="M154 268 L150 352 L184 352 L189 300 L194 352 L228 352 L226 268 Z" fill="#d6bf98"/>
-    <path d="M189 282 L189 300" fill="none" stroke-width="2.4"/>
-    <path d="M146 342 L186 342 L186 356 L146 356 Z M192 342 L232 342 L232 356 L192 356 Z" fill="#cbb38b"/>
-    <!-- shoes -->
-    <path d="M144 356 L186 356 L188 378 L132 378 C128 368 136 360 144 356 Z" fill="#fbfaf7"/>
-    <path d="M192 356 L234 356 C244 360 250 368 246 378 L190 378 Z" fill="#fbfaf7"/>
-    <path d="M150 364 l10 -4 M160 368 l10 -4 M206 360 l10 4 M214 366 l10 4" fill="none" stroke-width="2"/>
-    <!-- raised arm (viewer's left) holding the flag pole -->
-    <path d="M124 238 C114 226 106 212 100 198 L112 190 C118 206 128 220 142 236 Z" fill="#f6dcc4"/>
-    <circle cx="103" cy="191" r="11" fill="#f6dcc4"/>
-    <path d="M96 186 c4 -2 9 -2 13 0 M96 193 c4 -2 9 -2 13 0" fill="none" stroke-width="2"/>
-    <!-- torso: navy polo, a bit fuller at the waist -->
-    <path d="M150 176 C140 180 132 190 128 204 L120 236 L144 244 L150 226 L152 270 C176 276 204 276 228 270 L230 226 L236 244 L260 236 L252 204 C248 190 240 180 230 176 C214 170 166 170 150 176 Z" fill="#2f4f86"/>
-    <path d="M154 266 L226 266" fill="none" stroke="#4b3a2e" stroke-width="6"/>
-    <!-- collar + placket -->
-    <path d="M168 172 L190 196 L212 172 L222 178 L204 200 L190 192 L176 200 L158 178 Z" fill="#2a477b"/>
-    <path d="M190 196 L190 222" fill="none" stroke-width="2.4"/>
-    <circle cx="190" cy="206" r="2.6" fill="#fbfaf7" stroke-width="1.6"/><circle cx="190" cy="216" r="2.6" fill="#fbfaf7" stroke-width="1.6"/>
-    <!-- lowered arm (viewer's right) + clipboard -->
-    <path d="M252 236 C256 256 258 272 254 290 L240 290 C242 274 240 258 236 244 Z" fill="#f6dcc4"/>
-    <rect x="232" y="252" width="46" height="62" rx="4" fill="#a8774f" transform="rotate(-10 255 283)"/>
-    <rect x="238" y="260" width="34" height="48" rx="2" fill="#fbfaf7" transform="rotate(-10 255 283)"/>
-    <rect x="246" y="250" width="18" height="9" rx="2" fill="#c9c4bd" transform="rotate(-10 255 283)"/>
-    <circle cx="248" cy="292" r="10" fill="#f6dcc4"/>
-    <!-- lanyard, badge, whistle -->
-    <path d="M172 178 L180 236 M208 178 L198 236" fill="none" stroke="#e8b931" stroke-width="3.4"/>
-    <rect x="175" y="234" width="28" height="36" rx="4" fill="#fbfaf7" stroke-width="2.4"/>
-    <rect x="181" y="240" width="16" height="11" rx="2" fill="#8ec1e6" stroke-width="1.6"/>
-    <path d="M181 257 h16 M181 263 h10" fill="none" stroke="#7fbf8a" stroke-width="3"/>
-    <path d="M214 180 C218 200 220 214 220 226" fill="none" stroke="#c8473d" stroke-width="1.8"/>
-    <path d="M214 226 h12 v10 c0 6 -12 6 -12 0 z" fill="#c9cdd2" stroke-width="2"/>
-    <!-- neck -->
-    <path d="M178 160 L178 174 L202 174 L202 160" fill="#f1cfb3"/>
-    <!-- ears -->
-    <ellipse cx="136" cy="118" rx="10" ry="14" fill="#f6dcc4"/>
-    <ellipse cx="244" cy="118" rx="10" ry="14" fill="#f6dcc4"/>
-    <!-- face -->
-    <path d="M138 104 C138 64 162 50 190 50 C218 50 242 64 242 104 C242 140 222 166 190 166 C158 166 138 140 138 104 Z" fill="#f6dcc4"/>
-    <!-- hair: short, tidy, greying at the temples -->
-    <!-- hair: short, tousled, fringe swept to one side -->
-    <path d="M141 102 C132 74 148 40 188 36 C230 32 252 66 241 102 C240 96 239 92 238 88 L234 96 L226 76 L218 92 L204 72 L194 92 L180 74 L170 94 L160 78 L152 96 L146 86 C144 92 142 96 141 102 Z" fill="#262321"/>
-    <path d="M182 38 C186 28 194 24 202 26 C196 30 194 34 194 38 M214 40 C220 32 230 32 236 36 C230 38 226 42 224 46" fill="#262321" stroke-width="2.6"/>
-    <path d="M164 58 C178 50 194 48 208 52" fill="none" stroke="#56514c" stroke-width="2"/>
-  </g>
-  <!-- face details -->
-  <g fill="none" stroke="#3a2a20" stroke-linecap="round">
-    <path d="M160 92 q10 -6 20 0 M200 92 q10 -6 20 0" stroke-width="3.6"/>
-    <path d="M188 120 q2 6 -2 8" stroke-width="2"/>
-  </g>
-  <ellipse cx="170" cy="111" rx="5.5" ry="7" fill="#3a2a20"/><ellipse cx="210" cy="111" rx="5.5" ry="7" fill="#3a2a20"/>
-  <circle cx="172" cy="108" r="2" fill="#fff"/><circle cx="212" cy="108" r="2" fill="#fff"/>
-  <ellipse cx="156" cy="128" rx="9" ry="5" fill="#f0a3a0" opacity=".55"/><ellipse cx="224" cy="128" rx="9" ry="5" fill="#f0a3a0" opacity=".55"/>
-  <path d="M176 136 q14 16 28 0 z" fill="#b8504a" stroke="#3a2a20" stroke-width="2.6" stroke-linejoin="round"/>
-  <path d="M182 141 q8 6 16 0" fill="#f2a29a"/>
-</svg>`;
+function heroPhoto(){
+  if(HOME.hero_image) return `<div class="hero-photo"><img src="${esc(img(HOME.hero_image))}" alt="${esc(HOME.hero_alt||'')}"></div>`;
+  return EDIT ? `<div class="hero-photo empty" role="link" tabindex="0" data-edit-home="1"><span>＋<br>按這裡上傳首頁照片</span></div>` : '';
+}
 
 function home(){
   const c = countBy(), H = HOME;
   const n = Math.max(1, parseInt(H.latest_count)||6);
   const series = H.series_title ? `<section><div class="series hand">${doodle(H.series_category||'證照考試')}<div><h3><a href="#writing" data-go="${esc(H.series_category||'證照考試')}" style="text-decoration:none">${esc(H.series_title)}</a></h3><p>${rich(H.series_text)}</p></div>
     <div class="n">${ARTS.filter(a=>H.series_keyword && a.title.includes(H.series_keyword)).length}<small>篇</small></div></div></section>` : '';
-  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-home="1" title="在後台修改首頁文字">✎ 修改首頁文字</span></div>`:''}<div class="hero">
+  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-home="1" title="在後台修改首頁文字">✎ 修改首頁文字</span></div>`:''}<div class="hero${(HOME.hero_image||EDIT)?'':' solo'}">
     <div><div class="lead">${esc(H.eyebrow)}</div>
       <h1>${rich(H.headline)}</h1>
       <p>${rich(H.intro)}</p>
       <div class="facts"><span class="hand">${ARTS.length} 篇文章</span><span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span></div></div>
-    ${CHIBI}</div>
+    ${heroPhoto()}</div>
   <section><div class="sec-head"><h2>${esc(H.latest_title)}</h2><a href="#writing">看全部 ${ARTS.length} 篇 →</a></div>
     <div class="cards">${ARTS.slice(0,n).map(card).join('')}</div></section>
   <section><div class="sec-head"><h2>${esc(H.topics_title)}</h2></div>
