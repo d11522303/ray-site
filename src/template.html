@@ -275,15 +275,45 @@ function countBy(){const c={};ARTS.forEach(a=>catsOf(a).forEach(k=>c[k]=(c[k]||0
 function catsOf(a){ return a.cats&&a.cats.length?a.cats:[a.cat]; }
 function tags(a){ return catsOf(a).map(tag).join(''); }
 
-const CHIBI = `<svg class="art" viewBox="0 0 360 400" role="img" aria-label="手繪的年輕旅遊老師，穿深藍色 polo 衫和卡其褲，一手舉著導遊小旗，一手拿著夾板">
-  <ellipse cx="185" cy="200" rx="165" ry="170" fill="#a9c9d9" opacity=".38" filter="url(#wash)"/>
-  <ellipse cx="80" cy="95" rx="70" ry="55" fill="#f2d488" opacity=".45" filter="url(#wash)"/>
-  <ellipse cx="190" cy="386" rx="105" ry="12" fill="#a9c39d" opacity=".7" filter="url(#wash)"/>
+const CHIBI = `<svg class="art" viewBox="0 0 360 400" role="img" aria-label="手繪的年輕旅遊老師站在郵輪碼頭前，穿深藍色 polo 衫和卡其褲，一手舉著導遊小旗，一手拿著夾板">
+  <defs><clipPath id="sceneclip"><rect x="8" y="8" width="344" height="384" rx="44"/></clipPath></defs>
+  <g clip-path="url(#sceneclip)">
+    <rect x="0" y="0" width="360" height="400" fill="#e4eef3"/>
+    <path d="M30 60 q20 -14 44 -4 q16 -10 32 2 q14 2 12 12 h-92 q-8 -6 4 -10 Z M250 30 q18 -12 38 -2 q14 -6 26 4 q10 4 6 10 h-78 q-4 -8 8 -12 Z" fill="#f4f7f8" opacity=".9"/>
+    <path d="M220 214 C250 186 290 180 320 192 C340 198 352 206 360 214 V240 H220 Z" fill="#9dbb94"/>
+    <rect x="0" y="226" width="360" height="52" fill="#8db3c8"/>
+    <path d="M0 246 q12 -4 24 0 t24 0 t24 0 M220 252 q12 -4 24 0 t24 0 t24 0 t24 0 M60 264 q12 -4 24 0 t24 0" fill="none" stroke="#c9dde8" stroke-width="2" stroke-linecap="round"/>
+    <!-- cruise ship -->
+    <g stroke="#7f8b95" stroke-width="1.6" stroke-linejoin="round">
+      <path d="M268 30 L300 30 L306 92 L262 92 Z" fill="#fbfbf8"/>
+      <path d="M268 30 L300 30 L301 42 L267 42 Z" fill="#3a3a3a"/>
+      <path d="M-10 104 L230 96 L330 102 L330 120 L-10 124 Z" fill="#fbfbf8"/>
+      <path d="M-10 124 L330 120 L338 228 L40 236 C14 236 -6 222 -10 200 Z" fill="#fbfbf8"/>
+      <path d="M-10 92 L120 84 L130 104 L-10 110 Z" fill="#fbfbf8"/>
+    </g>
+    <g fill="none" stroke="#7ea6c2" stroke-width="3">
+      <path d="M0 132 L330 128 M0 146 L332 142 M0 160 L333 156"/>
+    </g>
+    <g fill="none" stroke="#9fb8c9" stroke-width="2.2" stroke-dasharray="5 5">
+      <path d="M20 198 L334 194 M30 212 L336 208"/>
+    </g>
+    <g fill="#f08a52" stroke="#7f8b95" stroke-width="1.2">
+      <rect x="40" y="168" width="34" height="14" rx="6"/><rect x="92" y="167" width="34" height="14" rx="6"/><rect x="236" y="165" width="34" height="14" rx="6"/><rect x="288" y="164" width="34" height="14" rx="6"/>
+    </g>
+    <path d="M40 236 L338 228 L339 238 L46 246 Z" fill="#2f4f86"/>
+    <!-- pier -->
+    <rect x="0" y="278" width="360" height="122" fill="#dcd8d0"/>
+    <path d="M0 272 H360 V282 H0 Z" fill="#e8c23a"/>
+    <path d="M10 272 l10 10 M40 272 l10 10 M70 272 l10 10 M100 272 l10 10 M130 272 l10 10 M160 272 l10 10 M190 272 l10 10 M220 272 l10 10 M250 272 l10 10 M280 272 l10 10 M310 272 l10 10 M340 272 l10 10" stroke="#3a3a3a" stroke-width="5"/>
+    <path d="M0 330 L120 318 M250 314 L360 304" stroke="#e7c76a" stroke-width="4" fill="none"/>
+    <ellipse cx="190" cy="384" rx="96" ry="10" fill="#b9b3a8" opacity=".7"/>
+  </g>
+  <rect x="8" y="8" width="344" height="384" rx="44" fill="none" stroke="#8a6a52" stroke-width="2.4"/>
   <g stroke="#3a2a20" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
     <!-- flag: held out to the side, cloth points away from the head -->
     <path d="M104 204 L88 46" fill="none" stroke-width="4"/>
     <circle cx="88" cy="42" r="5" fill="#e9e4dc"/>
-    <path d="M89 50 C70 46 50 58 24 54 L28 108 C52 112 72 100 93 104 Z" fill="#cfe3ef"/>
+    <path d="M89 50 C70 46 50 58 24 54 L28 108 C52 112 72 100 93 104 Z" fill="#9fcbe8"/>
     <!-- legs / khaki trousers -->
     <path d="M154 268 L150 352 L184 352 L189 300 L194 352 L228 352 L226 268 Z" fill="#d6bf98"/>
     <path d="M189 282 L189 300" fill="none" stroke-width="2.4"/>
@@ -324,10 +354,10 @@ const CHIBI = `<svg class="art" viewBox="0 0 360 400" role="img" aria-label="手
     <!-- face -->
     <path d="M138 104 C138 64 162 50 190 50 C218 50 242 64 242 104 C242 140 222 166 190 166 C158 166 138 140 138 104 Z" fill="#f6dcc4"/>
     <!-- hair: short, tidy, greying at the temples -->
-    <g fill="#262321"><circle cx="154" cy="60" r="14"/><circle cx="176" cy="44" r="15"/><circle cx="204" cy="41" r="15"/><circle cx="228" cy="52" r="14"/><circle cx="242" cy="72" r="12"/></g>
-    <path d="M136 116 C128 74 150 38 190 36 C230 34 254 66 246 116 C244 100 240 90 234 82 C222 70 206 66 196 72 C186 80 168 84 150 80 C144 90 140 100 136 116 Z" fill="#262321"/>
-    <path d="M196 72 C204 60 216 54 230 56" fill="none" stroke="#5b5550" stroke-width="2.2"/>
-    <path d="M162 56 q12 -9 24 -11 M210 48 q12 3 20 11" fill="none" stroke="#55504b" stroke-width="2"/>
+    <!-- hair: short, tousled, fringe swept to one side -->
+    <path d="M134 122 C126 82 142 42 188 36 C232 32 256 64 249 122 C246 108 243 98 240 90 L236 98 L226 76 L218 92 L204 72 L194 92 L180 74 L170 94 L160 78 L152 96 L146 84 C140 96 136 108 134 122 Z" fill="#262321"/>
+    <path d="M182 38 C186 28 194 24 202 26 C196 30 194 34 194 38 M214 40 C220 32 230 32 236 36 C230 38 226 42 224 46" fill="#262321" stroke-width="2.6"/>
+    <path d="M164 58 C178 50 194 48 208 52" fill="none" stroke="#56514c" stroke-width="2"/>
   </g>
   <!-- face details -->
   <g fill="none" stroke="#3a2a20" stroke-linecap="round">
