@@ -276,8 +276,13 @@ function catsOf(a){ return a.cats&&a.cats.length?a.cats:[a.cat]; }
 function tags(a){ return catsOf(a).map(tag).join(''); }
 
 const CHIBI = `<svg class="art" viewBox="0 0 360 400" role="img" aria-label="手繪的年輕旅遊老師站在郵輪碼頭前，穿深藍色 polo 衫和卡其褲，一手舉著導遊小旗，一手拿著夾板">
-  <defs><clipPath id="sceneclip"><rect x="8" y="8" width="344" height="384" rx="44"/></clipPath></defs>
-  <g clip-path="url(#sceneclip)">
+  <defs>
+    <radialGradient id="scenefade" cx="50%" cy="50%" r="50%">
+      <stop offset=".62" stop-color="#fff"/><stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <mask id="scenemask" maskContentUnits="userSpaceOnUse"><rect x="0" y="0" width="360" height="400" fill="url(#scenefade)"/></mask>
+  </defs>
+  <g mask="url(#scenemask)">
     <rect x="0" y="0" width="360" height="400" fill="#e4eef3"/>
     <path d="M30 60 q20 -14 44 -4 q16 -10 32 2 q14 2 12 12 h-92 q-8 -6 4 -10 Z M250 30 q18 -12 38 -2 q14 -6 26 4 q10 4 6 10 h-78 q-4 -8 8 -12 Z" fill="#f4f7f8" opacity=".9"/>
     <path d="M220 214 C250 186 290 180 320 192 C340 198 352 206 360 214 V240 H220 Z" fill="#9dbb94"/>
@@ -308,7 +313,6 @@ const CHIBI = `<svg class="art" viewBox="0 0 360 400" role="img" aria-label="手
     <path d="M0 330 L120 318 M250 314 L360 304" stroke="#e7c76a" stroke-width="4" fill="none"/>
     <ellipse cx="190" cy="384" rx="96" ry="10" fill="#b9b3a8" opacity=".7"/>
   </g>
-  <rect x="8" y="8" width="344" height="384" rx="44" fill="none" stroke="#8a6a52" stroke-width="2.4"/>
   <g stroke="#3a2a20" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
     <!-- flag: held out to the side, cloth points away from the head -->
     <path d="M104 204 L88 46" fill="none" stroke-width="4"/>
@@ -355,7 +359,7 @@ const CHIBI = `<svg class="art" viewBox="0 0 360 400" role="img" aria-label="手
     <path d="M138 104 C138 64 162 50 190 50 C218 50 242 64 242 104 C242 140 222 166 190 166 C158 166 138 140 138 104 Z" fill="#f6dcc4"/>
     <!-- hair: short, tidy, greying at the temples -->
     <!-- hair: short, tousled, fringe swept to one side -->
-    <path d="M134 122 C126 82 142 42 188 36 C232 32 256 64 249 122 C246 108 243 98 240 90 L236 98 L226 76 L218 92 L204 72 L194 92 L180 74 L170 94 L160 78 L152 96 L146 84 C140 96 136 108 134 122 Z" fill="#262321"/>
+    <path d="M141 102 C132 74 148 40 188 36 C230 32 252 66 241 102 C240 96 239 92 238 88 L234 96 L226 76 L218 92 L204 72 L194 92 L180 74 L170 94 L160 78 L152 96 L146 86 C144 92 142 96 141 102 Z" fill="#262321"/>
     <path d="M182 38 C186 28 194 24 202 26 C196 30 194 34 194 38 M214 40 C220 32 230 32 236 36 C230 38 226 42 224 46" fill="#262321" stroke-width="2.6"/>
     <path d="M164 58 C178 50 194 48 208 52" fill="none" stroke="#56514c" stroke-width="2"/>
   </g>
