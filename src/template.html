@@ -33,6 +33,7 @@ nav.main{display:flex;gap:6px;flex-wrap:wrap}
 nav.main a{text-decoration:none;color:var(--muted);padding:2px 12px;font-size:16px;position:relative}
 nav.main a small{font-size:11px;letter-spacing:.08em;margin-left:4px;opacity:.75}
 nav.main a.on{color:var(--ink)}
+nav.main a.lang{margin-left:6px;padding:0 10px;font-size:14px;color:var(--ink);background:var(--paper-2)}
 nav.main a.on::after{content:"";position:absolute;left:8px;right:8px;bottom:2px;height:9px;background:var(--butter);opacity:.75;border-radius:40% 60% 50% 50%;z-index:-1}
 main{padding-block:28px 64px}
 .lead{color:var(--muted)}
@@ -204,6 +205,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <a href="#teaching" data-v="teaching">教學<small>TEACHING</small></a>
     <a href="#travel" data-v="travel">旅行<small>TRAVEL</small></a>
     <a href="#hello" data-v="hello">關於<small>HELLO</small></a>
+    <a href="en/" class="lang hand" data-lang="1" title="English version">EN</a>
   </nav>
 </div></header>
 
@@ -259,9 +261,11 @@ function toast(msg){ let t=document.getElementById('toast'); if(!t){ t=document.
 function card(a){
   return `<a class="card-a hand" href="#a-${a.id}">${doodle(a.cat)}
     <div style="min-width:0"><h3>${esc(a.title)}</h3><p>${esc(a.ex)}</p>
-      <div class="meta">${tag(a.cat)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.src==='Facebook'?'Facebook':'方格子'}</span>${editBtn(a)}</div></div></a>`;
+      <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.src==='Facebook'?'Facebook':'方格子'}</span>${editBtn(a)}</div></div></a>`;
 }
-function countBy(){const c={};ARTS.forEach(a=>c[a.cat]=(c[a.cat]||0)+1);return c}
+function countBy(){const c={};ARTS.forEach(a=>catsOf(a).forEach(k=>c[k]=(c[k]||0)+1));return c}
+function catsOf(a){ return a.cats&&a.cats.length?a.cats:[a.cat]; }
+function tags(a){ return catsOf(a).map(tag).join(''); }
 
 const CHIBI = `<svg class="art" viewBox="0 0 360 330" role="img" aria-label="手繪的二頭身老師，舉著導遊小旗，旁邊放著行李箱和書">
   <ellipse cx="180" cy="180" rx="165" ry="140" fill="#a9c9d9" opacity=".45" filter="url(#wash)"/>
@@ -332,8 +336,8 @@ function writing(){
 const year = a => a.date.slice(0,4);
 function matchQ(a){ const q=filt.q.trim(); return !q || a.title.includes(q) || a.body.includes(q); }
 function inYear(a){ return !filt.year || year(a)===filt.year; }
-function inCat(a){ return (!filt.cat||a.cat===filt.cat) && (!filt.sub||a.sub===filt.sub) && (!filt.det||a.det===filt.det); }
-function tally(list, key){ const m=new Map(); list.forEach(a=>{ const k=key(a); if(k) m.set(k,(m.get(k)||0)+1); }); return m; }
+function inCat(a){ return (!filt.cat||catsOf(a).includes(filt.cat)) && (!filt.sub||(a.cat===filt.cat&&a.sub===filt.sub)) && (!filt.det||(a.cat===filt.cat&&a.det===filt.det)); }
+function tally(list, key){ const m=new Map(); list.forEach(a=>{ [].concat(key(a)).forEach(k=>{ if(k) m.set(k,(m.get(k)||0)+1); }); }); return m; }
 function renderSide(){
   const base = ARTS.filter(matchQ);
   const forYears = base.filter(inCat), forCats = base.filter(inYear);
@@ -341,7 +345,7 @@ function renderSide(){
   const btn = (f,v,label,n,on,cls='') => `<button type="button" class="tb ${cls} ${on?'on':''}" data-f="${f}" data-v="${esc(v)}"><span>${label}</span><i>${n}</i></button>`;
   let h = `<h4>撰寫年份</h4><div class="years">${btn('year','','全部',forYears.length,!filt.year,'y')}${ys.map(([y,n])=>btn('year',y,y,n,filt.year===y,'y')).join('')}</div>`;
   h += `<h4>分類</h4><ul class="tree">${`<li>${btn('cat','','全部分類',forCats.length,!filt.cat)}</li>`}`;
-  const cc = tally(forCats, a=>a.cat);
+  const cc = tally(forCats, catsOf);
   for(const c of [...CATS].sort((x,y)=>(cc.get(y)||0)-(cc.get(x)||0))){
     if(!cc.get(c)) continue;
     const open = filt.cat===c;
@@ -386,7 +390,7 @@ function article(id){
   return `<article class="article"><a class="back" href="#writing">← 全部文章</a>${editBtn(a,'big')}
     <div style="margin-top:14px">${doodle(a.cat)}</div>
     <h1>${esc(a.title)}</h1>
-    <div class="meta">${tag(a.cat)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
+    <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
     <div class="prose">${a.body}</div>
     <div class="origin hand">本文最早發表於${a.src==='Facebook'?' Facebook':'方格子'}：<a href="${a.url}" target="_blank" rel="noopener">${esc(a.url)}</a></div>
     <div class="pn">${prev?`<a class="hand" href="#a-${prev.id}"><span>上一篇</span>${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="hand next" href="#a-${next.id}"><span>下一篇</span>${esc(next.title)}</a>`:''}</div>
@@ -394,7 +398,7 @@ function article(id){
 }
 
 function teaching(){
-  const t = ARTS.filter(a=>['技職教育','證照考試'].includes(a.cat));
+  const t = ARTS.filter(a=>catsOf(a).some(k=>['技職教育','證照考試'].includes(k)));
   return `<h1 style="font-size:34px;margin-bottom:6px">教學</h1><p class="lead" style="margin:0">給醒吾旅運與觀光科系同學的課程資源、證照準備與實習經驗。</p>
   <section><div class="cols">
     <div class="box hand">${doodle('證照考試')}<h3>國考領隊證照專區</h3><ul><li>領隊導遊課程筆記</li><li>華語領隊模擬考題</li><li>導遊領隊考前陪跑（已收進文章）</li></ul></div>
@@ -405,7 +409,7 @@ function teaching(){
 }
 
 function travel(){
-  const t = ARTS.filter(a=>a.cat==='旅行郵輪');
+  const t = ARTS.filter(a=>catsOf(a).includes('旅行郵輪'));
   const place = (code,name,txt,col)=>`<div class="box hand"><svg class="doodle" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="31" ry="27" fill="${col}" opacity=".75" filter="url(#wash)"/><text x="38" y="47" text-anchor="middle" font-family="LXGW WenKai TC, serif" font-size="20" font-weight="700" fill="#4a3426">${code}</text></svg><h3>${name}</h3><p>${txt}</p></div>`;
   return `<h1 style="font-size:34px;margin-bottom:6px">旅行</h1><p class="lead" style="margin:0">帶團、見學與自己出走的紀錄。</p>
   <section><div class="cols">
@@ -451,6 +455,7 @@ function route(){
   else app.innerHTML = ({home,teaching,travel,hello})[v]();
   window.scrollTo(0,0);
 }
+document.addEventListener('click', e=>{ const L=e.target.closest('[data-lang]'); if(L){ e.preventDefault(); location.href=L.getAttribute('href')+location.hash; } });
 app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=PER; renderList(); }});
 app.addEventListener('click', e=>{
   const ed = e.target.closest('[data-edit]');

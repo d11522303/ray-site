@@ -1,0 +1,146 @@
+lead: HELLO
+title: I'm Teacher Ray!
+body: |-
+  I spent the first ten years of my career at China Credit Information Service, the Taipei Youth Recreation Centre and in the travel information industry.
+  For almost twenty years now I have been teaching and doing administrative work at vocational universities.
+  From this moment on, I'm starting my life as a game.
+boxes:
+  - title: Where I teach
+    text: |-
+      Department of Travel Management, Hsing Wu University (HWU)
+      Department of Hospitality Management, Taiwan Hospitality & Tourism College (THT)
+note: ''
+cv_title: Curriculum Vitae
+cv_updated: 2025.12.9
+cv:
+  - title: Education
+    group: Education & Career
+    show: 3
+    items:
+      - {year: 2026–, text: "PhD student, Graduate Institute of Applied Science and Technology, National Taiwan University of Science and Technology"}
+      - {year: '2001', text: "MA, Graduate Institute of Tourism Management, Chinese Culture University"}
+      - {year: '1995', text: "BA, Department of Sociology, Fu Jen Catholic University"}
+  - title: Academic positions
+    group: Education & Career
+    show: 3
+    items:
+      - {year: 2021.04–present, text: "Associate Professor, Department of Travel Management, Hsing Wu University", note: "MOE certificate no. 148041"}
+      - {year: 2018.08–2021.07, text: "Department Chair and Deputy Chair, Department of Travel Management, Hsing Wu University"}
+      - {year: 2014.02–2021.03, text: "Assistant Professor, Department of Travel Management, Hsing Wu University"}
+      - {year: 2013.03–2014.01, text: "Assistant Professor, Department of Hospitality Management, Taiwan Hospitality & Tourism College", note: "MOE certificate no. 037267"}
+      - {year: 2006.08–2013.03, text: "Lecturer, Department of Tourism Management, Taiwan Hospitality & Tourism College", note: "MOE certificate no. 076147"}
+      - {year: 2006.08–2014.01, text: "Concurrent administrative posts, Taiwan Hospitality & Tourism College", note: "Director of the Teaching Resource Centre and head of publishing; secretary to the President; head of academic development, Office of Research and Development; acting Dean of Industry Cooperation; head of research development; head of internships and career services"}
+  - title: Industry experience
+    group: Education & Career
+    show: 3
+    items:
+      - {year: 2005.03–2006.03, text: "Vice President and Project Manager, Shinshin International Systems"}
+      - {year: 2001.07–2005.02, text: "Director of Marketing, Taipei Youth Recreation Centre"}
+      - {year: 2000.03–2001.02, text: "Special Assistant to the President, Shinshin International Systems"}
+      - {year: 1997.07–1998.10, text: "Research Assistant and Head of Market Research, China Credit Information Service"}
+      - {year: 1995.07–1997.07, text: "Signals soldier (compulsory service), ROC Army Sixth Corps"}
+  - title: Part-time roles
+    group: Education & Career
+    show: 3
+    items:
+      - {year: 2006–2008, text: "Project Manager, Shinshin Travel Service"}
+      - {year: '2008', text: "Instructor, Ruisui Digital Opportunity Centre, Hualien County"}
+      - {year: '2005', text: "Adjunct Lecturer, evening programme, Department of Tourism, Hsing Wu College"}
+      - {year: 2002–2004, text: "Adjunct Lecturer, evening tourism programme, China College of Marine Technology"}
+      - {year: 2000–2002, text: "Book reviewer for travel, management and marketing titles, Books.com.tw"}
+      - {year: 1999–2000, text: "Computer software instructor, Women's Association and KMT Information Centre"}
+      - {year: 1994–1995, text: "Research assistant on opinion polls: United Daily News Poll Centre, Zhixing Foundation"}
+      - {year: 1992–1993, text: "Visa courier, Oriental Idea Travel and Da-Ya Travel"}
+  - title: Licences & certificates
+    group: Expertise & Honours
+    items:
+      - {text: "Tour Guide Licence (English), Republic of China", note: "2016, no. 004733"}
+      - {text: "Tour Leader Licence (foreign language), Republic of China", note: "2008, no. 000177"}
+      - {text: "Travel Agency Manager Training, Travel Agent Managers Association (9th cohort)", note: "2005"}
+      - {text: "Certified MICE Professional (entry level)", note: "no. 1010015942"}
+      - {text: "WSET Level 1 and Level 2 in Wines"}
+      - {text: "ISO 14064-1:2018 Greenhouse Gas Lead Verifier training"}
+      - {text: "Sustainable Development Basic Competency Test, Securities & Futures Institute"}
+  - title: Awards & honours
+    group: Expertise & Honours
+    items:
+      - {year: "AY 2014, 2018", text: "Outstanding Mentor, Hsing Wu University"}
+      - {year: "AY 2016, 2017", text: "Excellence in Teaching Award, Hsing Wu University"}
+      - {year: '2011', text: "Best Paper Award, Indus Business Academy International Conference (IC2011)"}
+      - {year: "AY 2009, 2010", text: "Outstanding Mentor, Taiwan Hospitality & Tourism College"}
+      - {year: "AY 1999", text: "Hwa Kang full graduate scholarship, Chinese Culture University"}
+  - title: Professional service
+    group: Expertise & Honours
+    items:
+      - {year: 2024–2026, text: "Item writer and reviewer, national Tour Guide and Tour Leader examination, Tourism Administration, MOTC"}
+      - {year: 2022–2024, text: "Supervisor (14th term), Chinese Association of Tourism Management"}
+      - {year: 2019–2022, text: "Board member (1st term), Taiwan Recreation Development Association"}
+      - {year: 2017–2018, text: "Supervisor (9th and 12th terms), Chinese Association of Tourism Management"}
+      - {year: 2014–2017, text: "Secretary-General (10th and 11th terms), Chinese Association of Tourism Management"}
+      - {year: '2012', text: "Reviewer, Current Issues in Tourism (SSCI)"}
+      - {year: '2012', text: "International Liaison, Asia Pacific Tourism Association (APTA) Conference, Taipei"}
+      - {year: '2010', text: "Organiser, Asia Tourism Forum Conference"}
+      - {year: 2008–2013, text: "Member of the coordination and performance review committees, East Rift Valley National Scenic Area"}
+      - {year: 2007–2010, text: "Executive Editor, Journal of Taiwan Tourism (issues 4–7)"}
+  - title: Industry & research projects
+    group: Research & Publications
+    items:
+      - {year: '2025', text: "Participatory Budgeting for Environmental Sustainability, New Taipei City Environmental Protection Department", note: "Principal investigator"}
+      - {year: '2019', text: "Social media marketing consultancy for cruise products to New Southbound countries", note: "Principal investigator"}
+      - {year: '2016', text: "Innovative quality service workshops for the tourism industry", note: "Principal investigator"}
+      - {year: '2015', text: "Turnaround operations for international cruises at Keelung Port", note: "Co-investigator"}
+      - {year: '2014', text: "Henan study tour for students of Taiwanese tourism colleges", note: "Principal investigator"}
+      - {year: '2005', text: "Taiwan Travel Alliance tourism database, digital content valuation project, Industrial Development Bureau"}
+      - {year: '2004', text: "Planning study for the Youth Arts Centre, Taipei County Government"}
+      - {year: '2003', text: "Operation plan for the Central Taiwan Travel Service Centre, Taichung City Government"}
+      - {year: '2001', text: "Proposal for a party membership database system, Democratic Progressive Party"}
+      - {year: '1998', text: "Market study for the joint development of Da'an MRT Station, Taipei Rapid Transit Corporation"}
+      - {year: '1998', text: "Opinion poll on the twice-monthly two-day weekend, Central Personnel Administration"}
+      - {year: '1998', text: "Opinion poll on the Taiwan Culture Festival, Taiwan Provincial Department of Culture"}
+      - {year: '1998', text: "Marketing strategy study for lactic acid drinks and seaweed soy sauce, Taiwan Salt Company"}
+      - {year: '1998', text: "Market survey for the Tai Mall Nankan family entertainment and shopping centre"}
+      - {year: '1997', text: "Opinion poll on cross-strait exchanges, Mainland Affairs Council"}
+      - {year: '1997', text: "Opinion poll on Taiwan's participation in the United Nations, Ministry of Foreign Affairs"}
+      - {year: '1997', text: "Opinion poll on the Jianshan Power Plant expansion in Penghu, Taiwan Power Company"}
+      - {year: '1997', text: "1997 survey of Taiwan's tourism and recreation service industry, Tourism Bureau"}
+      - {year: '1997', text: "Study of Taiwan's industrial restructuring on joining the WTO, Japan Interchange Association"}
+  - title: Books & translations
+    group: Research & Publications
+    items:
+      - {year: '2019', text: "Lu, H. & Chen, R. F. (eds.), Tour Guide and Tour Leader Exam Final Sprint. Taipei: Zhiguang. ISBN 978-986-514-114-1"}
+      - {year: '2013', text: "Chen, R. F. & Lu, P. C. (eds.), Read It and Pass: Tour Guide and Tour Leader Exam (2nd ed.). Taipei: Zhiguang. ISBN 9789861286280"}
+      - {year: '2012', text: "Subhash K.B. & Chen Ruey Feng, Geography of Transnational Terrorism: An India Perspective. In India Emerging: Opportunities and Challenges (Ch. 13, pp. 106–124). Pragun Publication, New Delhi."}
+      - {year: '2008', text: "Chen, R. F. (trans.), Convention Tourism: International Research and Industry Perspectives (Karin Weber & Kaye Chon). Taipei: Hwa Du. ISBN 9789866860348"}
+      - {year: '2008', text: "Chen, R. F. & Lin, C. H. (trans.), Event Marketing (Leonard H. Hoyle). Taipei: Yang-Chih. ISBN 9789578188600"}
+  - title: Journal articles
+    group: Research & Publications
+    items:
+      - {year: '2022', text: "Chang, J. J., Chen, R. F., & Lin, C. L. Exploring the driving factors of urban music festival tourism and service development strategies using the modified SIA-NRM approach. Sustainability, 14(12), 7498. (SSCI)"}
+      - {year: '2019', text: "Lee, M. J., Cheng, C. C., & Chen, R. F.* Leisure motivation and involvement of family tourists in Penghu and their effects on leisure benefits and well-being, moderated by family support. Journal of Leisure Industry Management, 12(1), 41–62.", note: "In Chinese"}
+      - {year: '2018', text: "Dsouza, R. S., Subhash, K. B., Chen, R. F., & Weiermair, K. Service Quality and Customer Satisfaction: An Empirical Analysis of Banking Sector in Goa. International Journal of Banking, Risk and Insurance, 6(2), 1–22."}
+      - {year: '2017', text: "Chen, R. F., Lu, C. C., & Subhash, K. B. A location selection model for cruise ports in Taiwan. Hsing Wu Journal, 55, 111–126.", note: "In Chinese"}
+      - {year: '2017', text: "Liu, T. H., Yang, S. L., & Chen, R. F.* Study motivation and intention to continue among vocational high school culinary students: the 2K generation. Hsing Wu Journal, 56, 115–129.", note: "In Chinese"}
+      - {year: '2016', text: "Kamat, K., Scaglione, M., Subhash, K. B., & Chen, R. F. The Socio, Economic, and Environmental Impacts of Casino Tourism in Goa. Revista Latino-Americana de Turismologia, 2(1), 44–54."}
+      - {year: '2016', text: "Chen, R. F., Lu, C. C., & Subhash, K. B. A case study of international cruise fleets and agents in Taiwan. Hsing Wu Journal, 51, 127–146.", note: "In Chinese"}
+      - {year: '2012', text: "Chen, R. F., Subhash, K. B.*, Vinu, G., & Weiermair, K. Learning Motivation, Performance and Satisfaction: A Comparison between Students Majoring in Tourism and Hospitality Programs from Taiwan and India. International Journal of Hospitality & Tourism Systems, 5(1), 1–11."}
+      - {year: '2011', text: "Chen, R. F., Chuu, T. S., & Lin, Z. H. The Difference of Learning Motivation and Performance Between Full-Time and On-Job Students: A Case of Taiwan Students Majoring in Hospitality and Tourism. Journal of Higher Education Theory and Practice, 11(3), 33–42."}
+      - {text: "Lu, C. C., & Chen, R. F.* Differences in Tourism Image among Cruise Passengers across the Taiwan Straits. Global Journal of Business Research, 5(5), 95–108. (EconLit)"}
+      - {text: "Subhash, K. B., Weiermair, K., & Chen, R. F. What Lies Beneath: The Untapped Health Tourism Market in India and the Role of Social Venture Capital in Rejuvenating Ayurveda Tradition. Global Journal of Contemporary Management, 1(1), 1–13."}
+      - {text: "Subhash, K. B., Smitha, B. G., Weiermair, K., & Chen, R. F. Rural Tourism: Catalyst of Socio-Economic Transformation in the Face of Global Warming and Financial Crisis. A Case Study of Goa. Asia Pacific Journal of Research in Business Management, 1(2)."}
+  - title: Conference papers
+    group: Research & Publications
+    items:
+      - {year: '2023', text: "Chen, R. F. Using GIS hot-spot analysis to map students' geographic preferences in choosing a school. Tourism Factory 20th Anniversary Sustainability Forum and Chinese Association of Tourism Management Conference, Providence University.", note: "In Chinese"}
+      - {year: '2018', text: "Gaonkar, D. N., Subhash, K. B., Castanha, J., Chang, L. C., & Chen, R. F. Importance-Performance Analysis of Telecommunication Industry. 6th International Seminar and Conference on Learning Organization, Bandung, Indonesia."}
+      - {year: '2014', text: "Kamat, K., Chen, R. F., D’Mello, C., Scaglione, M., Weiermair, K., & Subhash, K. B. Resident Attitudes towards Casino Tourism Development in Goa. 64th AIEST Conference, Plzeň, Czech Republic."}
+      - {year: '2012', text: "Subhash, K. B., Weiermair, K., & Chen, R. F. Empowerment at the Bottom of the Pyramid: Poverty Reduction through Rural Tourism. 18th Asia Pacific Tourism Association Conference, Taipei."}
+      - {year: '2012', text: "Lu, C. C., Chen, R. F., & Cheng, T. M. Cruiser Perception on the Port Cities Tourism Image. 18th Asia Pacific Tourism Association Conference, Taipei."}
+      - {year: '2008', text: "Lu, C. C., & Chen, R. F. Cruisers’ Cognition on Leisure and Tourism Resources in Taiwan. 8th Biennial Conference of ANZALS, Melbourne, Australia."}
+      - {year: '2002', text: "Wan, C. S., Chen, R. F., & Liu, Y. A. Customer relationship management strategies for travel websites in Taiwan. 2nd Conference on Sustainable Management of Tourism, Leisure and Hospitality, National Kaohsiung Hospitality College.", note: "In Chinese"}
+      - {year: '2001', text: "Liu, Y. A., Chen, R. F., & Wan, C. S. Customer relationship management in travel website operations. 1st Conference on Sustainable Management of Tourism, Leisure and Hospitality, National Kaohsiung Hospitality College.", note: "In Chinese"}
+      - {year: '2001', text: "Chen, R. F. Applying customer relationships to travel websites. 2001 National Management Master's Thesis Award Conference, Chinese Management Science Association.", note: "In Chinese"}
+  - title: Theses
+    group: Research & Publications
+    items:
+      - {year: '2001', text: "Chen, R. F. Customer relationship management for travel websites. Master's thesis, Chinese Culture University.", note: "Extended into National Science Council project NSC 90-2416-H-034-005 (Aug 2001–Jul 2002; PI: Prof. Yuan-An Liu)"}
+      - {year: '1995', text: "Chen, R. F. Social support and school adjustment among adolescents. Undergraduate thesis, Fu Jen Catholic University."}

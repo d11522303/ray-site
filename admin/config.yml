@@ -74,6 +74,67 @@ collections:
                   - { name: year, label: 年份或期間, widget: string, required: false, hint: 例如 2021.04～迄今，沒有可留白 }
                   - { name: text, label: 內容, widget: text }
                   - { name: note, label: 補充說明（小字）, widget: string, required: false, hint: 例如證號、中文題目、擔任角色 }
+  - name: settings_en
+    label: 英文版設定 English
+    files:
+      - name: home
+        label: 英文首頁文字
+        file: content/en/home.yml
+        fields:
+          - { name: eyebrow, label: 標題上方的小字, widget: string }
+          - { name: headline, label: 大標題, widget: text, hint: 一行一句。想用黃色螢光筆標示的字，前後加上 * ，例如 *記得的事* }
+          - { name: intro, label: 介紹文字, widget: text, hint: 同樣可以用 *文字* 加上螢光筆效果 }
+          - { name: latest_title, label: 「最新文章」區塊標題, widget: string }
+          - { name: latest_count, label: 首頁顯示幾篇最新文章, widget: number, value_type: int, min: 2, max: 12, default: 6 }
+          - { name: topics_title, label: 「依主題閱讀」區塊標題, widget: string }
+          - { name: series_title, label: 系列專區標題, widget: string, required: false, hint: 留空就不顯示系列專區 }
+          - { name: series_text, label: 系列專區說明, widget: text, required: false }
+          - { name: series_keyword, label: 系列文章標題裡的關鍵字（用來算篇數）, widget: string, required: false }
+          - name: series_category
+            label: 點系列標題時要打開的分類
+            widget: select
+            options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
+      - name: about
+        label: 英文關於頁
+        file: content/en/about.yml
+        fields:
+          - { name: lead, label: 標題上方的小字, widget: string, required: false, hint: 例如 HELLO，留空就不顯示 }
+          - { name: title, label: 大標題, widget: string }
+          - { name: body, label: 自我介紹, widget: markdown, hint: 空一行就是新的段落 }
+          - name: boxes
+            label: 下方小卡片
+            label_singular: 卡片
+            widget: list
+            required: false
+            fields:
+              - { name: title, label: 卡片標題, widget: string }
+              - { name: text, label: 卡片內容, widget: markdown, hint: 按 Enter 換行；可以加連結 }
+          - { name: note, label: 最下方的小字備註, widget: string, required: false, hint: 留空就不顯示 }
+          - { name: cv_title, label: 簡歷區塊標題, widget: string, required: false }
+          - { name: cv_updated, label: 簡歷更新日期, widget: string, required: false, hint: 例如 2025.12.9 }
+          - name: cv
+            label: 簡歷分類
+            label_singular: 分類
+            widget: list
+            required: false
+            summary: "{{fields.group}}｜{{fields.title}}"
+            hint: 每個分類是一張卡片，例如學歷、教職經歷、證照。可以拖曳調整順序
+            fields:
+              - { name: title, label: 分類名稱, widget: string }
+              - name: group
+                label: 放在哪一大類
+                widget: select
+                options: [Education & Career, Expertise & Honours, Research & Publications]
+              - { name: show, label: 先顯示幾筆, widget: number, value_type: int, min: 1, max: 30, required: false, hint: 其餘的收在「展開其餘」按鈕裡；留白就自動決定 }
+              - name: items
+                label: 項目
+                label_singular: 項目
+                widget: list
+                summary: "{{fields.year}}　{{fields.text}}"
+                fields:
+                  - { name: year, label: 年份或期間, widget: string, required: false, hint: 例如 2021.04～迄今，沒有可留白 }
+                  - { name: text, label: 內容, widget: text }
+                  - { name: note, label: 補充說明（小字）, widget: string, required: false, hint: 例如證號、中文題目、擔任角色 }
   - name: articles
     label: 文章
     label_singular: 文章
@@ -107,6 +168,13 @@ collections:
         label: 分類
         widget: select
         options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
+      - name: also
+        label: 其他分類（可複選）
+        widget: select
+        multiple: true
+        required: false
+        hint: 這篇文章也想出現在哪些分類？可以選好幾個。上面的「分類」是主要分類
+        options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
       - { name: subcategory, label: 子分類, widget: string, required: false, hint: 例如：導遊領隊、企業實習、我的旅行、家庭。打新的名稱就會多一個子分類 }
       - { name: detail, label: 細分類, widget: string, required: false, hint: 例如：考前陪跑解題、高鐵實習、泰國曼谷。可以留空 }
       - { name: published, label: 公開, widget: boolean, default: true, hint: 關掉就不會出現在網站上 }
@@ -119,3 +187,17 @@ collections:
       - { name: excerpt, label: 摘要, widget: text, required: false, hint: 留空會自動用內文前幾句 }
       - { name: note, label: 備註（不會顯示在網站上）, widget: string, required: false }
       - { name: body, label: 內文, widget: markdown }
+  - name: articles_en
+    label: 英文版文章 English
+    label_singular: 英文文章
+    folder: content/en/articles
+    extension: md
+    format: frontmatter
+    create: false
+    delete: true
+    summary: "{{slug}}｜{{title}}"
+    fields:
+      - { name: title, label: 英文標題, widget: string }
+      - { name: excerpt, label: 英文摘要, widget: text, required: false }
+      - { name: published, label: 在英文版公開, widget: boolean, default: true, hint: 關掉就只在英文版隱藏，中文版不受影響 }
+      - { name: body, label: 英文內文, widget: markdown }
