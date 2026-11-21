@@ -27,10 +27,9 @@ jobs:
       - name: 整理要上線的檔案
         run: |
           mkdir -p _site
+          # 英文版是網站首頁（index.html），中文版在 zh/
           cp index.html .nojekyll _site/
-          # 英文版暫停中，要恢復時把下一行前面的 # 拿掉
-          # cp -r en _site/
-          cp -r admin images _site/
+          cp -r zh admin images _site/
           [ -f CNAME ] && cp CNAME _site/ || true
       - uses: actions/upload-pages-artifact@v3
         with:

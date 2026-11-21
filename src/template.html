@@ -42,6 +42,7 @@ main{padding-block:28px 64px}
 .hero h1{font-size:clamp(32px,5.4vw,52px);letter-spacing:.04em}
 .hero h1 em{font-style:normal;background:linear-gradient(transparent 58%,rgba(242,212,136,.8) 58%,rgba(242,212,136,.8) 88%,transparent 88%)}
 .hero p{max-width:30em;margin:16px 0 0;color:var(--muted)}
+.untr{margin:14px 0 0;padding:10px 14px;border:2px dashed var(--line);border-radius:14px;color:var(--muted);font-size:15px}
 .hero.solo{grid-template-columns:1fr}
 .hero-photo{width:100%;max-width:440px;justify-self:center;aspect-ratio:4/5}
 .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 100%)}
@@ -215,7 +216,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <a href="#teaching" data-v="teaching">教學<small>TEACHING</small></a>
     <a href="#travel" data-v="travel">旅行<small>TRAVEL</small></a>
     <a href="#hello" data-v="hello">關於<small>HELLO</small></a>
-    <!-- 英文版暫停中：要恢復時把下一行的註解拿掉 -->
+    <!-- 語言切換按鈕：build.py 會換成「EN」或「中文」 -->
     <!--EN-->
   </nav>
 </div></header>
@@ -231,6 +232,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 const ARTS = __DATA__;
 const HOME = Object.assign({eyebrow:'',headline:'',intro:'',latest_title:'最新文章',latest_count:6,topics_title:'依主題閱讀',series_title:'',series_text:'',series_keyword:'考前',series_category:'證照考試'}, __HOME__);
 const ABOUT = __ABOUT__;
+const BASE='__BASE__', ECOL='articles', SCOL='settings';  // build.py 會填入：中文版在 zh/，英文版在網站根目錄
 function rich(t){ return esc(String(t||'')).replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>'); }
 const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊戲學習","生活記憶","理財情報","老後提案"];
 const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
@@ -245,14 +247,14 @@ function doodle(cat, cls='doodle'){
 }
 function tag(cat){ const c=(ICON[cat]||ICON["生活記憶"])[1]; return `<span class="tag" style="background:${c}99">${esc(cat)}</span>`; }
 let EDIT=false; try{ EDIT = localStorage.getItem('rf-edit')==='1' || Object.keys(localStorage).some(k=>k.startsWith('sveltia-cms.user')); }catch(e){}
-function editBtn(a,cls){ return EDIT&&a.file?`<span class="edit-tools ${cls||''}"><span class="edit-btn" role="link" tabindex="0" data-edit="${a.file}" title="在後台修改這篇">✎ 修改</span><span class="edit-btn hide-btn" role="button" tabindex="0" data-hide="${a.file}" title="從網站上隱藏這篇">隱藏</span></span>`:''; }
+function editBtn(a,cls){ return EDIT&&a.file?`<span class="edit-tools ${cls||''}"><span class="edit-btn" role="link" tabindex="0" data-edit="${a.file}" data-col="${a.untr?'articles':ECOL}" title="在後台修改這篇">✎ 修改</span><span class="edit-btn hide-btn" role="button" tabindex="0" data-hide="${a.file}" title="從網站上隱藏這篇">隱藏</span></span>`:''; }
 const REPO='d11522303/ray-site';
 function ghToken(){ try{ for(const k of Object.keys(localStorage)){ const v=localStorage.getItem(k)||''; const m=v.match(/(github_pat_[A-Za-z0-9_]+|gh[pousr]_[A-Za-z0-9]+)/); if(m) return m[1]; } }catch(e){} return ''; }
 const b64dec=t=>new TextDecoder().decode(Uint8Array.from(atob(t.replace(/\n/g,'')),c=>c.charCodeAt(0)));
 function b64enc(str){ const u=new TextEncoder().encode(str); let s=''; for(let i=0;i<u.length;i+=8192) s+=String.fromCharCode.apply(null,u.subarray(i,i+8192)); return btoa(s); }
 async function hideArticle(file, btn){
   const tok=ghToken();
-  if(!tok){ window.open('admin/#/collections/articles/entries/'+file,'_blank'); return; }
+  if(!tok){ window.open(BASE+'admin/#/collections/articles/entries/'+file,'_blank'); return; }
   btn.textContent='隱藏中…';
   const url=`https://api.github.com/repos/${REPO}/contents/content/articles/${encodeURIComponent(file)}.md`;
   const H={Authorization:'Bearer '+tok, Accept:'application/vnd.github+json'};
@@ -274,14 +276,14 @@ function card(a){
     <div style="min-width:0"><h3>${esc(a.title)}</h3><p>${esc(a.ex)}</p>
       <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span>${editBtn(a)}</div></div></a>`;
 }
-function img(u){ u=String(u||''); return /^(https?:)?\/\//.test(u)?u:u.replace(/^\/+/,''); }
+function img(u){ u=String(u||''); return /^(https?:)?\/\/|^data:/.test(u)?u:BASE+u.replace(/^\/+/,''); }
 function countBy(){const c={};ARTS.forEach(a=>catsOf(a).forEach(k=>c[k]=(c[k]||0)+1));return c}
 function catsOf(a){ return a.cats&&a.cats.length?a.cats:[a.cat]; }
 function tags(a){ return catsOf(a).map(tag).join(''); }
 
 function heroPhoto(){
   if(HOME.hero_image) return `<div class="hero-photo"><img src="${esc(img(HOME.hero_image))}" alt="${esc(HOME.hero_alt||'')}"></div>`;
-  return EDIT ? `<div class="hero-photo empty" role="link" tabindex="0" data-edit-home="1"><span>＋<br>按這裡上傳首頁照片</span></div>` : '';
+  return EDIT ? `<div class="hero-photo empty" role="link" tabindex="0" data-edit-photo="1"><span>＋<br>按這裡上傳首頁照片</span></div>` : '';
 }
 
 function home(){
@@ -377,6 +379,7 @@ function article(id){
     ${a.cover?`<img class="cover" src="${esc(img(a.cover))}" alt="">`:`<div style="margin-top:14px">${doodle(a.cat)}</div>`}
     <h1>${esc(a.title)}</h1>
     <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
+    ${a.untr?`<p class="untr">This article has not been translated into English yet, so it is shown in Chinese.</p>`:''}
     <div class="prose">${a.body}</div>
     ${(a.photos||[]).length?`<div class="gallery">${a.photos.map(p=>`<figure><a href="${esc(img(p.src))}" target="_blank" rel="noopener"><img src="${esc(img(p.src))}" alt="${esc(p.cap)}" loading="lazy"></a>${p.cap?`<figcaption>${esc(p.cap)}</figcaption>`:''}</figure>`).join('')}</div>`:''}
     <div class="pn">${prev?`<a class="hand" href="#a-${prev.id}"><span>上一篇</span>${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="hand next" href="#a-${next.id}"><span>下一篇</span>${esc(next.title)}</a>`:''}</div>
@@ -445,10 +448,11 @@ document.addEventListener('click', e=>{ const L=e.target.closest('[data-lang]');
 app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=PER; renderList(); }});
 app.addEventListener('click', e=>{
   const ed = e.target.closest('[data-edit]');
-  if(ed){ e.preventDefault(); e.stopPropagation(); window.open('admin/#/collections/articles/entries/'+ed.dataset.edit,'_blank'); return; }
+  if(ed){ e.preventDefault(); e.stopPropagation(); window.open(BASE+'admin/#/collections/'+(ed.dataset.col||ECOL)+'/entries/'+ed.dataset.edit,'_blank'); return; }
   { const c=e.target.closest('[data-cv]'); if(c){ e.preventDefault(); const t=document.getElementById(c.dataset.cv); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); return; } }
-  if(e.target.closest('[data-edit-about]')){ e.preventDefault(); window.open('admin/#/collections/settings/entries/about','_blank'); return; }
-  if(e.target.closest('[data-edit-home]')){ e.preventDefault(); window.open('admin/#/collections/settings/entries/home','_blank'); return; }
+  if(e.target.closest('[data-edit-about]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/'+SCOL+'/entries/about','_blank'); return; }
+  if(e.target.closest('[data-edit-photo]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/settings/entries/home','_blank'); return; }
+  if(e.target.closest('[data-edit-home]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/'+SCOL+'/entries/home','_blank'); return; }
   const hd = e.target.closest('[data-hide]');
   if(hd){ e.preventDefault(); e.stopPropagation();
     if(!hd.classList.contains('armed')){ hd.classList.add('armed'); hd.textContent='確定隱藏？'; setTimeout(()=>{ if(hd.classList.contains('armed')){ hd.classList.remove('armed'); hd.textContent='隱藏'; } },4000); return; }
