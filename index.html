@@ -272,7 +272,7 @@ function toast(msg){ let t=document.getElementById('toast'); if(!t){ t=document.
 function card(a){
   return `<a class="card-a hand" href="#a-${a.id}">${a.cover?`<img class="thumb" src="${esc(img(a.cover))}" alt="" loading="lazy">`:doodle(a.cat)}
     <div style="min-width:0"><h3>${esc(a.title)}</h3><p>${esc(a.ex)}</p>
-      <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.src==='Facebook'?'Facebook':'方格子'}</span>${editBtn(a)}</div></div></a>`;
+      <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span>${editBtn(a)}</div></div></a>`;
 }
 function img(u){ u=String(u||''); return /^(https?:)?\/\//.test(u)?u:u.replace(/^\/+/,''); }
 function countBy(){const c={};ARTS.forEach(a=>catsOf(a).forEach(k=>c[k]=(c[k]||0)+1));return c}
