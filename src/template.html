@@ -293,7 +293,7 @@ function home(){
     <div><div class="lead">${esc(H.eyebrow)}</div>
       <h1>${rich(H.headline)}</h1>
       <p>${rich(H.intro)}</p>
-      <div class="facts"><span class="hand">${ARTS.length} 篇文章</span><span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span></div></div>
+      <div class="facts"><span class="hand">${ARTS.length} 篇文章</span>${ARTS.length?`<span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span>`:''}</div></div>
     ${heroPhoto()}</div>
   <section><div class="sec-head"><h2>${esc(H.latest_title)}</h2><a href="#writing">看全部 ${ARTS.length} 篇 →</a></div>
     <div class="cards">${ARTS.slice(0,n).map(card).join('')}</div></section>
