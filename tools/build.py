@@ -3,7 +3,8 @@
 把 content/articles/ 裡的文章合併進 src/template.html，產生網站：
   index.html     英文版（網站主要首頁）
   zh/index.html  中文版
-文章公開或隱藏只看中文文章的「公開」；英文版跟著一樣。
+中文版看中文文章的「公開」，英文版看英文翻譯的「在英文版公開」，兩邊各自獨立。
+還沒有英文翻譯的文章，只有在中文公開時才會在英文版顯示（先顯示中文）。
 後台每次存檔後，GitHub 會自動執行這支程式並更新網站。
 
 本機執行：pip install pyyaml markdown 之後，python tools/build.py
@@ -38,12 +39,11 @@ def load():
             print("略過（格式不對）：", path)
             continue
         fm = yaml.safe_load(m.group(1)) or {}
-        if not fm.get("published", True):
-            continue
         body = to_html(m.group(2).strip())
         text = text_of(body)
         stem = os.path.splitext(os.path.basename(path))[0]
         arts.append({
+            "pub": bool(fm.get("published", True)),
             "id": re.sub(r"^\d{4}-\d{2}-\d{2}-", "", stem),
             "file": stem,
             "date": str(fm.get("date", ""))[:10],
@@ -92,7 +92,7 @@ LANG_LINK = {
 }
 
 
-def render(tpl, arts, home, about, out, base, lang):
+def render(tpl, arts, home, about, out, base, lang, switch=True):
     # 內文裡從後台插入的圖片是 /images/...，改成相對路徑，網站放在子路徑（例如 /ray-site/zh/）也看得到
     fix = lambda h: re.sub(r'(src|href)="/(images/)', r'\1="' + base + r'\2', h)
     arts = [dict(a, body=fix(a["body"])) for a in arts]
@@ -102,14 +102,14 @@ def render(tpl, arts, home, about, out, base, lang):
             '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
             '<link rel="alternate" hreflang="en" href="%s">\n<link rel="alternate" hreflang="zh-Hant" href="%szh/">\n'
             % ("en" if lang == "en" else "zh-Hant", base or "./", base or ""))
-    tpl = head + tpl.replace("<!--EN-->", LANG_LINK[lang]).replace("__BASE__", base)
+    tpl = head + tpl.replace("<!--EN-->", LANG_LINK[lang] if switch else "").replace("__BASE__", base)
     tpl = tpl.replace("__HOME__", js(home)).replace("__ABOUT__", js(about))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
         f.write(tpl.replace("__DATA__", js(arts)))
 
 
-def english(arts, tpl, zh_home):
+def english(arts, tpl, zh_home, switch):
     """英文版：用 content/en/ 裡的翻譯；還沒翻譯的文章先用中文顯示並加註。介面文字照 tools/ui_en.yml 替換。"""
     tax = read_yml("content", "en", "taxonomy.yml")
     t = lambda v: tax.get(v, v) if v else v
@@ -117,6 +117,8 @@ def english(arts, tpl, zh_home):
     for a in arts:
         p = os.path.join(ROOT, "content", "en", "articles", a["file"] + ".md")
         if not os.path.exists(p):
+            if not a["pub"]:
+                continue
             out.append(dict(a, untr=True, len=a["len"] // 2, cat=t(a["cat"]), cats=[t(c) for c in a["cats"]], sub=t(a["sub"]), det=t(a["det"]), zt=a["title"]))
             continue
         with open(p, encoding="utf-8") as f:
@@ -147,7 +149,7 @@ def english(arts, tpl, zh_home):
             home[k] = zh_home.get(k, "")
     if home.get("series_category"):
         home["series_category"] = t(home["series_category"])
-    render(tpl, out, home, about, os.path.join(ROOT, "index.html"), "", "en")
+    render(tpl, out, home, about, os.path.join(ROOT, "index.html"), "", "en", switch)
     return out
 
 
@@ -155,12 +157,14 @@ CATS = ["證照考試", "技職教育", "旅行郵輪", "每日晨讀", "遊戲�
 
 
 def main():
-    arts = load()
+    all_arts = load()
+    arts = [a for a in all_arts if a["pub"]]
     with open(os.path.join(ROOT, "src", "template.html"), encoding="utf-8") as f:
         tpl = f.read()
     zh_home = read_yml("content", "home.yml")
     render(tpl, arts, zh_home, read_yml("content", "about.yml"), os.path.join(ROOT, "zh", "index.html"), "../", "zh")
-    en = english(arts, tpl, zh_home)
+    # 中文版一篇公開的文章都沒有時，英文版先不放「中文」切換按鈕
+    en = english(all_arts, tpl, zh_home, switch=bool(arts))
     cats = {}
     for a in arts:
         cats[a["cat"]] = cats.get(a["cat"], 0) + 1

@@ -179,7 +179,7 @@ collections:
         options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
       - { name: subcategory, label: 子分類, widget: string, required: false, hint: 例如：導遊領隊、企業實習、我的旅行、家庭。打新的名稱就會多一個子分類 }
       - { name: detail, label: 細分類, widget: string, required: false, hint: 例如：考前陪跑解題、高鐵實習、泰國曼谷。可以留空 }
-      - { name: published, label: 公開, widget: boolean, default: true, hint: 關掉就不會出現在網站上 }
+      - { name: published, label: 公開, widget: boolean, default: true, hint: 只控制中文版（/zh/）。英文版要到「英文版文章 English」裡開關 }
       - name: source
         label: 來源
         widget: select
@@ -211,5 +211,5 @@ collections:
     fields:
       - { name: title, label: 英文標題, widget: string }
       - { name: excerpt, label: 英文摘要, widget: text, required: false }
-      - { name: published, label: 在英文版公開, widget: boolean, default: true, hint: 關掉就只在英文版隱藏，中文版不受影響 }
+      - { name: published, label: 在英文版公開, widget: boolean, default: true, hint: 英文版（網站首頁）只看這個開關；中文版看中文文章的「公開」，兩邊各自獨立 }
       - { name: body, label: 英文內文, widget: markdown }
