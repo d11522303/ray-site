@@ -1,4 +1,10 @@
-<title>隨峰而趣</title>
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="alternate" hreflang="en" href="./">
+<link rel="alternate" hreflang="zh-Hant" href="zh/">
+<title>Rayfong's Travelogue</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&display=swap">
@@ -42,6 +48,7 @@ main{padding-block:28px 64px}
 .hero h1{font-size:clamp(32px,5.4vw,52px);letter-spacing:.04em}
 .hero h1 em{font-style:normal;background:linear-gradient(transparent 58%,rgba(242,212,136,.8) 58%,rgba(242,212,136,.8) 88%,transparent 88%)}
 .hero p{max-width:30em;margin:16px 0 0;color:var(--muted)}
+.untr{margin:14px 0 0;padding:10px 14px;border:2px dashed var(--line);border-radius:14px;color:var(--muted);font-size:15px}
 .hero.solo{grid-template-columns:1fr}
 .hero-photo{width:100%;max-width:440px;justify-self:center;aspect-ratio:4/5}
 .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 100%)}
@@ -208,65 +215,66 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </svg>
 
 <header class="top"><div class="wrap">
-  <a class="brand" href="#home"><svg width="40" height="40" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="30" ry="28" fill="#f1b79c" filter="url(#wash)" opacity=".8"/><g class="sk"><use href="#i-ship"/></g></svg><span><b>隨峰而趣</b><small>Rayfong's Travelogue</small></span></a>
+  <a class="brand" href="#home"><svg width="40" height="40" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="30" ry="28" fill="#f1b79c" filter="url(#wash)" opacity=".8"/><g class="sk"><use href="#i-ship"/></g></svg><span><b>Rayfong's Travelogue</b><small>隨峰而趣</small></span></a>
   <nav class="main" id="nav">
-    <a href="#home" data-v="home">首頁</a>
-    <a href="#writing" data-v="writing">文章<small>WRITING</small></a>
-    <a href="#teaching" data-v="teaching">教學<small>TEACHING</small></a>
-    <a href="#travel" data-v="travel">旅行<small>TRAVEL</small></a>
-    <a href="#hello" data-v="hello">關於<small>HELLO</small></a>
-    <!-- 英文版暫停中：要恢復時把下一行的註解拿掉 -->
-    <!--EN-->
+    <a href="#home" data-v="home">Home</a>
+    <a href="#writing" data-v="writing">Writing</a>
+    <a href="#teaching" data-v="teaching">Teaching</a>
+    <a href="#travel" data-v="travel">Travel</a>
+    <a href="#hello" data-v="hello">About</a>
+    <!-- 語言切換按鈕：build.py 會換成「EN」或「中文」 -->
+    <a href="zh/" class="lang hand" data-lang="1" title="中文版">中文</a>
   </nav>
 </div></header>
 
 <main class="wrap" id="app"></main>
 
 <footer><div class="wrap">
-  <span>© 隨峰而趣 · www.rayfong.idv.tw</span>
-  <span>手繪繪本風 · 用心寫下的每一篇</span>
+  <span>© Rayfong's Travelogue · www.rayfong.idv.tw</span>
+  <span>Hand-drawn with care · every story written from the heart</span>
 </div></footer>
 
 <script>
 const ARTS = [];
-const HOME = Object.assign({eyebrow:'',headline:'',intro:'',latest_title:'最新文章',latest_count:6,topics_title:'依主題閱讀',series_title:'',series_text:'',series_keyword:'考前',series_category:'證照考試'}, {"hero_image": "/images/uploads/IMG_9712.JPG", "hero_alt": "", "eyebrow": "瑞峰老師的筆記本", "headline": "走過的路  *記得的事*", "intro": "這裡收著我在研究室、課堂、旅途和生活裡寫下的文字。", "latest_title": "最新文章", "latest_count": 6, "topics_title": "依主題閱讀", "series_title": "導遊領隊證照百日陪考", "series_text": "每年國考前，一天一題解析、一則提醒，陪學生走到考場。", "series_keyword": "考前", "series_category": "證照考試"});
-const ABOUT = {"lead": "HELLO", "title": "我是瑞峰老師！", "body": "<p>在中華徵信所、台北市青少年育樂中心和旅行資訊業工作近十年。<br />\n在技職科大當教師兼行政工作快二十年。<br />\n在此時，我要開創自己的人生遊戲。<\/p>", "boxes": [{"title": "任教學校", "text": "<p>醒吾科大旅運系（HWU）<br />\n臺灣觀光學院餐旅系（THT）<\/p>"}], "note": "", "cv_title": "個人簡歷 CV", "cv_updated": "2025.12.9", "cv": [{"title": "學歷", "group": "學經歷", "show": 3, "items": [{"year": "2026～", "text": "國立臺灣科技大學 應用科技研究所 博士生", "note": ""}, {"year": "2001", "text": "中國文化大學 觀光事業研究所 碩士", "note": ""}, {"year": "1995", "text": "天主教輔仁大學 社會學系 學士", "note": ""}]}, {"title": "教職經歷", "group": "學經歷", "show": 3, "items": [{"year": "2021.04～迄今", "text": "醒吾科技大學 旅運管理系 副教授", "note": "部定副字第 148041 號"}, {"year": "2018.08～2021.07", "text": "醒吾科技大學 旅運管理系 系主任、副主任", "note": ""}, {"year": "2014.02～2021.03", "text": "醒吾科技大學 旅運管理系 助理教授", "note": ""}, {"year": "2013.03～2014.01", "text": "臺灣觀光學院 餐旅管理系 助理教授", "note": "部定助理字第 037267 號"}, {"year": "2006.08～2013.03", "text": "臺灣觀光學院 旅遊管理系 講師", "note": "部定講字第 076147 號"}, {"year": "2006.08～2014.01", "text": "臺灣觀光學院 行政兼職", "note": "教學資源中心主任暨出版組組長、校長室秘書、研究發展處學術發展組長、代理技合處處長、研究發展組長、實習就業輔導組長等"}]}, {"title": "業界經歷", "group": "學經歷", "show": 3, "items": [{"year": "2005.03～2006.03", "text": "信欣國際系統公司 副總經理、專案經理", "note": ""}, {"year": "2001.07～2005.02", "text": "台北市青少年育樂中心 行銷處總監", "note": ""}, {"year": "2000.03～2001.02", "text": "信欣國際系統公司 總經理特別助理", "note": ""}, {"year": "1997.07～1998.10", "text": "中華徵信所 助理研究員、市場研究部主任", "note": ""}, {"year": "1995.07～1997.07", "text": "陸軍六軍團 義務役通信兵", "note": ""}]}, {"title": "兼職經歷", "group": "學經歷", "show": 3, "items": [{"year": "2006～2008", "text": "信欣旅行社 專案經理", "note": ""}, {"year": "2008", "text": "花蓮縣瑞穗數位機會中心 講師", "note": ""}, {"year": "2005", "text": "醒吾技術學院觀光系夜間部 兼任講師", "note": ""}, {"year": "2002～2004", "text": "中國海專觀光夜間部 兼任講師", "note": ""}, {"year": "2000～2002", "text": "博客來網路書店 觀光旅遊、企管行銷類導讀撰文", "note": ""}, {"year": "1999～2000", "text": "婦女會暨國民黨資訊中心 電腦軟體教師", "note": ""}, {"year": "1994～1995", "text": "民調專案研究助理：聯合報民調中心、知行文教基金會", "note": ""}, {"year": "1992～1993", "text": "東方點子旅行社、大亞旅行社 簽證送件人員", "note": ""}]}, {"title": "證照", "group": "專業與榮譽", "show": null, "items": [{"year": "", "text": "中華民國英語導遊證照", "note": "(105) 專普導字第 004733 號"}, {"year": "", "text": "中華民國外語領隊證照", "note": "(97) 專普領字第 000177 號"}, {"year": "", "text": "旅行業經理人協會 第九期結業", "note": "民國 94 年"}, {"year": "", "text": "會議展覽專業人員初階認證考試及格", "note": "貿展字第 1010015942 號"}, {"year": "", "text": "WSET 葡萄酒品評一級及二級考試及格", "note": ""}, {"year": "", "text": "ISO 14064-1:2018 溫室氣體盤查主導查證員訓練合格", "note": ""}, {"year": "", "text": "證基會永續發展基礎能力測驗合格", "note": ""}]}, {"title": "獲獎與榮譽", "group": "專業與榮譽", "show": null, "items": [{"year": "103、107 學年度", "text": "醒吾科技大學 績優導師", "note": ""}, {"year": "105、106 學年度", "text": "醒吾科技大學 教學優良教師", "note": ""}, {"year": "2011", "text": "Indus 商業研究院國際研討會 (IC2011) 最佳論文獎", "note": ""}, {"year": "98、99 學年度", "text": "臺灣觀光學院 績優導師", "note": ""}, {"year": "88 學年度", "text": "文化大學華岡研究生全額獎學金", "note": ""}]}, {"title": "專業服務", "group": "專業與榮譽", "show": null, "items": [{"year": "2024～2026", "text": "交通部觀光署 導遊人員及領隊人員評量測驗 命審題委員", "note": ""}, {"year": "2022～2024", "text": "中華觀光管理學會 第 14 屆監事", "note": ""}, {"year": "2019～2022", "text": "台灣遊憩發展協會 第 1 屆理事", "note": ""}, {"year": "2017～2018", "text": "中華觀光管理學會 第 9、12 屆監事", "note": ""}, {"year": "2014～2017", "text": "中華觀光管理學會 第 10、11 屆秘書長", "note": ""}, {"year": "2012", "text": "Current Issues in Tourism (SSCI) 審稿人", "note": ""}, {"year": "2012", "text": "APTA 亞太觀光協會國際學術研討會（台北）國際交流組長", "note": ""}, {"year": "2010", "text": "Asia Tourism Forum 亞洲觀光論壇研討會 承辦", "note": ""}, {"year": "2008～2013", "text": "花東縱谷國家風景區管理處 協調委員會、績效評估委員會委員", "note": ""}, {"year": "2007～2010", "text": "《臺灣觀光學報》第四至七期 執行編輯", "note": ""}]}, {"title": "產學與研究計畫", "group": "研究與著作", "show": null, "items": [{"year": "2025", "text": "新北市環境保護局「環境永續推動參與式預算計畫」", "note": "主持人"}, {"year": "2019", "text": "南向國家郵輪旅遊產品社群行銷顧問計畫", "note": "主持人"}, {"year": "2016", "text": "觀光產業創新優質服務研習活動產學合作案", "note": "主持人"}, {"year": "2015", "text": "基隆港國際郵輪換客作業產學合作案", "note": "共同主持人"}, {"year": "2014", "text": "台灣中高等旅遊院校青年學生河南修學之旅案", "note": "主持人"}, {"year": "2005", "text": "經濟部工業局數位內容鑑價專案「台灣旅遊聯盟觀光旅遊資料庫」", "note": ""}, {"year": "2004", "text": "台北縣政府青少年藝文活動中心研究規劃服務建議案", "note": ""}, {"year": "2003", "text": "台中市政府中部旅遊服務中心委外服務規劃及經營招標案", "note": ""}, {"year": "2001", "text": "民進黨黨籍資料庫管理系統工程計畫書招標案", "note": ""}, {"year": "1998", "text": "台北捷運公司「大安捷運站聯合開發市場調查暨評估案」", "note": ""}, {"year": "1998", "text": "人事行政局「民眾對每月二次週休二日之認知」民意調查", "note": ""}, {"year": "1998", "text": "台灣省文化處「民眾對台灣文化節活動之認知」民意調查", "note": ""}, {"year": "1998", "text": "台鹽公司「乳酸飲料及藻醬油之行銷策略之研究」", "note": ""}, {"year": "1998", "text": "台茂開發公司「台茂南崁家庭娛樂購物中心」市場調查", "note": ""}, {"year": "1997", "text": "陸委會「兩岸交流」民意調查", "note": ""}, {"year": "1997", "text": "外交部「我國參與聯合國」民意調查", "note": ""}, {"year": "1997", "text": "台電「澎湖尖山發電廠擴建計劃」民意調查", "note": ""}, {"year": "1997", "text": "交通部觀光局「八十六年台灣地區觀光遊樂服務業調查」", "note": ""}, {"year": "1997", "text": "日本交流協會「加入 WTO 台灣地區產業結構轉變之研究」", "note": ""}]}, {"title": "專書與譯著", "group": "研究與著作", "show": null, "items": [{"year": "2019", "text": "呂行、陳瑞峰 編著，《導遊領隊考前衝刺》，志光文化。ISBN 978-986-514-114-1", "note": ""}, {"year": "2013", "text": "陳瑞峰、呂品器 編著，《導遊領隊讀了就上》再版，志光文化。ISBN 9789861286280", "note": ""}, {"year": "2012", "text": "Subhash K.B. & Chen Ruey Feng, Geography of Transnational Terrorism: An India Perspective. In India Emerging: Opportunities and Challenges (Ch. 13, pp. 106–124). Pragun Publication, New Delhi.", "note": "跨國極端主義的地理學：印度的觀點"}, {"year": "2008", "text": "陳瑞峰 譯，《會展觀光理論與實務》（Convention Tourism, Karin Weber & Kaye Chon 著），華都出版社。ISBN 9789866860348", "note": ""}, {"year": "2008", "text": "陳瑞峰、林靜慧 譯，《活動行銷：節慶、會議、展覽與觀光專案》（Event Marketing, Leonard H. Hoyle 著），揚智出版社。ISBN 9789578188600", "note": ""}]}, {"title": "期刊論文", "group": "研究與著作", "show": null, "items": [{"year": "2022", "text": "Chang, J. J., Chen, R. F., & Lin, C. L. Exploring the driving factors of urban music festival tourism and service development strategies using the modified SIA-NRM approach. Sustainability, 14(12), 7498. (SSCI)", "note": "以 SIA-NRM 法探討都會音樂季的驅動因素及服務發展策略"}, {"year": "2019", "text": "李明儒、鄭喬箏、陳瑞峰*。澎湖家庭旅遊者之休閒動機、涉入對其休閒效益與幸福感之研究：以家庭支持為干擾。休閒產業管理學刊，12(1)，41–62。", "note": ""}, {"year": "2018", "text": "Dsouza, R. S., Subhash, K. B., Chen, R. F., & Weiermair, K. Service Quality and Customer Satisfaction: An Empirical Analysis of Banking Sector in Goa. International Journal of Banking, Risk and Insurance, 6(2), 1–22.", "note": "印度果阿銀行之服務品質及顧客滿意之初探性研究"}, {"year": "2017", "text": "陳瑞峰、呂江泉、Subhash, K. B.。臺灣郵輪港口之區位評選模式研究。醒吾學報，55，111–126。", "note": ""}, {"year": "2017", "text": "劉翠華、楊瑟蓮、陳瑞峰*。高職餐飲科就讀動機與續讀意願之研究：以 2K 世代為例。醒吾學報，56，115–129。", "note": ""}, {"year": "2016", "text": "Kamat, K., Scaglione, M., Subhash, K. B., & Chen, R. F. The Socio, Economic, and Environmental Impacts of Casino Tourism in Goa. Revista Latino-Americana de Turismologia, 2(1), 44–54.", "note": "賭場觀光對印度果阿地區的社會經濟及環境影響"}, {"year": "2016", "text": "陳瑞峰、呂江泉、Subhash, K. B.。臺灣國際郵輪船隊及代理商產業個案之研究。醒吾學報，51，127–146。", "note": ""}, {"year": "2012", "text": "Chen, R. F., Subhash, K. B.*, Vinu, G., & Weiermair, K. Learning Motivation, Performance and Satisfaction: A Comparison between Students Majoring in Tourism and Hospitality Programs from Taiwan and India. International Journal of Hospitality & Tourism Systems, 5(1), 1–11.", "note": "台灣與印度觀光餐旅學生在學習動機、表現及滿意度之差異性研究"}, {"year": "2011", "text": "Chen, R. F., Chuu, T. S., & Lin, Z. H. The Difference of Learning Motivation and Performance Between Full-Time and On-Job Students: A Case of Taiwan Students Majoring in Hospitality and Tourism. Journal of Higher Education Theory and Practice, 11(3), 33–42.", "note": "台灣觀光科系在職生與一般生在學習動機、表現及滿意度之差異性研究"}, {"year": "", "text": "Lu, C. C., & Chen, R. F.* Differences in Tourism Image among Cruise Passengers across the Taiwan Straits. Global Journal of Business Research, 5(5), 95–108. (EconLit)", "note": "海峽兩岸郵輪旅客觀光意象之差異性研究"}, {"year": "", "text": "Subhash, K. B., Weiermair, K., & Chen, R. F. What Lies Beneath: The Untapped Health Tourism Market in India and the Role of Social Venture Capital in Rejuvenating Ayurveda Tradition. Global Journal of Contemporary Management, 1(1), 1–13.", "note": "印度醫療觀光市場及社會創投在傳統阿育吠陀療法的角色"}, {"year": "", "text": "Subhash, K. B., Smitha, B. G., Weiermair, K., & Chen, R. F. Rural Tourism: Catalyst of Socio-Economic Transformation in the Face of Global Warming and Financial Crisis. A Case Study of Goa. Asia Pacific Journal of Research in Business Management, 1(2).", "note": "農業觀光：全球暖化與金融危機下社會經濟轉變的催化劑，以印度果阿為例"}]}, {"title": "研討會論文", "group": "研究與著作", "show": null, "items": [{"year": "2023", "text": "陳瑞峰。利用 GIS 熱區分析學生就學選擇之地理偏好。觀光工廠 20 週年永續論壇暨中華觀光管理學會學術研討會，靜宜大學。", "note": ""}, {"year": "2018", "text": "Gaonkar, D. N., Subhash, K. B., Castanha, J., Chang, L. C., & Chen, R. F. Importance-Performance Analysis of Telecommunication Industry. 6th International Seminar and Conference on Learning Organization, Bandung, Indonesia.", "note": "資通訊產業之 IPA 分析"}, {"year": "2014", "text": "Kamat, K., Chen, R. F., D’Mello, C., Scaglione, M., Weiermair, K., & Subhash, K. B. Resident Attitudes towards Casino Tourism Development in Goa. 64th AIEST Conference, Plzeň, Czech Republic.", "note": "印度果阿省居民對博奕產業之態度分析"}, {"year": "2012", "text": "Subhash, K. B., Weiermair, K., & Chen, R. F. Empowerment at the Bottom of the Pyramid: Poverty Reduction through Rural Tourism. 18th Asia Pacific Tourism Association Conference, Taipei.", "note": "藉由農業觀光消弭貧困：金字塔底層的力量"}, {"year": "2012", "text": "呂江泉、陳瑞峰、鄭天明。Cruiser Perception on the Port Cities Tourism Image. 18th Asia Pacific Tourism Association Conference, Taipei.", "note": "郵輪旅客對港市意象的觀點"}, {"year": "2008", "text": "Lu, C. C., & Chen, R. F. Cruisers’ Cognition on Leisure and Tourism Resources in Taiwan. 8th Biennial Conference of ANZALS, Melbourne, Australia.", "note": ""}, {"year": "2002", "text": "萬金生、陳瑞峰、劉元安。台灣地區旅遊網站顧客關係管理策略之探討研究。第二屆觀光休閒暨餐旅產業永續經營研討會，國立餐旅學院。", "note": ""}, {"year": "2001", "text": "劉元安、陳瑞峰、萬金生。旅遊網站經營中之顧客關係管理研究。第一屆觀光休閒暨餐旅產業永續經營研討會，國立餐旅學院。", "note": ""}, {"year": "2001", "text": "陳瑞峰。顧客關係運用於旅遊網站之研究。九十年度全國管理碩士論文獎暨研討會，中華民國管理科學學會。", "note": ""}]}, {"title": "學位論文", "group": "研究與著作", "show": null, "items": [{"year": "2001", "text": "陳瑞峰。顧客關係管理運用於旅遊網站之研究。中國文化大學碩士論文。", "note": "延伸為國科會專題研究計畫 NSC 90-2416-H-034-005（2001/8～2002/7，劉元安教授主持）"}, {"year": "1995", "text": "陳瑞峰。青少年社會支持與學校生活適應關係之研究。輔仁大學畢業論文。", "note": ""}]}]};
+const HOME = Object.assign({eyebrow:'',headline:'',intro:'',latest_title:'Latest',latest_count:6,topics_title:'Browse by Topic',series_title:'',series_text:'',series_keyword:'',series_category:'Licensing Exams'}, {"eyebrow": "Teacher Ray's notebook", "headline": "Roads travelled, *things remembered*", "intro": "Writing from my research office, my classroom, the road and everyday life.", "latest_title": "Latest", "latest_count": 6, "topics_title": "Browse by Topic", "series_title": "100 Days to the Tour Guide & Tour Leader Exam", "series_text": "Every year before the national licensing exam, one question explained and one reminder a day, walking students all the way to the exam room.", "series_keyword": "考前", "series_category": "Licensing Exams", "hero_image": "/images/uploads/IMG_9712.JPG", "hero_alt": ""});
+const ABOUT = {"lead": "HELLO", "title": "I'm Teacher Ray!", "body": "<p>I spent the first ten years of my career at China Credit Information Service, the Taipei Youth Recreation Centre and in the travel information industry.<br />\nFor almost twenty years now I have been teaching and doing administrative work at vocational universities.<br />\nFrom this moment on, I'm starting my life as a game.<\/p>", "boxes": [{"title": "Where I teach", "text": "<p>Department of Travel Management, Hsing Wu University (HWU)<br />\nDepartment of Hospitality Management, Taiwan Hospitality &amp; Tourism College (THT)<\/p>"}], "note": "", "cv_title": "Curriculum Vitae", "cv_updated": "2025.12.9", "cv": [{"title": "Education", "group": "Education & Career", "show": 3, "items": [{"year": "2026–", "text": "PhD student, Graduate Institute of Applied Science and Technology, National Taiwan University of Science and Technology"}, {"year": "2001", "text": "MA, Graduate Institute of Tourism Management, Chinese Culture University"}, {"year": "1995", "text": "BA, Department of Sociology, Fu Jen Catholic University"}]}, {"title": "Academic positions", "group": "Education & Career", "show": 3, "items": [{"year": "2021.04–present", "text": "Associate Professor, Department of Travel Management, Hsing Wu University", "note": "MOE certificate no. 148041"}, {"year": "2018.08–2021.07", "text": "Department Chair and Deputy Chair, Department of Travel Management, Hsing Wu University"}, {"year": "2014.02–2021.03", "text": "Assistant Professor, Department of Travel Management, Hsing Wu University"}, {"year": "2013.03–2014.01", "text": "Assistant Professor, Department of Hospitality Management, Taiwan Hospitality & Tourism College", "note": "MOE certificate no. 037267"}, {"year": "2006.08–2013.03", "text": "Lecturer, Department of Tourism Management, Taiwan Hospitality & Tourism College", "note": "MOE certificate no. 076147"}, {"year": "2006.08–2014.01", "text": "Concurrent administrative posts, Taiwan Hospitality & Tourism College", "note": "Director of the Teaching Resource Centre and head of publishing; secretary to the President; head of academic development, Office of Research and Development; acting Dean of Industry Cooperation; head of research development; head of internships and career services"}]}, {"title": "Industry experience", "group": "Education & Career", "show": 3, "items": [{"year": "2005.03–2006.03", "text": "Vice President and Project Manager, Shinshin International Systems"}, {"year": "2001.07–2005.02", "text": "Director of Marketing, Taipei Youth Recreation Centre"}, {"year": "2000.03–2001.02", "text": "Special Assistant to the President, Shinshin International Systems"}, {"year": "1997.07–1998.10", "text": "Research Assistant and Head of Market Research, China Credit Information Service"}, {"year": "1995.07–1997.07", "text": "Signals soldier (compulsory service), ROC Army Sixth Corps"}]}, {"title": "Part-time roles", "group": "Education & Career", "show": 3, "items": [{"year": "2006–2008", "text": "Project Manager, Shinshin Travel Service"}, {"year": "2008", "text": "Instructor, Ruisui Digital Opportunity Centre, Hualien County"}, {"year": "2005", "text": "Adjunct Lecturer, evening programme, Department of Tourism, Hsing Wu College"}, {"year": "2002–2004", "text": "Adjunct Lecturer, evening tourism programme, China College of Marine Technology"}, {"year": "2000–2002", "text": "Book reviewer for travel, management and marketing titles, Books.com.tw"}, {"year": "1999–2000", "text": "Computer software instructor, Women's Association and KMT Information Centre"}, {"year": "1994–1995", "text": "Research assistant on opinion polls: United Daily News Poll Centre, Zhixing Foundation"}, {"year": "1992–1993", "text": "Visa courier, Oriental Idea Travel and Da-Ya Travel"}]}, {"title": "Licences & certificates", "group": "Expertise & Honours", "items": [{"text": "Tour Guide Licence (English), Republic of China", "note": "2016, no. 004733"}, {"text": "Tour Leader Licence (foreign language), Republic of China", "note": "2008, no. 000177"}, {"text": "Travel Agency Manager Training, Travel Agent Managers Association (9th cohort)", "note": "2005"}, {"text": "Certified MICE Professional (entry level)", "note": "no. 1010015942"}, {"text": "WSET Level 1 and Level 2 in Wines"}, {"text": "ISO 14064-1:2018 Greenhouse Gas Lead Verifier training"}, {"text": "Sustainable Development Basic Competency Test, Securities & Futures Institute"}]}, {"title": "Awards & honours", "group": "Expertise & Honours", "items": [{"year": "AY 2014, 2018", "text": "Outstanding Mentor, Hsing Wu University"}, {"year": "AY 2016, 2017", "text": "Excellence in Teaching Award, Hsing Wu University"}, {"year": "2011", "text": "Best Paper Award, Indus Business Academy International Conference (IC2011)"}, {"year": "AY 2009, 2010", "text": "Outstanding Mentor, Taiwan Hospitality & Tourism College"}, {"year": "AY 1999", "text": "Hwa Kang full graduate scholarship, Chinese Culture University"}]}, {"title": "Professional service", "group": "Expertise & Honours", "items": [{"year": "2024–2026", "text": "Item writer and reviewer, national Tour Guide and Tour Leader examination, Tourism Administration, MOTC"}, {"year": "2022–2024", "text": "Supervisor (14th term), Chinese Association of Tourism Management"}, {"year": "2019–2022", "text": "Board member (1st term), Taiwan Recreation Development Association"}, {"year": "2017–2018", "text": "Supervisor (9th and 12th terms), Chinese Association of Tourism Management"}, {"year": "2014–2017", "text": "Secretary-General (10th and 11th terms), Chinese Association of Tourism Management"}, {"year": "2012", "text": "Reviewer, Current Issues in Tourism (SSCI)"}, {"year": "2012", "text": "International Liaison, Asia Pacific Tourism Association (APTA) Conference, Taipei"}, {"year": "2010", "text": "Organiser, Asia Tourism Forum Conference"}, {"year": "2008–2013", "text": "Member of the coordination and performance review committees, East Rift Valley National Scenic Area"}, {"year": "2007–2010", "text": "Executive Editor, Journal of Taiwan Tourism (issues 4–7)"}]}, {"title": "Industry & research projects", "group": "Research & Publications", "items": [{"year": "2025", "text": "Participatory Budgeting for Environmental Sustainability, New Taipei City Environmental Protection Department", "note": "Principal investigator"}, {"year": "2019", "text": "Social media marketing consultancy for cruise products to New Southbound countries", "note": "Principal investigator"}, {"year": "2016", "text": "Innovative quality service workshops for the tourism industry", "note": "Principal investigator"}, {"year": "2015", "text": "Turnaround operations for international cruises at Keelung Port", "note": "Co-investigator"}, {"year": "2014", "text": "Henan study tour for students of Taiwanese tourism colleges", "note": "Principal investigator"}, {"year": "2005", "text": "Taiwan Travel Alliance tourism database, digital content valuation project, Industrial Development Bureau"}, {"year": "2004", "text": "Planning study for the Youth Arts Centre, Taipei County Government"}, {"year": "2003", "text": "Operation plan for the Central Taiwan Travel Service Centre, Taichung City Government"}, {"year": "2001", "text": "Proposal for a party membership database system, Democratic Progressive Party"}, {"year": "1998", "text": "Market study for the joint development of Da'an MRT Station, Taipei Rapid Transit Corporation"}, {"year": "1998", "text": "Opinion poll on the twice-monthly two-day weekend, Central Personnel Administration"}, {"year": "1998", "text": "Opinion poll on the Taiwan Culture Festival, Taiwan Provincial Department of Culture"}, {"year": "1998", "text": "Marketing strategy study for lactic acid drinks and seaweed soy sauce, Taiwan Salt Company"}, {"year": "1998", "text": "Market survey for the Tai Mall Nankan family entertainment and shopping centre"}, {"year": "1997", "text": "Opinion poll on cross-strait exchanges, Mainland Affairs Council"}, {"year": "1997", "text": "Opinion poll on Taiwan's participation in the United Nations, Ministry of Foreign Affairs"}, {"year": "1997", "text": "Opinion poll on the Jianshan Power Plant expansion in Penghu, Taiwan Power Company"}, {"year": "1997", "text": "1997 survey of Taiwan's tourism and recreation service industry, Tourism Bureau"}, {"year": "1997", "text": "Study of Taiwan's industrial restructuring on joining the WTO, Japan Interchange Association"}]}, {"title": "Books & translations", "group": "Research & Publications", "items": [{"year": "2019", "text": "Lu, H. & Chen, R. F. (eds.), Tour Guide and Tour Leader Exam Final Sprint. Taipei: Zhiguang. ISBN 978-986-514-114-1"}, {"year": "2013", "text": "Chen, R. F. & Lu, P. C. (eds.), Read It and Pass: Tour Guide and Tour Leader Exam (2nd ed.). Taipei: Zhiguang. ISBN 9789861286280"}, {"year": "2012", "text": "Subhash K.B. & Chen Ruey Feng, Geography of Transnational Terrorism: An India Perspective. In India Emerging: Opportunities and Challenges (Ch. 13, pp. 106–124). Pragun Publication, New Delhi."}, {"year": "2008", "text": "Chen, R. F. (trans.), Convention Tourism: International Research and Industry Perspectives (Karin Weber & Kaye Chon). Taipei: Hwa Du. ISBN 9789866860348"}, {"year": "2008", "text": "Chen, R. F. & Lin, C. H. (trans.), Event Marketing (Leonard H. Hoyle). Taipei: Yang-Chih. ISBN 9789578188600"}]}, {"title": "Journal articles", "group": "Research & Publications", "items": [{"year": "2022", "text": "Chang, J. J., Chen, R. F., & Lin, C. L. Exploring the driving factors of urban music festival tourism and service development strategies using the modified SIA-NRM approach. Sustainability, 14(12), 7498. (SSCI)"}, {"year": "2019", "text": "Lee, M. J., Cheng, C. C., & Chen, R. F.* Leisure motivation and involvement of family tourists in Penghu and their effects on leisure benefits and well-being, moderated by family support. Journal of Leisure Industry Management, 12(1), 41–62.", "note": "In Chinese"}, {"year": "2018", "text": "Dsouza, R. S., Subhash, K. B., Chen, R. F., & Weiermair, K. Service Quality and Customer Satisfaction: An Empirical Analysis of Banking Sector in Goa. International Journal of Banking, Risk and Insurance, 6(2), 1–22."}, {"year": "2017", "text": "Chen, R. F., Lu, C. C., & Subhash, K. B. A location selection model for cruise ports in Taiwan. Hsing Wu Journal, 55, 111–126.", "note": "In Chinese"}, {"year": "2017", "text": "Liu, T. H., Yang, S. L., & Chen, R. F.* Study motivation and intention to continue among vocational high school culinary students: the 2K generation. Hsing Wu Journal, 56, 115–129.", "note": "In Chinese"}, {"year": "2016", "text": "Kamat, K., Scaglione, M., Subhash, K. B., & Chen, R. F. The Socio, Economic, and Environmental Impacts of Casino Tourism in Goa. Revista Latino-Americana de Turismologia, 2(1), 44–54."}, {"year": "2016", "text": "Chen, R. F., Lu, C. C., & Subhash, K. B. A case study of international cruise fleets and agents in Taiwan. Hsing Wu Journal, 51, 127–146.", "note": "In Chinese"}, {"year": "2012", "text": "Chen, R. F., Subhash, K. B.*, Vinu, G., & Weiermair, K. Learning Motivation, Performance and Satisfaction: A Comparison between Students Majoring in Tourism and Hospitality Programs from Taiwan and India. International Journal of Hospitality & Tourism Systems, 5(1), 1–11."}, {"year": "2011", "text": "Chen, R. F., Chuu, T. S., & Lin, Z. H. The Difference of Learning Motivation and Performance Between Full-Time and On-Job Students: A Case of Taiwan Students Majoring in Hospitality and Tourism. Journal of Higher Education Theory and Practice, 11(3), 33–42."}, {"text": "Lu, C. C., & Chen, R. F.* Differences in Tourism Image among Cruise Passengers across the Taiwan Straits. Global Journal of Business Research, 5(5), 95–108. (EconLit)"}, {"text": "Subhash, K. B., Weiermair, K., & Chen, R. F. What Lies Beneath: The Untapped Health Tourism Market in India and the Role of Social Venture Capital in Rejuvenating Ayurveda Tradition. Global Journal of Contemporary Management, 1(1), 1–13."}, {"text": "Subhash, K. B., Smitha, B. G., Weiermair, K., & Chen, R. F. Rural Tourism: Catalyst of Socio-Economic Transformation in the Face of Global Warming and Financial Crisis. A Case Study of Goa. Asia Pacific Journal of Research in Business Management, 1(2)."}]}, {"title": "Conference papers", "group": "Research & Publications", "items": [{"year": "2023", "text": "Chen, R. F. Using GIS hot-spot analysis to map students' geographic preferences in choosing a school. Tourism Factory 20th Anniversary Sustainability Forum and Chinese Association of Tourism Management Conference, Providence University.", "note": "In Chinese"}, {"year": "2018", "text": "Gaonkar, D. N., Subhash, K. B., Castanha, J., Chang, L. C., & Chen, R. F. Importance-Performance Analysis of Telecommunication Industry. 6th International Seminar and Conference on Learning Organization, Bandung, Indonesia."}, {"year": "2014", "text": "Kamat, K., Chen, R. F., D’Mello, C., Scaglione, M., Weiermair, K., & Subhash, K. B. Resident Attitudes towards Casino Tourism Development in Goa. 64th AIEST Conference, Plzeň, Czech Republic."}, {"year": "2012", "text": "Subhash, K. B., Weiermair, K., & Chen, R. F. Empowerment at the Bottom of the Pyramid: Poverty Reduction through Rural Tourism. 18th Asia Pacific Tourism Association Conference, Taipei."}, {"year": "2012", "text": "Lu, C. C., Chen, R. F., & Cheng, T. M. Cruiser Perception on the Port Cities Tourism Image. 18th Asia Pacific Tourism Association Conference, Taipei."}, {"year": "2008", "text": "Lu, C. C., & Chen, R. F. Cruisers’ Cognition on Leisure and Tourism Resources in Taiwan. 8th Biennial Conference of ANZALS, Melbourne, Australia."}, {"year": "2002", "text": "Wan, C. S., Chen, R. F., & Liu, Y. A. Customer relationship management strategies for travel websites in Taiwan. 2nd Conference on Sustainable Management of Tourism, Leisure and Hospitality, National Kaohsiung Hospitality College.", "note": "In Chinese"}, {"year": "2001", "text": "Liu, Y. A., Chen, R. F., & Wan, C. S. Customer relationship management in travel website operations. 1st Conference on Sustainable Management of Tourism, Leisure and Hospitality, National Kaohsiung Hospitality College.", "note": "In Chinese"}, {"year": "2001", "text": "Chen, R. F. Applying customer relationships to travel websites. 2001 National Management Master's Thesis Award Conference, Chinese Management Science Association.", "note": "In Chinese"}]}, {"title": "Theses", "group": "Research & Publications", "items": [{"year": "2001", "text": "Chen, R. F. Customer relationship management for travel websites. Master's thesis, Chinese Culture University.", "note": "Extended into National Science Council project NSC 90-2416-H-034-005 (Aug 2001–Jul 2002; PI: Prof. Yuan-An Liu)"}, {"year": "1995", "text": "Chen, R. F. Social support and school adjustment among adolescents. Undergraduate thesis, Fu Jen Catholic University."}]}]};
+const BASE='', ECOL='articles_en', SCOL='settings_en';  // build.py 會填入：中文版在 zh/，英文版在網站根目錄
 function rich(t){ return esc(String(t||'')).replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>'); }
-const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊戲學習","生活記憶","理財情報","老後提案"];
-const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
+const CATS = ["Licensing Exams","Vocational Education","Travel & Cruises","Morning Reading","Game-Based Learning","Life & Memories","Personal Finance","Ageing Well"];
+const ICON = {"Vocational Education":["edu","#f2d488"],"Licensing Exams":["exam","#a9c39d"],"Travel & Cruises":["ship","#a9c9d9"],"Morning Reading":["read","#c6b4d8"],"Life & Memories":["memo","#f1b79c"],"Personal Finance":["money","#f2d488"],"Ageing Well":["care","#eea3a0"],"Game-Based Learning":["game","#a9c39d"]};
 const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const PER=8;
 let filt = {q:'', cat:'', sub:'', det:'', year:'', n:PER};
 
 function doodle(cat, cls='doodle'){
-  const [i,c] = ICON[cat]||ICON["生活記憶"];
+  const [i,c] = ICON[cat]||ICON["Life & Memories"];
   return `<svg class="${cls}" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="31" ry="28" fill="${c}" opacity=".75" filter="url(#wash)"/><g class="sk"><use href="#i-${i}"/></g></svg>`;
 }
-function tag(cat){ const c=(ICON[cat]||ICON["生活記憶"])[1]; return `<span class="tag" style="background:${c}99">${esc(cat)}</span>`; }
+function tag(cat){ const c=(ICON[cat]||ICON["Life & Memories"])[1]; return `<span class="tag" style="background:${c}99">${esc(cat)}</span>`; }
 let EDIT=false; try{ EDIT = localStorage.getItem('rf-edit')==='1' || Object.keys(localStorage).some(k=>k.startsWith('sveltia-cms.user')); }catch(e){}
-function editBtn(a,cls){ return EDIT&&a.file?`<span class="edit-tools ${cls||''}"><span class="edit-btn" role="link" tabindex="0" data-edit="${a.file}" title="在後台修改這篇">✎ 修改</span><span class="edit-btn hide-btn" role="button" tabindex="0" data-hide="${a.file}" title="從網站上隱藏這篇">隱藏</span></span>`:''; }
+function editBtn(a,cls){ return EDIT&&a.file?`<span class="edit-tools ${cls||''}"><span class="edit-btn" role="link" tabindex="0" data-edit="${a.file}" data-col="${a.untr?'articles':ECOL}" title="Edit in admin">✎ Edit</span><span class="edit-btn hide-btn" role="button" tabindex="0" data-hide="${a.file}" title="Hide from site">Hide</span></span>`:''; }
 const REPO='d11522303/ray-site';
 function ghToken(){ try{ for(const k of Object.keys(localStorage)){ const v=localStorage.getItem(k)||''; const m=v.match(/(github_pat_[A-Za-z0-9_]+|gh[pousr]_[A-Za-z0-9]+)/); if(m) return m[1]; } }catch(e){} return ''; }
 const b64dec=t=>new TextDecoder().decode(Uint8Array.from(atob(t.replace(/\n/g,'')),c=>c.charCodeAt(0)));
 function b64enc(str){ const u=new TextEncoder().encode(str); let s=''; for(let i=0;i<u.length;i+=8192) s+=String.fromCharCode.apply(null,u.subarray(i,i+8192)); return btoa(s); }
 async function hideArticle(file, btn){
   const tok=ghToken();
-  if(!tok){ window.open('admin/#/collections/articles/entries/'+file,'_blank'); return; }
-  btn.textContent='隱藏中…';
+  if(!tok){ window.open(BASE+'admin/#/collections/articles/entries/'+file,'_blank'); return; }
+  btn.textContent='Hiding…';
   const url=`https://api.github.com/repos/${REPO}/contents/content/articles/${encodeURIComponent(file)}.md`;
   const H={Authorization:'Bearer '+tok, Accept:'application/vnd.github+json'};
   try{
     const r=await fetch(url+'?ref=main',{headers:H}); if(!r.ok) throw new Error(r.status);
     const j=await r.json(); let t=b64dec(j.content);
     t=/^published:.*$/m.test(t)? t.replace(/^published:.*$/m,'published: false') : t.replace(/^---\n/,'---\npublished: false\n');
-    const w=await fetch(url,{method:'PUT',headers:H,body:JSON.stringify({message:'隱藏文章：'+file,content:b64enc(t),sha:j.sha,branch:'main'})});
+    const w=await fetch(url,{method:'PUT',headers:H,body:JSON.stringify({message:'隱藏文章（英文版）：'+file,content:b64enc(t),sha:j.sha,branch:'main'})});
     if(!w.ok) throw new Error(w.status);
     const i=ARTS.findIndex(a=>a.file===file); if(i>=0) ARTS.splice(i,1);
-    btn.textContent='已隱藏'; btn.classList.remove('armed');
-    toast('已經隱藏，網站大約 1～2 分鐘後更新。想恢復可以到後台把「公開」打開。');
+    btn.textContent='Hidden'; btn.classList.remove('armed');
+    toast('Hidden on both the English and Chinese sites. The site updates in 1–2 minutes. To restore it, open the Chinese article (文章) in the admin and switch “公開” back on.');
     setTimeout(()=>{ if(location.hash.startsWith('#a-')) location.hash='#writing'; else route(); },1200);
-  }catch(err){ btn.textContent='隱藏'; btn.classList.remove('armed'); toast('隱藏失敗（'+err.message+'），請改到後台把「公開」關掉。'); }
+  }catch(err){ btn.textContent='Hide'; btn.classList.remove('armed'); toast('Could not hide ('+err.message+'). Please switch “published” off in the admin.'); }
 }
 function toast(msg){ let t=document.getElementById('toast'); if(!t){ t=document.createElement('div'); t.id='toast'; t.className='toast hand'; document.body.appendChild(t);} t.textContent=msg; t.classList.add('on'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('on'),6000); }
 function card(a){
@@ -274,28 +282,28 @@ function card(a){
     <div style="min-width:0"><h3>${esc(a.title)}</h3><p>${esc(a.ex)}</p>
       <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span>${editBtn(a)}</div></div></a>`;
 }
-function img(u){ u=String(u||''); return /^(https?:)?\/\//.test(u)?u:u.replace(/^\/+/,''); }
+function img(u){ u=String(u||''); return /^(https?:)?\/\/|^data:/.test(u)?u:BASE+u.replace(/^\/+/,''); }
 function countBy(){const c={};ARTS.forEach(a=>catsOf(a).forEach(k=>c[k]=(c[k]||0)+1));return c}
 function catsOf(a){ return a.cats&&a.cats.length?a.cats:[a.cat]; }
 function tags(a){ return catsOf(a).map(tag).join(''); }
 
 function heroPhoto(){
   if(HOME.hero_image) return `<div class="hero-photo"><img src="${esc(img(HOME.hero_image))}" alt="${esc(HOME.hero_alt||'')}"></div>`;
-  return EDIT ? `<div class="hero-photo empty" role="link" tabindex="0" data-edit-home="1"><span>＋<br>按這裡上傳首頁照片</span></div>` : '';
+  return EDIT ? `<div class="hero-photo empty" role="link" tabindex="0" data-edit-photo="1"><span>＋<br>Click to upload a home page photo</span></div>` : '';
 }
 
 function home(){
   const c = countBy(), H = HOME;
   const n = Math.max(1, parseInt(H.latest_count)||6);
-  const series = H.series_title ? `<section><div class="series hand">${doodle(H.series_category||'證照考試')}<div><h3><a href="#writing" data-go="${esc(H.series_category||'證照考試')}" style="text-decoration:none">${esc(H.series_title)}</a></h3><p>${rich(H.series_text)}</p></div>
-    <div class="n">${ARTS.filter(a=>H.series_keyword && a.title.includes(H.series_keyword)).length}<small>篇</small></div></div></section>` : '';
-  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-home="1" title="在後台修改首頁文字">✎ 修改首頁文字</span></div>`:''}<div class="hero${(HOME.hero_image||EDIT)?'':' solo'}">
+  const series = H.series_title ? `<section><div class="series hand">${doodle(H.series_category||'Licensing Exams')}<div><h3><a href="#writing" data-go="${esc(H.series_category||'Licensing Exams')}" style="text-decoration:none">${esc(H.series_title)}</a></h3><p>${rich(H.series_text)}</p></div>
+    <div class="n">${ARTS.filter(a=>H.series_keyword && (a.zt||a.title).includes(H.series_keyword)).length}<small>articles</small></div></div></section>` : '';
+  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-home="1" title="Edit home page text in admin">✎ Edit home page</span></div>`:''}<div class="hero${(HOME.hero_image||EDIT)?'':' solo'}">
     <div><div class="lead">${esc(H.eyebrow)}</div>
       <h1>${rich(H.headline)}</h1>
       <p>${rich(H.intro)}</p>
-      <div class="facts"><span class="hand">${ARTS.length} 篇文章</span>${ARTS.length?`<span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span>`:''}</div></div>
+      <div class="facts"><span class="hand">${ARTS.length} articles</span>${ARTS.length?`<span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span>`:''}</div></div>
     ${heroPhoto()}</div>
-  <section><div class="sec-head"><h2>${esc(H.latest_title)}</h2><a href="#writing">看全部 ${ARTS.length} 篇 →</a></div>
+  <section><div class="sec-head"><h2>${esc(H.latest_title)}</h2><a href="#writing">All ${ARTS.length} articles →</a></div>
     <div class="cards">${ARTS.slice(0,n).map(card).join('')}</div></section>
   <section><div class="sec-head"><h2>${esc(H.topics_title)}</h2></div>
     <div class="chips">${[...CATS].sort((x,y)=>(c[y]||0)-(c[x]||0)).map(k=>`<button class="chip" type="button" data-go="${k}">${k}<i>${c[k]||0}</i></button>`).join('')}</div></section>
@@ -303,19 +311,19 @@ function home(){
 }
 
 function writing(){
-  return `<div class="sec-head"><h1 style="font-size:34px">文章</h1></div>
+  return `<div class="sec-head"><h1 style="font-size:34px">Writing</h1></div>
   <div class="wlayout">
     <aside class="side">
-      <input id="q" class="hand" type="search" placeholder="搜尋標題或內容" value="${esc(filt.q)}" aria-label="搜尋文章">
+      <input id="q" class="hand" type="search" placeholder="Search titles or text" value="${esc(filt.q)}" aria-label="Search articles">
       <details class="side-box hand" id="sidebox" ${matchMedia('(min-width:761px)').matches?'open':''}>
-        <summary>篩選：年份與分類</summary>
+        <summary>Filter: year and topic</summary>
         <div id="side"></div>
       </details>
     </aside>
     <div class="wmain">
       <div class="crumbs" id="crumbs"></div>
       <div class="count" id="count"></div><div class="cards" id="list"></div>
-      <div style="text-align:center;margin-top:22px"><button class="chip" type="button" id="more" style="font-size:16px;padding:6px 22px">更多文章 ↓</button></div>
+      <div style="text-align:center;margin-top:22px"><button class="chip" type="button" id="more" style="font-size:16px;padding:6px 22px">More articles ↓</button></div>
     </div>
   </div>`;
 }
@@ -329,13 +337,13 @@ function renderSide(){
   const forYears = base.filter(inCat), forCats = base.filter(inYear);
   const ys = [...tally(forYears, year).entries()].sort((a,b)=>b[0].localeCompare(a[0]));
   const btn = (f,v,label,n,on,cls='') => `<button type="button" class="tb ${cls} ${on?'on':''}" data-f="${f}" data-v="${esc(v)}"><span>${label}</span><i>${n}</i></button>`;
-  let h = `<h4>撰寫年份</h4><div class="years">${btn('year','','全部',forYears.length,!filt.year,'y')}${ys.map(([y,n])=>btn('year',y,y,n,filt.year===y,'y')).join('')}</div>`;
-  h += `<h4>分類</h4><ul class="tree">${`<li>${btn('cat','','全部分類',forCats.length,!filt.cat)}</li>`}`;
+  let h = `<h4>Year</h4><div class="years">${btn('year','','All',forYears.length,!filt.year,'y')}${ys.map(([y,n])=>btn('year',y,y,n,filt.year===y,'y')).join('')}</div>`;
+  h += `<h4>Topics</h4><ul class="tree">${`<li>${btn('cat','','All topics',forCats.length,!filt.cat)}</li>`}`;
   const cc = tally(forCats, catsOf);
   for(const c of [...CATS].sort((x,y)=>(cc.get(y)||0)-(cc.get(x)||0))){
     if(!cc.get(c)) continue;
     const open = filt.cat===c;
-    h += `<li>${btn('cat',c,`<b class="dot" style="background:${(ICON[c]||ICON['生活記憶'])[1]}"></b>${c}`,cc.get(c),open&&!filt.sub)}`;
+    h += `<li>${btn('cat',c,`<b class="dot" style="background:${(ICON[c]||ICON['Life & Memories'])[1]}"></b>${c}`,cc.get(c),open&&!filt.sub)}`;
     if(open){
       const inC = forCats.filter(a=>a.cat===c);
       const subs = [...tally(inC, a=>a.sub).entries()].sort((a,b)=>b[1]-a[1]);
@@ -353,57 +361,58 @@ function renderSide(){
   }
   h += '</ul>';
   const total = ARTS.filter(a => matchQ(a) && inYear(a) && inCat(a)).length;
-  h += `<button type="button" class="chip see-res" id="seeres">看 ${total} 篇文章 ↓</button>`;
+  h += `<button type="button" class="chip see-res" id="seeres">See ${total} articles ↓</button>`;
   document.getElementById('side').innerHTML = h;
   const parts=[];
-  if(filt.year) parts.push(['year',filt.year+' 年']);
+  if(filt.year) parts.push(['year',filt.year]);
   if(filt.cat) parts.push(['cat',[filt.cat,filt.sub,filt.det].filter(Boolean).join(' › ')]);
-  if(filt.q.trim()) parts.push(['q','搜尋「'+filt.q.trim()+'」']);
-  document.getElementById('crumbs').innerHTML = parts.map(([k,t])=>`<button type="button" class="crumb hand" data-clear="${k}">${esc(t)} <span aria-hidden="true">✕</span></button>`).join('') + (parts.length>1?`<button type="button" class="crumb clear-all" data-clear="all">全部清除</button>`:'');
+  if(filt.q.trim()) parts.push(['q','Search: “'+filt.q.trim()+'”']);
+  document.getElementById('crumbs').innerHTML = parts.map(([k,t])=>`<button type="button" class="crumb hand" data-clear="${k}">${esc(t)} <span aria-hidden="true">✕</span></button>`).join('') + (parts.length>1?`<button type="button" class="crumb clear-all" data-clear="all">Clear all</button>`:'');
 }
 function renderList(){
   const r = ARTS.filter(a => matchQ(a) && inYear(a) && inCat(a));
   const shown = r.slice(0, filt.n);
-  document.getElementById('count').textContent = `共 ${r.length} 篇${r.length>shown.length?`，目前顯示 ${shown.length} 篇`:''}`;
-  document.getElementById('list').innerHTML = r.length ? shown.map(card).join('') : `<p class="empty">找不到符合條件的文章，換個關鍵字或分類試試。</p>`;
+  document.getElementById('count').textContent = `${r.length} articles${r.length>shown.length?`, showing ${shown.length}`:''}`;
+  document.getElementById('list').innerHTML = r.length ? shown.map(card).join('') : `<p class="empty">No articles match. Try another keyword or topic.</p>`;
   document.getElementById('more').hidden = r.length <= shown.length;
   renderSide();
 }
 
 function article(id){
-  const i = ARTS.findIndex(a=>a.id===id); if(i<0) return `<p class="empty">找不到這篇文章。<a href="#writing">回文章列表</a></p>`;
+  const i = ARTS.findIndex(a=>a.id===id); if(i<0) return `<p class="empty">This article could not be found. <a href="#writing">Back to all articles</a> or <a href="zh/" data-lang="1">try the Chinese site</a>.</p>`;
   const a = ARTS[i], prev = ARTS[i+1], next = ARTS[i-1];
-  return `<article class="article"><a class="back" href="#writing">← 全部文章</a>${editBtn(a,'big')}
+  return `<article class="article"><a class="back" href="#writing">← All articles</a>${editBtn(a,'big')}
     ${a.cover?`<img class="cover" src="${esc(img(a.cover))}" alt="">`:`<div style="margin-top:14px">${doodle(a.cat)}</div>`}
     <h1>${esc(a.title)}</h1>
-    <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
+    <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} words</span><span>${Math.max(1,Math.round(a.len/220))} min read</span></div>
+    ${a.untr?`<p class="untr">This article has not been translated into English yet, so it is shown in Chinese.</p>`:''}
     <div class="prose">${a.body}</div>
     ${(a.photos||[]).length?`<div class="gallery">${a.photos.map(p=>`<figure><a href="${esc(img(p.src))}" target="_blank" rel="noopener"><img src="${esc(img(p.src))}" alt="${esc(p.cap)}" loading="lazy"></a>${p.cap?`<figcaption>${esc(p.cap)}</figcaption>`:''}</figure>`).join('')}</div>`:''}
-    <div class="pn">${prev?`<a class="hand" href="#a-${prev.id}"><span>上一篇</span>${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="hand next" href="#a-${next.id}"><span>下一篇</span>${esc(next.title)}</a>`:''}</div>
+    <div class="pn">${prev?`<a class="hand" href="#a-${prev.id}"><span>Previous</span>${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="hand next" href="#a-${next.id}"><span>Next</span>${esc(next.title)}</a>`:''}</div>
   </article>`;
 }
 
 function teaching(){
-  const t = ARTS.filter(a=>catsOf(a).some(k=>['技職教育','證照考試'].includes(k)));
-  return `<h1 style="font-size:34px;margin-bottom:6px">教學</h1><p class="lead" style="margin:0">給醒吾旅運與觀光科系同學的課程資源、證照準備與實習經驗。</p>
+  const t = ARTS.filter(a=>catsOf(a).some(k=>['Vocational Education','Licensing Exams'].includes(k)));
+  return `<h1 style="font-size:34px;margin-bottom:6px">Teaching</h1><p class="lead" style="margin:0">Course resources, licensing exam prep and internship experience for tourism students at Hsing Wu University and beyond.</p>
   <section><div class="cols">
-    <div class="box hand">${doodle('證照考試')}<h3>國考領隊證照專區</h3><ul><li>領隊導遊課程筆記</li><li>華語領隊模擬考題</li><li>導遊領隊考前陪跑（已收進文章）</li></ul></div>
-    <div class="box hand">${doodle('旅行郵輪')}<h3>郵輪、旅展與微學分</h3><ul><li>郵輪旅遊</li><li>ITF 台北國際旅展</li><li>微學分課程報名</li></ul></div>
-    <div class="box hand">${doodle('技職教育')}<h3>觀光法規案例</h3><ul><li>甘肅團與日本團案例比較</li><li>旅行社財務分析</li></ul></div>
-  </div><p class="note">這三區的內容目前在 Google Sites 上，正式網站會把講義、筆記和下載連結搬過來。</p></section>
-  <section><div class="sec-head"><h2>相關文章</h2></div><div class="cards">${t.map(card).join('')}</div></section>`;
+    <div class="box hand">${doodle('Licensing Exams')}<h3>Tour Leader &amp; Guide Licensing</h3><ul><li>Course notes for tour leaders and guides</li><li>Mock exam questions</li><li>Daily exam countdown (now in Writing)</li></ul></div>
+    <div class="box hand">${doodle('Travel & Cruises')}<h3>Cruises, Travel Fairs &amp; Micro-credits</h3><ul><li>Cruise tourism</li><li>ITF Taipei International Travel Fair</li><li>Micro-credit course sign-up</li></ul></div>
+    <div class="box hand">${doodle('Vocational Education')}<h3>Tourism Law Cases</h3><ul><li>Comparing the Gansu and Japan tour cases</li><li>Travel agency financial analysis</li></ul></div>
+  </div><p class="note">These three sections still live on the old Google Sites page; handouts, notes and downloads will move here.</p></section>
+  <section><div class="sec-head"><h2>Related articles</h2></div><div class="cards">${t.map(card).join('')}</div></section>`;
 }
 
 function travel(){
-  const t = ARTS.filter(a=>catsOf(a).includes('旅行郵輪'));
+  const t = ARTS.filter(a=>catsOf(a).includes('Travel & Cruises'));
   const place = (code,name,txt,col)=>`<div class="box hand"><svg class="doodle" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="31" ry="27" fill="${col}" opacity=".75" filter="url(#wash)"/><text x="38" y="47" text-anchor="middle" font-family="LXGW WenKai TC, serif" font-size="20" font-weight="700" fill="#4a3426">${code}</text></svg><h3>${name}</h3><p>${txt}</p></div>`;
-  return `<h1 style="font-size:34px;margin-bottom:6px">旅行</h1><p class="lead" style="margin:0">帶團、見學與自己出走的紀錄。</p>
+  return `<h1 style="font-size:34px;margin-bottom:6px">Travel</h1><p class="lead" style="margin:0">Notes from leading tours, student study trips and travelling on my own.</p>
   <section><div class="cols">
-    ${place('BKK','泰國 Thailand','目前在 Google Sites 的 Thailand 頁，正式網站會搬過來。','#f2d488')}
-    ${place('NGO','名古屋 Nagoya','目前在 Google Sites 的 Nagoya 頁，正式網站會搬過來。','#f1b79c')}
-    ${place('YVR','加拿大 Canada','醒吾旅運學海築夢見學，溫哥華與維多利亞。','#a9c9d9')}
+    ${place('BKK','Thailand','Currently on the old Google Sites Thailand page; moving here soon.','#f2d488')}
+    ${place('NGO','Nagoya','Currently on the old Google Sites Nagoya page; moving here soon.','#f1b79c')}
+    ${place('YVR','Canada','Hsing Wu tourism students’ study tour to Vancouver and Victoria.','#a9c9d9')}
   </div></section>
-  <section><div class="sec-head"><h2>旅行文章</h2></div><div class="cards">${t.map(card).join('')}</div></section>`;
+  <section><div class="sec-head"><h2>Travel articles</h2></div><div class="cards">${t.map(card).join('')}</div></section>`;
 }
 
 function cvBlock(){
@@ -415,19 +424,19 @@ function cvBlock(){
     const its=x.items, noy=!its.some(it=>it.year), avg=its.reduce((n,it)=>n+String(it.text||'').length,0)/its.length;
     const wide=avg>60||its.length>10, MAX=(+x.show>0)?+x.show:(wide?6:8);
     const cls='cv-list'+(noy?' noyear':'');
-    return `<div class="cv-sec hand${wide?' wide':''}" id="${x._id}"><h4>${esc(x.title)}<span>${its.length} 項</span></h4>
+    return `<div class="cv-sec hand${wide?' wide':''}" id="${x._id}"><h4>${esc(x.title)}<span>${its.length}</span></h4>
       <ul class="${cls}">${its.slice(0,MAX).map(row).join('')}</ul>
-      ${its.length>MAX?`<details><summary>展開其餘 ${its.length-MAX} 項</summary><ul class="${cls}">${its.slice(MAX).map(row).join('')}</ul></details>`:''}</div>`;
+      ${its.length>MAX?`<details><summary>Show ${its.length-MAX} more</summary><ul class="${cls}">${its.slice(MAX).map(row).join('')}</ul></details>`:''}</div>`;
   };
-  return `<section id="cv"><div class="cv-head"><h2>${esc(ABOUT.cv_title||'個人簡歷')}</h2>${ABOUT.cv_updated?`<small>更新於 ${esc(String(ABOUT.cv_updated))}</small>`:''}</div>
+  return `<section id="cv"><div class="cv-head"><h2>${esc(ABOUT.cv_title||'Curriculum Vitae')}</h2>${ABOUT.cv_updated?`<small>Updated ${esc(String(ABOUT.cv_updated))}</small>`:''}</div>
     <div class="cv-nav">${cv.map(x=>`<a class="chip" href="#hello" data-cv="${x._id}">${esc(x.title)}</a>`).join('')}</div>
     ${groups.map(G=>`<div class="cv-group">${G.g?`<h3>${esc(G.g)}</h3>`:''}<div class="cv-grid">${G.list.map(sec).join('')}</div></div>`).join('')}</section>`;
 }
 
 function hello(){
-  const icons=['每日晨讀','技職教育','生活記憶','旅行郵輪','證照考試','遊戲學習'];
+  const icons=['Morning Reading','Vocational Education','Life & Memories','Travel & Cruises','Licensing Exams','Game-Based Learning'];
   const ext=h=>h.replace(/<a href="http/g,'<a target="_blank" rel="noopener" href="http');
-  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-about="1" title="在後台修改關於頁">✎ 修改關於頁</span></div>`:''}<div class="article">${ABOUT.lead?`<div class="lead">${esc(ABOUT.lead)}</div>`:''}<h1>${esc(ABOUT.title||'')}</h1>
+  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-about="1" title="Edit the About page in admin">✎ Edit About page</span></div>`:''}<div class="article">${ABOUT.lead?`<div class="lead">${esc(ABOUT.lead)}</div>`:''}<h1>${esc(ABOUT.title||'')}</h1>
   <div class="prose">${ext(ABOUT.body||'')}</div></div>
   <section>${(ABOUT.boxes||[]).length?`<div class="cols${ABOUT.boxes.length===2?' c2':''}">${ABOUT.boxes.map((x,i)=>`<div class="box hand">${doodle(icons[i%icons.length])}<h3>${esc(x.title)}</h3>${ext(x.text)}</div>`).join('')}</div>`:''}${ABOUT.note?`<p class="note">${esc(ABOUT.note)}</p>`:''}</section>${cvBlock()}`;
 }
@@ -445,13 +454,14 @@ document.addEventListener('click', e=>{ const L=e.target.closest('[data-lang]');
 app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=PER; renderList(); }});
 app.addEventListener('click', e=>{
   const ed = e.target.closest('[data-edit]');
-  if(ed){ e.preventDefault(); e.stopPropagation(); window.open('admin/#/collections/articles/entries/'+ed.dataset.edit,'_blank'); return; }
+  if(ed){ e.preventDefault(); e.stopPropagation(); window.open(BASE+'admin/#/collections/'+(ed.dataset.col||ECOL)+'/entries/'+ed.dataset.edit,'_blank'); return; }
   { const c=e.target.closest('[data-cv]'); if(c){ e.preventDefault(); const t=document.getElementById(c.dataset.cv); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); return; } }
-  if(e.target.closest('[data-edit-about]')){ e.preventDefault(); window.open('admin/#/collections/settings/entries/about','_blank'); return; }
-  if(e.target.closest('[data-edit-home]')){ e.preventDefault(); window.open('admin/#/collections/settings/entries/home','_blank'); return; }
+  if(e.target.closest('[data-edit-about]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/'+SCOL+'/entries/about','_blank'); return; }
+  if(e.target.closest('[data-edit-photo]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/settings/entries/home','_blank'); return; }
+  if(e.target.closest('[data-edit-home]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/'+SCOL+'/entries/home','_blank'); return; }
   const hd = e.target.closest('[data-hide]');
   if(hd){ e.preventDefault(); e.stopPropagation();
-    if(!hd.classList.contains('armed')){ hd.classList.add('armed'); hd.textContent='確定隱藏？'; setTimeout(()=>{ if(hd.classList.contains('armed')){ hd.classList.remove('armed'); hd.textContent='隱藏'; } },4000); return; }
+    if(!hd.classList.contains('armed')){ hd.classList.add('armed'); hd.textContent='Hide it?'; setTimeout(()=>{ if(hd.classList.contains('armed')){ hd.classList.remove('armed'); hd.textContent='Hide'; } },4000); return; }
     hideArticle(hd.dataset.hide, hd); return; }
   const f = e.target.closest('[data-f]');
   if(f){ const k=f.dataset.f, v=f.dataset.v;

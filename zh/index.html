@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="alternate" hreflang="en" href="../">
+<link rel="alternate" hreflang="zh-Hant" href="../zh/">
+<title>隨峰而趣</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&display=swap">
+<style>
+/* Layout: a picture book — cream watercolor paper, sketchy brown pencil lines, one chibi guide in the hero, small doodles per topic.
+   Deliberately single-theme (a printed picture book), so every color is set explicitly. */
+:root{
+  --paper:#f6eedc; --paper-2:#fbf6ea; --ink:#4a3426; --muted:#7c6352; --line:#8a6a52;
+  --sage:#a9c39d; --sky:#a9c9d9; --peach:#f1b79c; --butter:#f2d488; --rose:#eea3a0; --lilac:#c6b4d8;
+  --f-hand:"LXGW WenKai TC","Kaiti TC","STKaiti","DFKai-SB",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:var(--f-hand);font-size:17px;line-height:1.85;background-color:var(--paper);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .33 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .85 0 0 0 0 .66 0 0 0 .5 -.12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--ink);text-decoration-color:var(--peach);text-decoration-thickness:3px;text-underline-offset:4px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px dashed var(--ink);outline-offset:3px}
+h1,h2,h3{font-weight:700;text-wrap:balance;line-height:1.35;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.svgdefs{position:absolute;width:0;height:0}
+.sk{filter:url(#pencil)}
+/* hand-drawn box: irregular radius + slightly uneven border */
+.hand{border:2px solid var(--line);border-radius:255px 18px 225px 16px/16px 225px 18px 255px}
+header.top{border-bottom:2px dashed rgba(138,106,82,.45)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand b{font-size:26px;letter-spacing:.06em}
+.brand small{display:block;font-size:12px;color:var(--muted);letter-spacing:.08em;line-height:1.2}
+nav.main{display:flex;gap:6px;flex-wrap:wrap}
+nav.main a{text-decoration:none;color:var(--muted);padding:2px 12px;font-size:16px;position:relative}
+nav.main a small{font-size:11px;letter-spacing:.08em;margin-left:4px;opacity:.75}
+nav.main a.on{color:var(--ink)}
+nav.main a.lang{margin-left:6px;padding:0 10px;font-size:14px;color:var(--ink);background:var(--paper-2)}
+nav.main a.on::after{content:"";position:absolute;left:8px;right:8px;bottom:2px;height:9px;background:var(--butter);opacity:.75;border-radius:40% 60% 50% 50%;z-index:-1}
+main{padding-block:28px 64px}
+.lead{color:var(--muted)}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;align-items:center;padding-block:4px 20px}
+.hero h1{font-size:clamp(32px,5.4vw,52px);letter-spacing:.04em}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 58%,rgba(242,212,136,.8) 58%,rgba(242,212,136,.8) 88%,transparent 88%)}
+.hero p{max-width:30em;margin:16px 0 0;color:var(--muted)}
+.untr{margin:14px 0 0;padding:10px 14px;border:2px dashed var(--line);border-radius:14px;color:var(--muted);font-size:15px}
+.hero.solo{grid-template-columns:1fr}
+.hero-photo{width:100%;max-width:440px;justify-self:center;aspect-ratio:4/5}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 60%,transparent 100%)}
+.hero-photo.empty{display:grid;place-items:center;text-align:center;border:2px dashed var(--line);border-radius:40px;color:var(--muted);font-size:18px;line-height:1.8;cursor:pointer;background:var(--paper-2)}
+.hero-photo.empty span{font-size:16px}
+.peek{display:block;width:72px;height:72px;margin:28px auto 0;transform:rotate(5deg)}
+.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.facts span{background:var(--paper-2);padding:4px 14px;font-size:15px}
+section{padding-block:34px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head h2{font-size:26px;display:flex;align-items:center;gap:8px}
+.sec-head a{font-size:15px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card-a{display:grid;grid-template-columns:76px minmax(0,1fr);gap:14px;align-items:start;padding:16px 18px;background:var(--paper-2);text-decoration:none;color:var(--ink);transition:transform .15s}
+.card-a:hover{transform:rotate(-.4deg) translateY(-2px)}
+.card-a:nth-child(even):hover{transform:rotate(.4deg) translateY(-2px)}
+.doodle{width:76px;height:76px}
+.cards,.card-a{overflow-x:clip}html,body{overflow-x:clip}
+.card-a h3{font-size:19px}
+.card-a p{margin:4px 0 0;font-size:15px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.7}
+.card-a .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:8px;font-size:13px;color:var(--muted)}
+.tag{display:inline-block;padding:0 10px;font-size:13px;border-radius:12px 4px 12px 4px;color:var(--ink)}
+/* filters */
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.tools input{flex:1 1 240px;min-width:0;font:inherit;font-size:16px;padding:8px 16px;background:var(--paper-2);color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:inherit;font-size:15px;padding:2px 14px;border:2px solid var(--line);border-radius:20px 8px 20px 8px;background:transparent;color:var(--muted);cursor:pointer}
+.chip.on{color:var(--ink);background:var(--butter)}
+.chip i{font-style:normal;font-size:12px;margin-left:4px;opacity:.75}
+.count{font-size:14px;color:var(--muted);margin-bottom:10px}
+.wlayout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:26px;align-items:start}
+.wlayout .cards{grid-template-columns:minmax(0,1fr)}
+.side{position:sticky;top:14px;display:flex;flex-direction:column;gap:12px;max-height:calc(100vh - 28px);overflow:auto;padding-bottom:6px}
+.side input{font:inherit;font-size:16px;padding:8px 14px;background:var(--paper-2);color:var(--ink);min-width:0;width:100%}
+.side-box{background:var(--paper-2);padding:10px 14px 14px}
+.side-box summary{cursor:pointer;font-size:15px;color:var(--muted);list-style:none}
+.side-box summary::-webkit-details-marker{display:none}
+.side-box summary::before{content:"▸ ";}
+.side-box[open] summary::before{content:"▾ ";}
+.side h4{font-size:15px;margin:14px 0 6px;color:var(--ink);border-bottom:2px dashed rgba(138,106,82,.35);padding-bottom:4px}
+.years{display:flex;flex-wrap:wrap;gap:4px}
+.tree,.tree ul{list-style:none;margin:0;padding:0}
+.tree ul{margin:2px 0 4px 14px;border-left:2px dotted rgba(138,106,82,.45);padding-left:6px}
+.tb{display:flex;align-items:center;gap:6px;width:100%;font:inherit;font-size:15px;text-align:left;background:none;border:0;padding:3px 8px;border-radius:12px 5px 12px 5px;color:var(--ink);cursor:pointer}
+.tb span{flex:1;min-width:0;display:flex;align-items:center;gap:6px}
+.tb i{font-style:normal;font-size:12px;color:var(--muted)}
+.tb:hover{background:rgba(242,212,136,.35)}
+.tb.on{background:var(--butter);font-weight:700}
+.tb.y{width:auto;padding:2px 8px;font-size:14px;border:1.5px solid rgba(138,106,82,.5)}
+.tb.t2{font-size:14px}.tb.t3{font-size:13.5px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;border:1.5px solid var(--ink)}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.crumbs:empty{display:none}
+.see-res{display:none;width:100%;margin-top:14px;font-size:16px;padding:6px;background:var(--butter);color:var(--ink)}
+.crumb{font:inherit;font-size:14px;padding:2px 12px;background:var(--butter);border:2px solid var(--ink);cursor:pointer;color:var(--ink)}
+.crumb.clear-all{background:transparent;border-style:dashed}
+.empty{color:var(--muted);padding:24px 0}
+/* article */
+.article{max-width:40em;margin:0 auto}
+.article .back{font-size:15px}
+.article h1{font-size:clamp(28px,4.6vw,40px);margin:18px 0 12px}
+.article .meta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--muted);padding-bottom:16px;margin-bottom:22px;border-bottom:2px dashed rgba(138,106,82,.45)}
+.edit-tools{display:inline-flex;gap:6px;margin-left:auto}
+.edit-tools.big{float:right}
+.edit-btn{display:inline-block;padding:2px 12px;font-size:14px;color:var(--ink);background:var(--butter);border:2px solid var(--ink);border-radius:14px 6px 14px 6px;cursor:pointer;white-space:nowrap}
+.big .edit-btn{font-size:16px;padding:4px 14px}
+.hide-btn{background:var(--paper-2)}
+.hide-btn.armed{background:var(--rose);font-weight:700}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);max-width:min(92vw,520px);padding:12px 18px;background:var(--paper-2);border:2px solid var(--ink);font-size:15px;opacity:0;transition:.25s;z-index:50;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.edit-btn:hover{transform:rotate(-2deg)}
+.prose{font-size:18px;line-height:2;overflow-wrap:anywhere}
+.prose p{margin:0 0 1.1em}
+.prose h2,.prose h3{font-size:22px;margin:1.6em 0 .6em}
+.prose hr{border:0;border-top:2px dashed rgba(138,106,82,.45);margin:2em 0}
+.prose figure.ph{margin:1.4em 0;padding:30px 16px;text-align:center;font-size:14px;color:var(--muted);background:rgba(169,201,217,.28);border:2px dashed var(--line);border-radius:30px 10px 30px 10px}
+.prose img{max-width:100%;height:auto;border-radius:14px;margin:.6em 0}
+.article img.cover{display:block;width:100%;max-height:440px;object-fit:cover;border-radius:18px;margin:16px 0 4px;border:2px solid var(--line)}
+.card-a img.thumb{width:76px;height:76px;object-fit:cover;border-radius:14px;border:2px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:26px 0 8px}
+.gallery figure{margin:0}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:2px solid var(--line)}
+.gallery figcaption{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.6}
+.origin{margin-top:32px;padding:14px 18px;font-size:15px;color:var(--muted);background:var(--paper-2)}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.pn a{display:block;padding:12px 16px;text-decoration:none;font-size:15px;background:var(--paper-2);min-width:0}
+.pn a span{display:block;font-size:12px;color:var(--muted)}
+.pn a.next{text-align:right}
+/* cv */
+.cv-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.cv-head small{color:var(--muted);font-size:14px}
+.cv-nav{display:flex;flex-wrap:wrap;gap:8px 10px;margin:8px 0 6px}
+.cv-nav a{text-decoration:none}
+.cv-group{margin-top:30px}
+.cv-group>h3{font-size:22px;margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.cv-group>h3::after{content:"";flex:1;border-top:2px dashed rgba(138,106,82,.45)}
+.cv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.cv-sec{padding:18px 22px;background:var(--paper-2);min-width:0;scroll-margin-top:90px}
+.cv-sec.wide{grid-column:1/-1}
+.cv-sec h4{font-size:20px;margin:0 0 8px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.cv-sec h4 span{font-size:13px;color:var(--muted);font-weight:400}
+.cv-list{list-style:none;margin:0;padding:0}
+.cv-list li{display:grid;grid-template-columns:128px minmax(0,1fr);gap:4px 12px;padding:8px 0;border-top:1px dashed rgba(138,106,82,.35);font-size:15.5px;line-height:1.7}
+.cv-list li:first-child{border-top:0}
+.cv-list.noyear li{grid-template-columns:minmax(0,1fr)}
+.cv-list .y{color:var(--muted);font-size:14px;white-space:nowrap}
+.cv-list .t{overflow-wrap:anywhere}
+.cv-list .n{display:block;color:var(--muted);font-size:13.5px}
+.cv-sec details summary{cursor:pointer;margin-top:8px;font-size:15px;color:var(--muted);list-style:none}
+.cv-sec details summary::before{content:"＋ "}
+.cv-sec details[open] summary{display:none}
+@media (max-width:760px){
+  .cv-grid{grid-template-columns:minmax(0,1fr)}
+  .cv-list li{grid-template-columns:minmax(0,1fr);gap:0}
+  .cv-sec{padding:16px}
+}
+/* blocks */
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.cols.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.box{padding:18px 20px;background:var(--paper-2);min-width:0}
+.box h3{font-size:20px;margin:6px 0 4px}
+.box p{margin:0;color:var(--muted);font-size:15px}
+.box ul{margin:6px 0 0;padding-left:1.2em;font-size:15px}
+.box .doodle{width:64px;height:64px}
+.note{font-size:14px;color:var(--muted);margin-top:16px}
+.series{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:20px;align-items:center;padding:20px 24px;background:rgba(169,195,157,.35)}
+.series h3{font-size:24px}
+.series p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.series .n{font-size:44px;font-weight:700;line-height:1;text-align:center}
+.series .n small{display:block;font-size:14px;font-weight:400;color:var(--muted)}
+footer{padding-block:24px;font-size:14px;color:var(--muted);border-top:2px dashed rgba(138,106,82,.45)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:760px){
+  .wlayout{grid-template-columns:minmax(0,1fr);gap:14px}
+  .side{position:static;max-height:none;overflow:visible}
+  .see-res{display:block}
+  .hero{grid-template-columns:1fr}
+  .hero-photo{max-width:320px;order:-1}
+  .cards,.cols{grid-template-columns:1fr}
+  .series{grid-template-columns:72px minmax(0,1fr)}
+  .series .n{grid-column:1/-1;text-align:left}
+  .pn{grid-template-columns:1fr}
+  nav.main a small{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<!-- shared filters + doodles -->
+<svg class="svgdefs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="pencil" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter>
+    <filter id="wash" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="14" result="d"/><feGaussianBlur in="d" stdDeviation="1.4" result="b"/><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="1" result="g"/><feColorMatrix in="g" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.2 1.1" result="gm"/><feComposite in="b" in2="gm" operator="in"/></filter>
+    <g id="i-edu"><path d="M14 30 L38 20 L62 30 L38 40 Z" fill="#f2d488"/><path d="M24 35 v10 c8 6 20 6 28 0 v-10" fill="#fbf6ea"/><path d="M14 30 L38 20 L62 30 L38 40 Z M24 35 v10 c8 6 20 6 28 0 v-10 M62 30 v14" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="62" cy="46" r="2.6" fill="#4a3426"/></g>
+    <g id="i-exam"><rect x="20" y="14" width="34" height="46" rx="4" fill="#fbf6ea"/><path d="M27 26h20M27 34h20M27 42h12" stroke="#a9c39d" stroke-width="3" stroke-linecap="round"/><rect x="20" y="14" width="34" height="46" rx="4" fill="none" stroke="#4a3426" stroke-width="2.4"/><path d="M46 52 L60 30 L65 33 L51 55 L45 57 Z" fill="#f1b79c" stroke="#4a3426" stroke-width="2.2" stroke-linejoin="round"/></g>
+    <g id="i-ship"><path d="M12 46 h52 l-8 12 h-36 z" fill="#a9c9d9"/><rect x="22" y="32" width="30" height="14" rx="2" fill="#fbf6ea"/><rect x="30" y="22" width="10" height="10" fill="#f1b79c"/><path d="M12 46 h52 l-8 12 h-36 z M22 46 v-14 h30 v14 M30 32 v-10 h10 v10" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round"/><circle cx="29" cy="39" r="2" fill="#4a3426"/><circle cx="37" cy="39" r="2" fill="#4a3426"/><circle cx="45" cy="39" r="2" fill="#4a3426"/><path d="M8 64 q6 -4 12 0 t12 0 t12 0 t12 0 t12 0" fill="none" stroke="#7c9fb3" stroke-width="2.2" stroke-linecap="round"/></g>
+    <g id="i-read"><path d="M38 26 c-8 -6 -18 -6 -24 -3 v32 c6 -3 16 -3 24 3 c8 -6 18 -6 24 -3 v-32 c-6 -3 -16 -3 -24 3z" fill="#fbf6ea"/><path d="M14 23 v32" stroke="#c6b4d8" stroke-width="6"/><path d="M38 26 c-8 -6 -18 -6 -24 -3 v32 c6 -3 16 -3 24 3 c8 -6 18 -6 24 -3 v-32 c-6 -3 -16 -3 -24 3z M38 26 v32" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round"/><circle cx="58" cy="14" r="7" fill="#f2d488" stroke="#4a3426" stroke-width="2"/></g>
+    <g id="i-memo"><path d="M16 36 L38 18 L60 36 V60 H16 Z" fill="#fbf6ea"/><path d="M12 38 L38 16 L64 38" fill="none" stroke="#4a3426" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="31" y="44" width="12" height="16" fill="#f1b79c"/><rect x="21" y="40" width="8" height="8" fill="#a9c9d9"/><path d="M16 36 V60 H60 V36 M31 60 v-16 h12 v16 M21 40 h8 v8 h-8 z" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round"/><path d="M50 22 v-8 h6 v13" fill="#eea3a0" stroke="#4a3426" stroke-width="2.2" stroke-linejoin="round"/></g>
+    <g id="i-money"><ellipse cx="38" cy="50" rx="20" ry="7" fill="#f2d488"/><path d="M18 50 v-8 c0 -4 9 -7 20 -7 s20 3 20 7 v8" fill="#f2d488"/><ellipse cx="38" cy="42" rx="20" ry="7" fill="#f8e4ad"/><path d="M18 42 v8 c0 4 9 7 20 7 s20 -3 20 -7 v-8 M18 42 c0 -4 9 -7 20 -7 s20 3 20 7 c0 4 -9 7 -20 7 s-20 -3 -20 -7" fill="none" stroke="#4a3426" stroke-width="2.4"/><path d="M38 14 v14 M33 18 h8 M33 24 h8" stroke="#4a3426" stroke-width="2.4" stroke-linecap="round"/></g>
+    <g id="i-care"><path d="M22 34 h30 v14 c0 8 -6 12 -15 12 s-15 -4 -15 -12z" fill="#fbf6ea"/><path d="M22 34 h30 v14 c0 8 -6 12 -15 12 s-15 -4 -15 -12z M52 38 c8 0 8 10 0 10" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linejoin="round"/><path d="M37 30 c-6 -6 -12 -2 -10 -7 c2 -4 7 -3 10 1 c3 -4 8 -5 10 -1 c2 5 -4 1 -10 7z" fill="#eea3a0" stroke="#4a3426" stroke-width="2" stroke-linejoin="round"/></g>
+    <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="5" result="d"/><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="9" result="g"/><feColorMatrix in="g" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.2 1.9" result="gm"/><feComposite in="d" in2="gm" operator="in"/></filter>
+    <g id="i-game"><rect x="18" y="22" width="34" height="34" rx="6" fill="#fbf6ea"/><rect x="18" y="22" width="34" height="34" rx="6" fill="none" stroke="#4a3426" stroke-width="2.4"/><circle cx="27" cy="31" r="3" fill="#4a3426"/><circle cx="35" cy="39" r="3" fill="#4a3426"/><circle cx="43" cy="47" r="3" fill="#4a3426"/><path d="M50 40 l12 -14 l8 8 l-14 12 z" fill="#f1b79c" stroke="#4a3426" stroke-width="2.2" stroke-linejoin="round"/></g>
+  </defs>
+</svg>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#home"><svg width="40" height="40" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="30" ry="28" fill="#f1b79c" filter="url(#wash)" opacity=".8"/><g class="sk"><use href="#i-ship"/></g></svg><span><b>隨峰而趣</b><small>Rayfong's Travelogue</small></span></a>
+  <nav class="main" id="nav">
+    <a href="#home" data-v="home">首頁</a>
+    <a href="#writing" data-v="writing">文章<small>WRITING</small></a>
+    <a href="#teaching" data-v="teaching">教學<small>TEACHING</small></a>
+    <a href="#travel" data-v="travel">旅行<small>TRAVEL</small></a>
+    <a href="#hello" data-v="hello">關於<small>HELLO</small></a>
+    <!-- 語言切換按鈕：build.py 會換成「EN」或「中文」 -->
+    <a href="../" class="lang hand" data-lang="1" title="English version">EN</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="app"></main>
+
+<footer><div class="wrap">
+  <span>© 隨峰而趣 · www.rayfong.idv.tw</span>
+  <span>手繪繪本風 · 用心寫下的每一篇</span>
+</div></footer>
+
+<script>
+const ARTS = [];
+const HOME = Object.assign({eyebrow:'',headline:'',intro:'',latest_title:'最新文章',latest_count:6,topics_title:'依主題閱讀',series_title:'',series_text:'',series_keyword:'考前',series_category:'證照考試'}, {"hero_image": "/images/uploads/IMG_9712.JPG", "hero_alt": "", "eyebrow": "瑞峰老師的筆記本", "headline": "走過的路  *記得的事*", "intro": "這裡收著我在研究室、課堂、旅途和生活裡寫下的文字。", "latest_title": "最新文章", "latest_count": 6, "topics_title": "依主題閱讀", "series_title": "導遊領隊證照百日陪考", "series_text": "每年國考前，一天一題解析、一則提醒，陪學生走到考場。", "series_keyword": "考前", "series_category": "證照考試"});
+const ABOUT = {"lead": "HELLO", "title": "我是瑞峰老師！", "body": "<p>在中華徵信所、台北市青少年育樂中心和旅行資訊業工作近十年。<br />\n在技職科大當教師兼行政工作快二十年。<br />\n在此時，我要開創自己的人生遊戲。<\/p>", "boxes": [{"title": "任教學校", "text": "<p>醒吾科大旅運系（HWU）<br />\n臺灣觀光學院餐旅系（THT）<\/p>"}], "note": "", "cv_title": "個人簡歷 CV", "cv_updated": "2025.12.9", "cv": [{"title": "學歷", "group": "學經歷", "show": 3, "items": [{"year": "2026～", "text": "國立臺灣科技大學 應用科技研究所 博士生", "note": ""}, {"year": "2001", "text": "中國文化大學 觀光事業研究所 碩士", "note": ""}, {"year": "1995", "text": "天主教輔仁大學 社會學系 學士", "note": ""}]}, {"title": "教職經歷", "group": "學經歷", "show": 3, "items": [{"year": "2021.04～迄今", "text": "醒吾科技大學 旅運管理系 副教授", "note": "部定副字第 148041 號"}, {"year": "2018.08～2021.07", "text": "醒吾科技大學 旅運管理系 系主任、副主任", "note": ""}, {"year": "2014.02～2021.03", "text": "醒吾科技大學 旅運管理系 助理教授", "note": ""}, {"year": "2013.03～2014.01", "text": "臺灣觀光學院 餐旅管理系 助理教授", "note": "部定助理字第 037267 號"}, {"year": "2006.08～2013.03", "text": "臺灣觀光學院 旅遊管理系 講師", "note": "部定講字第 076147 號"}, {"year": "2006.08～2014.01", "text": "臺灣觀光學院 行政兼職", "note": "教學資源中心主任暨出版組組長、校長室秘書、研究發展處學術發展組長、代理技合處處長、研究發展組長、實習就業輔導組長等"}]}, {"title": "業界經歷", "group": "學經歷", "show": 3, "items": [{"year": "2005.03～2006.03", "text": "信欣國際系統公司 副總經理、專案經理", "note": ""}, {"year": "2001.07～2005.02", "text": "台北市青少年育樂中心 行銷處總監", "note": ""}, {"year": "2000.03～2001.02", "text": "信欣國際系統公司 總經理特別助理", "note": ""}, {"year": "1997.07～1998.10", "text": "中華徵信所 助理研究員、市場研究部主任", "note": ""}, {"year": "1995.07～1997.07", "text": "陸軍六軍團 義務役通信兵", "note": ""}]}, {"title": "兼職經歷", "group": "學經歷", "show": 3, "items": [{"year": "2006～2008", "text": "信欣旅行社 專案經理", "note": ""}, {"year": "2008", "text": "花蓮縣瑞穗數位機會中心 講師", "note": ""}, {"year": "2005", "text": "醒吾技術學院觀光系夜間部 兼任講師", "note": ""}, {"year": "2002～2004", "text": "中國海專觀光夜間部 兼任講師", "note": ""}, {"year": "2000～2002", "text": "博客來網路書店 觀光旅遊、企管行銷類導讀撰文", "note": ""}, {"year": "1999～2000", "text": "婦女會暨國民黨資訊中心 電腦軟體教師", "note": ""}, {"year": "1994～1995", "text": "民調專案研究助理：聯合報民調中心、知行文教基金會", "note": ""}, {"year": "1992～1993", "text": "東方點子旅行社、大亞旅行社 簽證送件人員", "note": ""}]}, {"title": "證照", "group": "專業與榮譽", "show": null, "items": [{"year": "", "text": "中華民國英語導遊證照", "note": "(105) 專普導字第 004733 號"}, {"year": "", "text": "中華民國外語領隊證照", "note": "(97) 專普領字第 000177 號"}, {"year": "", "text": "旅行業經理人協會 第九期結業", "note": "民國 94 年"}, {"year": "", "text": "會議展覽專業人員初階認證考試及格", "note": "貿展字第 1010015942 號"}, {"year": "", "text": "WSET 葡萄酒品評一級及二級考試及格", "note": ""}, {"year": "", "text": "ISO 14064-1:2018 溫室氣體盤查主導查證員訓練合格", "note": ""}, {"year": "", "text": "證基會永續發展基礎能力測驗合格", "note": ""}]}, {"title": "獲獎與榮譽", "group": "專業與榮譽", "show": null, "items": [{"year": "103、107 學年度", "text": "醒吾科技大學 績優導師", "note": ""}, {"year": "105、106 學年度", "text": "醒吾科技大學 教學優良教師", "note": ""}, {"year": "2011", "text": "Indus 商業研究院國際研討會 (IC2011) 最佳論文獎", "note": ""}, {"year": "98、99 學年度", "text": "臺灣觀光學院 績優導師", "note": ""}, {"year": "88 學年度", "text": "文化大學華岡研究生全額獎學金", "note": ""}]}, {"title": "專業服務", "group": "專業與榮譽", "show": null, "items": [{"year": "2024～2026", "text": "交通部觀光署 導遊人員及領隊人員評量測驗 命審題委員", "note": ""}, {"year": "2022～2024", "text": "中華觀光管理學會 第 14 屆監事", "note": ""}, {"year": "2019～2022", "text": "台灣遊憩發展協會 第 1 屆理事", "note": ""}, {"year": "2017～2018", "text": "中華觀光管理學會 第 9、12 屆監事", "note": ""}, {"year": "2014～2017", "text": "中華觀光管理學會 第 10、11 屆秘書長", "note": ""}, {"year": "2012", "text": "Current Issues in Tourism (SSCI) 審稿人", "note": ""}, {"year": "2012", "text": "APTA 亞太觀光協會國際學術研討會（台北）國際交流組長", "note": ""}, {"year": "2010", "text": "Asia Tourism Forum 亞洲觀光論壇研討會 承辦", "note": ""}, {"year": "2008～2013", "text": "花東縱谷國家風景區管理處 協調委員會、績效評估委員會委員", "note": ""}, {"year": "2007～2010", "text": "《臺灣觀光學報》第四至七期 執行編輯", "note": ""}]}, {"title": "產學與研究計畫", "group": "研究與著作", "show": null, "items": [{"year": "2025", "text": "新北市環境保護局「環境永續推動參與式預算計畫」", "note": "主持人"}, {"year": "2019", "text": "南向國家郵輪旅遊產品社群行銷顧問計畫", "note": "主持人"}, {"year": "2016", "text": "觀光產業創新優質服務研習活動產學合作案", "note": "主持人"}, {"year": "2015", "text": "基隆港國際郵輪換客作業產學合作案", "note": "共同主持人"}, {"year": "2014", "text": "台灣中高等旅遊院校青年學生河南修學之旅案", "note": "主持人"}, {"year": "2005", "text": "經濟部工業局數位內容鑑價專案「台灣旅遊聯盟觀光旅遊資料庫」", "note": ""}, {"year": "2004", "text": "台北縣政府青少年藝文活動中心研究規劃服務建議案", "note": ""}, {"year": "2003", "text": "台中市政府中部旅遊服務中心委外服務規劃及經營招標案", "note": ""}, {"year": "2001", "text": "民進黨黨籍資料庫管理系統工程計畫書招標案", "note": ""}, {"year": "1998", "text": "台北捷運公司「大安捷運站聯合開發市場調查暨評估案」", "note": ""}, {"year": "1998", "text": "人事行政局「民眾對每月二次週休二日之認知」民意調查", "note": ""}, {"year": "1998", "text": "台灣省文化處「民眾對台灣文化節活動之認知」民意調查", "note": ""}, {"year": "1998", "text": "台鹽公司「乳酸飲料及藻醬油之行銷策略之研究」", "note": ""}, {"year": "1998", "text": "台茂開發公司「台茂南崁家庭娛樂購物中心」市場調查", "note": ""}, {"year": "1997", "text": "陸委會「兩岸交流」民意調查", "note": ""}, {"year": "1997", "text": "外交部「我國參與聯合國」民意調查", "note": ""}, {"year": "1997", "text": "台電「澎湖尖山發電廠擴建計劃」民意調查", "note": ""}, {"year": "1997", "text": "交通部觀光局「八十六年台灣地區觀光遊樂服務業調查」", "note": ""}, {"year": "1997", "text": "日本交流協會「加入 WTO 台灣地區產業結構轉變之研究」", "note": ""}]}, {"title": "專書與譯著", "group": "研究與著作", "show": null, "items": [{"year": "2019", "text": "呂行、陳瑞峰 編著，《導遊領隊考前衝刺》，志光文化。ISBN 978-986-514-114-1", "note": ""}, {"year": "2013", "text": "陳瑞峰、呂品器 編著，《導遊領隊讀了就上》再版，志光文化。ISBN 9789861286280", "note": ""}, {"year": "2012", "text": "Subhash K.B. & Chen Ruey Feng, Geography of Transnational Terrorism: An India Perspective. In India Emerging: Opportunities and Challenges (Ch. 13, pp. 106–124). Pragun Publication, New Delhi.", "note": "跨國極端主義的地理學：印度的觀點"}, {"year": "2008", "text": "陳瑞峰 譯，《會展觀光理論與實務》（Convention Tourism, Karin Weber & Kaye Chon 著），華都出版社。ISBN 9789866860348", "note": ""}, {"year": "2008", "text": "陳瑞峰、林靜慧 譯，《活動行銷：節慶、會議、展覽與觀光專案》（Event Marketing, Leonard H. Hoyle 著），揚智出版社。ISBN 9789578188600", "note": ""}]}, {"title": "期刊論文", "group": "研究與著作", "show": null, "items": [{"year": "2022", "text": "Chang, J. J., Chen, R. F., & Lin, C. L. Exploring the driving factors of urban music festival tourism and service development strategies using the modified SIA-NRM approach. Sustainability, 14(12), 7498. (SSCI)", "note": "以 SIA-NRM 法探討都會音樂季的驅動因素及服務發展策略"}, {"year": "2019", "text": "李明儒、鄭喬箏、陳瑞峰*。澎湖家庭旅遊者之休閒動機、涉入對其休閒效益與幸福感之研究：以家庭支持為干擾。休閒產業管理學刊，12(1)，41–62。", "note": ""}, {"year": "2018", "text": "Dsouza, R. S., Subhash, K. B., Chen, R. F., & Weiermair, K. Service Quality and Customer Satisfaction: An Empirical Analysis of Banking Sector in Goa. International Journal of Banking, Risk and Insurance, 6(2), 1–22.", "note": "印度果阿銀行之服務品質及顧客滿意之初探性研究"}, {"year": "2017", "text": "陳瑞峰、呂江泉、Subhash, K. B.。臺灣郵輪港口之區位評選模式研究。醒吾學報，55，111–126。", "note": ""}, {"year": "2017", "text": "劉翠華、楊瑟蓮、陳瑞峰*。高職餐飲科就讀動機與續讀意願之研究：以 2K 世代為例。醒吾學報，56，115–129。", "note": ""}, {"year": "2016", "text": "Kamat, K., Scaglione, M., Subhash, K. B., & Chen, R. F. The Socio, Economic, and Environmental Impacts of Casino Tourism in Goa. Revista Latino-Americana de Turismologia, 2(1), 44–54.", "note": "賭場觀光對印度果阿地區的社會經濟及環境影響"}, {"year": "2016", "text": "陳瑞峰、呂江泉、Subhash, K. B.。臺灣國際郵輪船隊及代理商產業個案之研究。醒吾學報，51，127–146。", "note": ""}, {"year": "2012", "text": "Chen, R. F., Subhash, K. B.*, Vinu, G., & Weiermair, K. Learning Motivation, Performance and Satisfaction: A Comparison between Students Majoring in Tourism and Hospitality Programs from Taiwan and India. International Journal of Hospitality & Tourism Systems, 5(1), 1–11.", "note": "台灣與印度觀光餐旅學生在學習動機、表現及滿意度之差異性研究"}, {"year": "2011", "text": "Chen, R. F., Chuu, T. S., & Lin, Z. H. The Difference of Learning Motivation and Performance Between Full-Time and On-Job Students: A Case of Taiwan Students Majoring in Hospitality and Tourism. Journal of Higher Education Theory and Practice, 11(3), 33–42.", "note": "台灣觀光科系在職生與一般生在學習動機、表現及滿意度之差異性研究"}, {"year": "", "text": "Lu, C. C., & Chen, R. F.* Differences in Tourism Image among Cruise Passengers across the Taiwan Straits. Global Journal of Business Research, 5(5), 95–108. (EconLit)", "note": "海峽兩岸郵輪旅客觀光意象之差異性研究"}, {"year": "", "text": "Subhash, K. B., Weiermair, K., & Chen, R. F. What Lies Beneath: The Untapped Health Tourism Market in India and the Role of Social Venture Capital in Rejuvenating Ayurveda Tradition. Global Journal of Contemporary Management, 1(1), 1–13.", "note": "印度醫療觀光市場及社會創投在傳統阿育吠陀療法的角色"}, {"year": "", "text": "Subhash, K. B., Smitha, B. G., Weiermair, K., & Chen, R. F. Rural Tourism: Catalyst of Socio-Economic Transformation in the Face of Global Warming and Financial Crisis. A Case Study of Goa. Asia Pacific Journal of Research in Business Management, 1(2).", "note": "農業觀光：全球暖化與金融危機下社會經濟轉變的催化劑，以印度果阿為例"}]}, {"title": "研討會論文", "group": "研究與著作", "show": null, "items": [{"year": "2023", "text": "陳瑞峰。利用 GIS 熱區分析學生就學選擇之地理偏好。觀光工廠 20 週年永續論壇暨中華觀光管理學會學術研討會，靜宜大學。", "note": ""}, {"year": "2018", "text": "Gaonkar, D. N., Subhash, K. B., Castanha, J., Chang, L. C., & Chen, R. F. Importance-Performance Analysis of Telecommunication Industry. 6th International Seminar and Conference on Learning Organization, Bandung, Indonesia.", "note": "資通訊產業之 IPA 分析"}, {"year": "2014", "text": "Kamat, K., Chen, R. F., D’Mello, C., Scaglione, M., Weiermair, K., & Subhash, K. B. Resident Attitudes towards Casino Tourism Development in Goa. 64th AIEST Conference, Plzeň, Czech Republic.", "note": "印度果阿省居民對博奕產業之態度分析"}, {"year": "2012", "text": "Subhash, K. B., Weiermair, K., & Chen, R. F. Empowerment at the Bottom of the Pyramid: Poverty Reduction through Rural Tourism. 18th Asia Pacific Tourism Association Conference, Taipei.", "note": "藉由農業觀光消弭貧困：金字塔底層的力量"}, {"year": "2012", "text": "呂江泉、陳瑞峰、鄭天明。Cruiser Perception on the Port Cities Tourism Image. 18th Asia Pacific Tourism Association Conference, Taipei.", "note": "郵輪旅客對港市意象的觀點"}, {"year": "2008", "text": "Lu, C. C., & Chen, R. F. Cruisers’ Cognition on Leisure and Tourism Resources in Taiwan. 8th Biennial Conference of ANZALS, Melbourne, Australia.", "note": ""}, {"year": "2002", "text": "萬金生、陳瑞峰、劉元安。台灣地區旅遊網站顧客關係管理策略之探討研究。第二屆觀光休閒暨餐旅產業永續經營研討會，國立餐旅學院。", "note": ""}, {"year": "2001", "text": "劉元安、陳瑞峰、萬金生。旅遊網站經營中之顧客關係管理研究。第一屆觀光休閒暨餐旅產業永續經營研討會，國立餐旅學院。", "note": ""}, {"year": "2001", "text": "陳瑞峰。顧客關係運用於旅遊網站之研究。九十年度全國管理碩士論文獎暨研討會，中華民國管理科學學會。", "note": ""}]}, {"title": "學位論文", "group": "研究與著作", "show": null, "items": [{"year": "2001", "text": "陳瑞峰。顧客關係管理運用於旅遊網站之研究。中國文化大學碩士論文。", "note": "延伸為國科會專題研究計畫 NSC 90-2416-H-034-005（2001/8～2002/7，劉元安教授主持）"}, {"year": "1995", "text": "陳瑞峰。青少年社會支持與學校生活適應關係之研究。輔仁大學畢業論文。", "note": ""}]}]};
+const BASE='../', ECOL='articles', SCOL='settings';  // build.py 會填入：中文版在 zh/，英文版在網站根目錄
+function rich(t){ return esc(String(t||'')).replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>'); }
+const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊戲學習","生活記憶","理財情報","老後提案"];
+const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
+const app = document.getElementById('app');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PER=8;
+let filt = {q:'', cat:'', sub:'', det:'', year:'', n:PER};
+
+function doodle(cat, cls='doodle'){
+  const [i,c] = ICON[cat]||ICON["生活記憶"];
+  return `<svg class="${cls}" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="31" ry="28" fill="${c}" opacity=".75" filter="url(#wash)"/><g class="sk"><use href="#i-${i}"/></g></svg>`;
+}
+function tag(cat){ const c=(ICON[cat]||ICON["生活記憶"])[1]; return `<span class="tag" style="background:${c}99">${esc(cat)}</span>`; }
+let EDIT=false; try{ EDIT = localStorage.getItem('rf-edit')==='1' || Object.keys(localStorage).some(k=>k.startsWith('sveltia-cms.user')); }catch(e){}
+function editBtn(a,cls){ return EDIT&&a.file?`<span class="edit-tools ${cls||''}"><span class="edit-btn" role="link" tabindex="0" data-edit="${a.file}" data-col="${a.untr?'articles':ECOL}" title="在後台修改這篇">✎ 修改</span><span class="edit-btn hide-btn" role="button" tabindex="0" data-hide="${a.file}" title="從網站上隱藏這篇">隱藏</span></span>`:''; }
+const REPO='d11522303/ray-site';
+function ghToken(){ try{ for(const k of Object.keys(localStorage)){ const v=localStorage.getItem(k)||''; const m=v.match(/(github_pat_[A-Za-z0-9_]+|gh[pousr]_[A-Za-z0-9]+)/); if(m) return m[1]; } }catch(e){} return ''; }
+const b64dec=t=>new TextDecoder().decode(Uint8Array.from(atob(t.replace(/\n/g,'')),c=>c.charCodeAt(0)));
+function b64enc(str){ const u=new TextEncoder().encode(str); let s=''; for(let i=0;i<u.length;i+=8192) s+=String.fromCharCode.apply(null,u.subarray(i,i+8192)); return btoa(s); }
+async function hideArticle(file, btn){
+  const tok=ghToken();
+  if(!tok){ window.open(BASE+'admin/#/collections/articles/entries/'+file,'_blank'); return; }
+  btn.textContent='隱藏中…';
+  const url=`https://api.github.com/repos/${REPO}/contents/content/articles/${encodeURIComponent(file)}.md`;
+  const H={Authorization:'Bearer '+tok, Accept:'application/vnd.github+json'};
+  try{
+    const r=await fetch(url+'?ref=main',{headers:H}); if(!r.ok) throw new Error(r.status);
+    const j=await r.json(); let t=b64dec(j.content);
+    t=/^published:.*$/m.test(t)? t.replace(/^published:.*$/m,'published: false') : t.replace(/^---\n/,'---\npublished: false\n');
+    const w=await fetch(url,{method:'PUT',headers:H,body:JSON.stringify({message:'隱藏文章：'+file,content:b64enc(t),sha:j.sha,branch:'main'})});
+    if(!w.ok) throw new Error(w.status);
+    const i=ARTS.findIndex(a=>a.file===file); if(i>=0) ARTS.splice(i,1);
+    btn.textContent='已隱藏'; btn.classList.remove('armed');
+    toast('已經隱藏，網站大約 1～2 分鐘後更新。想恢復可以到後台把「公開」打開。');
+    setTimeout(()=>{ if(location.hash.startsWith('#a-')) location.hash='#writing'; else route(); },1200);
+  }catch(err){ btn.textContent='隱藏'; btn.classList.remove('armed'); toast('隱藏失敗（'+err.message+'），請改到後台把「公開」關掉。'); }
+}
+function toast(msg){ let t=document.getElementById('toast'); if(!t){ t=document.createElement('div'); t.id='toast'; t.className='toast hand'; document.body.appendChild(t);} t.textContent=msg; t.classList.add('on'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('on'),6000); }
+function card(a){
+  return `<a class="card-a hand" href="#a-${a.id}">${a.cover?`<img class="thumb" src="${esc(img(a.cover))}" alt="" loading="lazy">`:doodle(a.cat)}
+    <div style="min-width:0"><h3>${esc(a.title)}</h3><p>${esc(a.ex)}</p>
+      <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span>${editBtn(a)}</div></div></a>`;
+}
+function img(u){ u=String(u||''); return /^(https?:)?\/\/|^data:/.test(u)?u:BASE+u.replace(/^\/+/,''); }
+function countBy(){const c={};ARTS.forEach(a=>catsOf(a).forEach(k=>c[k]=(c[k]||0)+1));return c}
+function catsOf(a){ return a.cats&&a.cats.length?a.cats:[a.cat]; }
+function tags(a){ return catsOf(a).map(tag).join(''); }
+
+function heroPhoto(){
+  if(HOME.hero_image) return `<div class="hero-photo"><img src="${esc(img(HOME.hero_image))}" alt="${esc(HOME.hero_alt||'')}"></div>`;
+  return EDIT ? `<div class="hero-photo empty" role="link" tabindex="0" data-edit-photo="1"><span>＋<br>按這裡上傳首頁照片</span></div>` : '';
+}
+
+function home(){
+  const c = countBy(), H = HOME;
+  const n = Math.max(1, parseInt(H.latest_count)||6);
+  const series = H.series_title ? `<section><div class="series hand">${doodle(H.series_category||'證照考試')}<div><h3><a href="#writing" data-go="${esc(H.series_category||'證照考試')}" style="text-decoration:none">${esc(H.series_title)}</a></h3><p>${rich(H.series_text)}</p></div>
+    <div class="n">${ARTS.filter(a=>H.series_keyword && a.title.includes(H.series_keyword)).length}<small>篇</small></div></div></section>` : '';
+  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-home="1" title="在後台修改首頁文字">✎ 修改首頁文字</span></div>`:''}<div class="hero${(HOME.hero_image||EDIT)?'':' solo'}">
+    <div><div class="lead">${esc(H.eyebrow)}</div>
+      <h1>${rich(H.headline)}</h1>
+      <p>${rich(H.intro)}</p>
+      <div class="facts"><span class="hand">${ARTS.length} 篇文章</span>${ARTS.length?`<span class="hand">${ARTS[ARTS.length-1].date.slice(0,4)}–${ARTS[0].date.slice(0,4)}</span>`:''}</div></div>
+    ${heroPhoto()}</div>
+  <section><div class="sec-head"><h2>${esc(H.latest_title)}</h2><a href="#writing">看全部 ${ARTS.length} 篇 →</a></div>
+    <div class="cards">${ARTS.slice(0,n).map(card).join('')}</div></section>
+  <section><div class="sec-head"><h2>${esc(H.topics_title)}</h2></div>
+    <div class="chips">${[...CATS].sort((x,y)=>(c[y]||0)-(c[x]||0)).map(k=>`<button class="chip" type="button" data-go="${k}">${k}<i>${c[k]||0}</i></button>`).join('')}</div></section>
+  ${series}`;
+}
+
+function writing(){
+  return `<div class="sec-head"><h1 style="font-size:34px">文章</h1></div>
+  <div class="wlayout">
+    <aside class="side">
+      <input id="q" class="hand" type="search" placeholder="搜尋標題或內容" value="${esc(filt.q)}" aria-label="搜尋文章">
+      <details class="side-box hand" id="sidebox" ${matchMedia('(min-width:761px)').matches?'open':''}>
+        <summary>篩選：年份與分類</summary>
+        <div id="side"></div>
+      </details>
+    </aside>
+    <div class="wmain">
+      <div class="crumbs" id="crumbs"></div>
+      <div class="count" id="count"></div><div class="cards" id="list"></div>
+      <div style="text-align:center;margin-top:22px"><button class="chip" type="button" id="more" style="font-size:16px;padding:6px 22px">更多文章 ↓</button></div>
+    </div>
+  </div>`;
+}
+const year = a => a.date.slice(0,4);
+function matchQ(a){ const q=filt.q.trim(); return !q || a.title.includes(q) || a.body.includes(q); }
+function inYear(a){ return !filt.year || year(a)===filt.year; }
+function inCat(a){ return (!filt.cat||catsOf(a).includes(filt.cat)) && (!filt.sub||(a.cat===filt.cat&&a.sub===filt.sub)) && (!filt.det||(a.cat===filt.cat&&a.det===filt.det)); }
+function tally(list, key){ const m=new Map(); list.forEach(a=>{ [].concat(key(a)).forEach(k=>{ if(k) m.set(k,(m.get(k)||0)+1); }); }); return m; }
+function renderSide(){
+  const base = ARTS.filter(matchQ);
+  const forYears = base.filter(inCat), forCats = base.filter(inYear);
+  const ys = [...tally(forYears, year).entries()].sort((a,b)=>b[0].localeCompare(a[0]));
+  const btn = (f,v,label,n,on,cls='') => `<button type="button" class="tb ${cls} ${on?'on':''}" data-f="${f}" data-v="${esc(v)}"><span>${label}</span><i>${n}</i></button>`;
+  let h = `<h4>撰寫年份</h4><div class="years">${btn('year','','全部',forYears.length,!filt.year,'y')}${ys.map(([y,n])=>btn('year',y,y,n,filt.year===y,'y')).join('')}</div>`;
+  h += `<h4>分類</h4><ul class="tree">${`<li>${btn('cat','','全部分類',forCats.length,!filt.cat)}</li>`}`;
+  const cc = tally(forCats, catsOf);
+  for(const c of [...CATS].sort((x,y)=>(cc.get(y)||0)-(cc.get(x)||0))){
+    if(!cc.get(c)) continue;
+    const open = filt.cat===c;
+    h += `<li>${btn('cat',c,`<b class="dot" style="background:${(ICON[c]||ICON['生活記憶'])[1]}"></b>${c}`,cc.get(c),open&&!filt.sub)}`;
+    if(open){
+      const inC = forCats.filter(a=>a.cat===c);
+      const subs = [...tally(inC, a=>a.sub).entries()].sort((a,b)=>b[1]-a[1]);
+      h += `<ul>${subs.map(([sb,n])=>{
+        const so = filt.sub===sb;
+        let li = `<li>${btn('sub',sb,sb,n,so&&!filt.det,'t2')}`;
+        if(so){
+          const dets=[...tally(inC.filter(a=>a.sub===sb), a=>a.det).entries()].sort((a,b)=>b[1]-a[1]);
+          if(dets.length) li += `<ul>${dets.map(([d,m])=>`<li>${btn('det',d,d,m,filt.det===d,'t3')}</li>`).join('')}</ul>`;
+        }
+        return li+'</li>';
+      }).join('')}</ul>`;
+    }
+    h += '</li>';
+  }
+  h += '</ul>';
+  const total = ARTS.filter(a => matchQ(a) && inYear(a) && inCat(a)).length;
+  h += `<button type="button" class="chip see-res" id="seeres">看 ${total} 篇文章 ↓</button>`;
+  document.getElementById('side').innerHTML = h;
+  const parts=[];
+  if(filt.year) parts.push(['year',filt.year+' 年']);
+  if(filt.cat) parts.push(['cat',[filt.cat,filt.sub,filt.det].filter(Boolean).join(' › ')]);
+  if(filt.q.trim()) parts.push(['q','搜尋「'+filt.q.trim()+'」']);
+  document.getElementById('crumbs').innerHTML = parts.map(([k,t])=>`<button type="button" class="crumb hand" data-clear="${k}">${esc(t)} <span aria-hidden="true">✕</span></button>`).join('') + (parts.length>1?`<button type="button" class="crumb clear-all" data-clear="all">全部清除</button>`:'');
+}
+function renderList(){
+  const r = ARTS.filter(a => matchQ(a) && inYear(a) && inCat(a));
+  const shown = r.slice(0, filt.n);
+  document.getElementById('count').textContent = `共 ${r.length} 篇${r.length>shown.length?`，目前顯示 ${shown.length} 篇`:''}`;
+  document.getElementById('list').innerHTML = r.length ? shown.map(card).join('') : `<p class="empty">找不到符合條件的文章，換個關鍵字或分類試試。</p>`;
+  document.getElementById('more').hidden = r.length <= shown.length;
+  renderSide();
+}
+
+function article(id){
+  const i = ARTS.findIndex(a=>a.id===id); if(i<0) return `<p class="empty">找不到這篇文章。<a href="#writing">回文章列表</a></p>`;
+  const a = ARTS[i], prev = ARTS[i+1], next = ARTS[i-1];
+  return `<article class="article"><a class="back" href="#writing">← 全部文章</a>${editBtn(a,'big')}
+    ${a.cover?`<img class="cover" src="${esc(img(a.cover))}" alt="">`:`<div style="margin-top:14px">${doodle(a.cat)}</div>`}
+    <h1>${esc(a.title)}</h1>
+    <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
+    ${a.untr?`<p class="untr">This article has not been translated into English yet, so it is shown in Chinese.</p>`:''}
+    <div class="prose">${a.body}</div>
+    ${(a.photos||[]).length?`<div class="gallery">${a.photos.map(p=>`<figure><a href="${esc(img(p.src))}" target="_blank" rel="noopener"><img src="${esc(img(p.src))}" alt="${esc(p.cap)}" loading="lazy"></a>${p.cap?`<figcaption>${esc(p.cap)}</figcaption>`:''}</figure>`).join('')}</div>`:''}
+    <div class="pn">${prev?`<a class="hand" href="#a-${prev.id}"><span>上一篇</span>${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="hand next" href="#a-${next.id}"><span>下一篇</span>${esc(next.title)}</a>`:''}</div>
+  </article>`;
+}
+
+function teaching(){
+  const t = ARTS.filter(a=>catsOf(a).some(k=>['技職教育','證照考試'].includes(k)));
+  return `<h1 style="font-size:34px;margin-bottom:6px">教學</h1><p class="lead" style="margin:0">給醒吾旅運與觀光科系同學的課程資源、證照準備與實習經驗。</p>
+  <section><div class="cols">
+    <div class="box hand">${doodle('證照考試')}<h3>國考領隊證照專區</h3><ul><li>領隊導遊課程筆記</li><li>華語領隊模擬考題</li><li>導遊領隊考前陪跑（已收進文章）</li></ul></div>
+    <div class="box hand">${doodle('旅行郵輪')}<h3>郵輪、旅展與微學分</h3><ul><li>郵輪旅遊</li><li>ITF 台北國際旅展</li><li>微學分課程報名</li></ul></div>
+    <div class="box hand">${doodle('技職教育')}<h3>觀光法規案例</h3><ul><li>甘肅團與日本團案例比較</li><li>旅行社財務分析</li></ul></div>
+  </div><p class="note">這三區的內容目前在 Google Sites 上，正式網站會把講義、筆記和下載連結搬過來。</p></section>
+  <section><div class="sec-head"><h2>相關文章</h2></div><div class="cards">${t.map(card).join('')}</div></section>`;
+}
+
+function travel(){
+  const t = ARTS.filter(a=>catsOf(a).includes('旅行郵輪'));
+  const place = (code,name,txt,col)=>`<div class="box hand"><svg class="doodle" viewBox="0 0 76 76" aria-hidden="true"><ellipse cx="38" cy="40" rx="31" ry="27" fill="${col}" opacity=".75" filter="url(#wash)"/><text x="38" y="47" text-anchor="middle" font-family="LXGW WenKai TC, serif" font-size="20" font-weight="700" fill="#4a3426">${code}</text></svg><h3>${name}</h3><p>${txt}</p></div>`;
+  return `<h1 style="font-size:34px;margin-bottom:6px">旅行</h1><p class="lead" style="margin:0">帶團、見學與自己出走的紀錄。</p>
+  <section><div class="cols">
+    ${place('BKK','泰國 Thailand','目前在 Google Sites 的 Thailand 頁，正式網站會搬過來。','#f2d488')}
+    ${place('NGO','名古屋 Nagoya','目前在 Google Sites 的 Nagoya 頁，正式網站會搬過來。','#f1b79c')}
+    ${place('YVR','加拿大 Canada','醒吾旅運學海築夢見學，溫哥華與維多利亞。','#a9c9d9')}
+  </div></section>
+  <section><div class="sec-head"><h2>旅行文章</h2></div><div class="cards">${t.map(card).join('')}</div></section>`;
+}
+
+function cvBlock(){
+  const cv=(ABOUT.cv||[]).filter(x=>x&&x.title&&(x.items||[]).length);
+  if(!cv.length) return '';
+  const groups=[]; cv.forEach((x,i)=>{x._id='cv-'+i; const g=x.group||''; let G=groups.find(y=>y.g===g); if(!G){G={g,list:[]};groups.push(G);} G.list.push(x);});
+  const row=it=>`<li>${it.year?`<span class="y">${esc(String(it.year))}</span>`:''}<span class="t">${esc(String(it.text||''))}${it.note?`<span class="n">${esc(String(it.note))}</span>`:''}</span></li>`;
+  const sec=x=>{
+    const its=x.items, noy=!its.some(it=>it.year), avg=its.reduce((n,it)=>n+String(it.text||'').length,0)/its.length;
+    const wide=avg>60||its.length>10, MAX=(+x.show>0)?+x.show:(wide?6:8);
+    const cls='cv-list'+(noy?' noyear':'');
+    return `<div class="cv-sec hand${wide?' wide':''}" id="${x._id}"><h4>${esc(x.title)}<span>${its.length} 項</span></h4>
+      <ul class="${cls}">${its.slice(0,MAX).map(row).join('')}</ul>
+      ${its.length>MAX?`<details><summary>展開其餘 ${its.length-MAX} 項</summary><ul class="${cls}">${its.slice(MAX).map(row).join('')}</ul></details>`:''}</div>`;
+  };
+  return `<section id="cv"><div class="cv-head"><h2>${esc(ABOUT.cv_title||'個人簡歷')}</h2>${ABOUT.cv_updated?`<small>更新於 ${esc(String(ABOUT.cv_updated))}</small>`:''}</div>
+    <div class="cv-nav">${cv.map(x=>`<a class="chip" href="#hello" data-cv="${x._id}">${esc(x.title)}</a>`).join('')}</div>
+    ${groups.map(G=>`<div class="cv-group">${G.g?`<h3>${esc(G.g)}</h3>`:''}<div class="cv-grid">${G.list.map(sec).join('')}</div></div>`).join('')}</section>`;
+}
+
+function hello(){
+  const icons=['每日晨讀','技職教育','生活記憶','旅行郵輪','證照考試','遊戲學習'];
+  const ext=h=>h.replace(/<a href="http/g,'<a target="_blank" rel="noopener" href="http');
+  return `${EDIT?`<div style="text-align:right;margin-bottom:-10px"><span class="edit-btn" role="link" tabindex="0" data-edit-about="1" title="在後台修改關於頁">✎ 修改關於頁</span></div>`:''}<div class="article">${ABOUT.lead?`<div class="lead">${esc(ABOUT.lead)}</div>`:''}<h1>${esc(ABOUT.title||'')}</h1>
+  <div class="prose">${ext(ABOUT.body||'')}</div></div>
+  <section>${(ABOUT.boxes||[]).length?`<div class="cols${ABOUT.boxes.length===2?' c2':''}">${ABOUT.boxes.map((x,i)=>`<div class="box hand">${doodle(icons[i%icons.length])}<h3>${esc(x.title)}</h3>${ext(x.text)}</div>`).join('')}</div>`:''}${ABOUT.note?`<p class="note">${esc(ABOUT.note)}</p>`:''}</section>${cvBlock()}`;
+}
+
+function route(){
+  const h = (location.hash||'#home').slice(1);
+  let v = h.startsWith('a-') ? 'writing' : (['home','writing','teaching','travel','hello'].includes(h)?h:'home');
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  if(h.startsWith('a-')) app.innerHTML = article(h.slice(2));
+  else if(v==='writing'){ app.innerHTML = writing(); renderList(); }
+  else app.innerHTML = ({home,teaching,travel,hello})[v]();
+  window.scrollTo(0,0);
+}
+document.addEventListener('click', e=>{ const L=e.target.closest('[data-lang]'); if(L){ e.preventDefault(); location.href=L.getAttribute('href')+location.hash; } });
+app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=PER; renderList(); }});
+app.addEventListener('click', e=>{
+  const ed = e.target.closest('[data-edit]');
+  if(ed){ e.preventDefault(); e.stopPropagation(); window.open(BASE+'admin/#/collections/'+(ed.dataset.col||ECOL)+'/entries/'+ed.dataset.edit,'_blank'); return; }
+  { const c=e.target.closest('[data-cv]'); if(c){ e.preventDefault(); const t=document.getElementById(c.dataset.cv); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); return; } }
+  if(e.target.closest('[data-edit-about]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/'+SCOL+'/entries/about','_blank'); return; }
+  if(e.target.closest('[data-edit-photo]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/settings/entries/home','_blank'); return; }
+  if(e.target.closest('[data-edit-home]')){ e.preventDefault(); window.open(BASE+'admin/#/collections/'+SCOL+'/entries/home','_blank'); return; }
+  const hd = e.target.closest('[data-hide]');
+  if(hd){ e.preventDefault(); e.stopPropagation();
+    if(!hd.classList.contains('armed')){ hd.classList.add('armed'); hd.textContent='確定隱藏？'; setTimeout(()=>{ if(hd.classList.contains('armed')){ hd.classList.remove('armed'); hd.textContent='隱藏'; } },4000); return; }
+    hideArticle(hd.dataset.hide, hd); return; }
+  const f = e.target.closest('[data-f]');
+  if(f){ const k=f.dataset.f, v=f.dataset.v;
+    if(k==='year') filt.year=v;
+    else if(k==='cat'){ filt.cat=v; filt.sub=''; filt.det=''; }
+    else if(k==='sub'){ filt.sub=v; filt.det=''; }
+    else if(k==='det'){ filt.det=v; }
+    filt.n=PER; renderList(); return; }
+  if(e.target.id==='seeres'){ document.getElementById('sidebox').open=false; document.getElementById('crumbs').scrollIntoView({behavior:'smooth'}); return; }
+  const cl = e.target.closest('[data-clear]');
+  if(cl){ const k=cl.dataset.clear;
+    if(k==='year'||k==='all') filt.year='';
+    if(k==='cat'||k==='all'){ filt.cat=''; filt.sub=''; filt.det=''; }
+    if(k==='q'||k==='all'){ filt.q=''; const qi=document.getElementById('q'); if(qi) qi.value=''; }
+    filt.n=PER; renderList(); return; }
+  if(e.target.id==='more'){ filt.n+=PER; renderList(); return; }
+  const g = e.target.closest('[data-go]');
+  if(g){ filt.cat=g.dataset.go; filt.sub=''; filt.det=''; filt.year=''; filt.q=''; filt.n=PER; location.hash='writing'; }
+});
+window.addEventListener('hashchange', route);
+route();
+</script>
