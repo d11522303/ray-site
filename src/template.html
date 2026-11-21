@@ -379,7 +379,6 @@ function article(id){
     <div class="meta">${tags(a)}<span>${a.date.replace(/-/g,'.')}</span><span>${a.len.toLocaleString()} 字</span><span>約 ${Math.max(1,Math.round(a.len/400))} 分鐘</span></div>
     <div class="prose">${a.body}</div>
     ${(a.photos||[]).length?`<div class="gallery">${a.photos.map(p=>`<figure><a href="${esc(img(p.src))}" target="_blank" rel="noopener"><img src="${esc(img(p.src))}" alt="${esc(p.cap)}" loading="lazy"></a>${p.cap?`<figcaption>${esc(p.cap)}</figcaption>`:''}</figure>`).join('')}</div>`:''}
-    <div class="origin hand">本文最早發表於${a.src==='Facebook'?' Facebook':'方格子'}：<a href="${a.url}" target="_blank" rel="noopener">${esc(a.url)}</a></div>
     <div class="pn">${prev?`<a class="hand" href="#a-${prev.id}"><span>上一篇</span>${esc(prev.title)}</a>`:'<span></span>'}${next?`<a class="hand next" href="#a-${next.id}"><span>下一篇</span>${esc(next.title)}</a>`:''}</div>
   </article>`;
 }

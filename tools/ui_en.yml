@@ -48,7 +48,6 @@
 - ['← 全部文章', '← All articles']
 - ['${a.len.toLocaleString()} 字', '${a.len.toLocaleString()} words']
 - ['約 ${Math.max(1,Math.round(a.len/400))} 分鐘', '${Math.max(1,Math.round(a.len/220))} min read']
-- ["本文最早發表於${a.src==='Facebook'?' Facebook':'方格子'}：", "Originally published in Chinese on ${a.src==='Facebook'?'Facebook':'Vocus'}: "]
 - ['<span>上一篇</span>', '<span>Previous</span>']
 - ['<span>下一篇</span>', '<span>Next</span>']
 - ['margin-bottom:6px">教學</h1>', 'margin-bottom:6px">Teaching</h1>']
