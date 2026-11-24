@@ -182,6 +182,12 @@ section{padding-block:34px 0}
 .series .n small{display:block;font-size:14px;font-weight:400;color:var(--muted)}
 footer{padding-block:24px;font-size:14px;color:var(--muted);border-top:2px dashed rgba(138,106,82,.45)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer .admin-link{color:var(--muted);text-decoration:none;white-space:nowrap}
+footer .admin-link:hover{color:var(--ink);text-decoration:underline}
+.admin-fab{position:fixed;right:18px;bottom:18px;z-index:40;padding:8px 18px;font-size:16px;color:var(--ink);background:var(--butter);text-decoration:none;box-shadow:0 2px 8px rgba(74,52,38,.18)}
+.admin-fab:hover{transform:rotate(-2deg)}
+body.owner footer{padding-bottom:76px}
+@media print{.admin-fab{display:none}}
 @media (max-width:760px){
   .wlayout{grid-template-columns:minmax(0,1fr);gap:14px}
   .side{position:static;max-height:none;overflow:visible}
@@ -231,8 +237,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <footer><div class="wrap">
   <span>© 隨峰而趣 · www.rayfong.idv.tw</span>
-  <span>手繪繪本風 · 用心寫下的每一篇</span>
+  <span>手繪繪本風 · 用心寫下的每一篇 · <a class="admin-link" href="admin/" data-admin="1" target="_blank" rel="noopener">⚙ 站長後台</a></span>
 </div></footer>
+<a class="admin-fab hand" href="admin/" data-admin="1" target="_blank" rel="noopener" hidden>⚙ 後台</a>
 
 <script>
 const ARTS = [];
@@ -450,6 +457,8 @@ function route(){
   else app.innerHTML = ({home,teaching,travel,hello})[v]();
   window.scrollTo(0,0);
 }
+document.addEventListener('click', e=>{ const A=e.target.closest('[data-admin]'); if(A){ e.preventDefault(); window.open(BASE+'admin/#/collections/'+ECOL,'_blank'); return; } });
+if(EDIT){ const f=document.querySelector('.admin-fab'); if(f){ f.hidden=false; document.body.classList.add('owner'); } }
 document.addEventListener('click', e=>{ const L=e.target.closest('[data-lang]'); if(L){ e.preventDefault(); location.href=L.getAttribute('href')+location.hash; } });
 app.addEventListener('input', e=>{ if(e.target.id==='q'){ filt.q=e.target.value; filt.n=PER; renderList(); }});
 app.addEventListener('click', e=>{

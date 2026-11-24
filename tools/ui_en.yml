@@ -68,3 +68,5 @@
 - ["hd.textContent='隱藏'", "hd.textContent='Hide'"]
 
 - ['按這裡上傳首頁照片', 'Click to upload a home page photo']
+- ['⚙ 站長後台</a>', '⚙ Admin</a>']
+- ['>⚙ 後台</a>', '>⚙ Admin</a>']
