@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 把 content/articles/ 裡的文章合併進 src/template.html，產生網站：
-  index.html     中文版（網站首頁，打開先看 HELLO 關於頁）
+  index.html     中文版（網站首頁）
   en/index.html  英文版
 中文版看中文文章的「公開」，英文版看英文翻譯的「在英文版公開」，兩邊各自獨立。
 還沒有英文翻譯的文章，只有在中文公開時才會在英文版顯示（先顯示中文）。
@@ -102,7 +102,7 @@ def render(tpl, arts, home, about, out, base, lang, switch=True):
             '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
             '<link rel="alternate" hreflang="zh-Hant" href="%s">\n<link rel="alternate" hreflang="en" href="%sen/">\n'
             % ("en" if lang == "en" else "zh-Hant", base or "./", base or ""))
-    tpl = head + tpl.replace("<!--EN-->", LANG_LINK[lang] if switch else "").replace("__BASE__", base).replace("__START__", "hello" if lang == "zh" else "home")
+    tpl = head + tpl.replace("<!--EN-->", LANG_LINK[lang] if switch else "").replace("__BASE__", base).replace("__START__", "home")
     tpl = tpl.replace("__HOME__", js(home)).replace("__ABOUT__", js(about))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:

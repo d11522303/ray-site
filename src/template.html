@@ -239,7 +239,7 @@ body.owner footer{padding-bottom:76px}
 const ARTS = __DATA__;
 const HOME = Object.assign({eyebrow:'',headline:'',intro:'',latest_title:'最新文章',latest_count:6,topics_title:'依主題閱讀',series_title:'',series_text:'',series_keyword:'考前',series_category:'證照考試'}, __HOME__);
 const ABOUT = __ABOUT__;
-const BASE='__BASE__', ECOL='articles', SCOL='settings', START='__START__';  // build.py 會填入：中文版在網站根目錄（打開先看 HELLO），英文版在 en/
+const BASE='__BASE__', ECOL='articles', SCOL='settings', START='__START__';  // build.py 會填入：中文版在網站根目錄，英文版在 en/
 function rich(t){ return esc(String(t||'')).replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>'); }
 const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊戲學習","生活記憶","理財情報","老後提案"];
 const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
