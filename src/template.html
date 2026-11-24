@@ -232,7 +232,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 const ARTS = __DATA__;
 const HOME = Object.assign({eyebrow:'',headline:'',intro:'',latest_title:'最新文章',latest_count:6,topics_title:'依主題閱讀',series_title:'',series_text:'',series_keyword:'考前',series_category:'證照考試'}, __HOME__);
 const ABOUT = __ABOUT__;
-const BASE='__BASE__', ECOL='articles', SCOL='settings';  // build.py 會填入：中文版在 zh/，英文版在網站根目錄
+const BASE='__BASE__', ECOL='articles', SCOL='settings', START='__START__';  // build.py 會填入：中文版在網站根目錄（打開先看 HELLO），英文版在 en/
 function rich(t){ return esc(String(t||'')).replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\n/g,'<br>'); }
 const CATS = ["證照考試","技職教育","旅行郵輪","每日晨讀","遊戲學習","生活記憶","理財情報","老後提案"];
 const ICON = {"技職教育":["edu","#f2d488"],"證照考試":["exam","#a9c39d"],"旅行郵輪":["ship","#a9c9d9"],"每日晨讀":["read","#c6b4d8"],"生活記憶":["memo","#f1b79c"],"理財情報":["money","#f2d488"],"老後提案":["care","#eea3a0"],"遊戲學習":["game","#a9c39d"]};
@@ -373,7 +373,7 @@ function renderList(){
 }
 
 function article(id){
-  const i = ARTS.findIndex(a=>a.id===id); if(i<0) return `<p class="empty">找不到這篇文章。<a href="#writing">回文章列表</a></p>`;
+  const i = ARTS.findIndex(a=>a.id===id); if(i<0) return `<p class="empty">找不到這篇文章。<a href="#writing">回文章列表</a>${BASE?'':`，或 <a href="en/#a-${esc(id)}">看英文版</a>`}</p>`;
   const a = ARTS[i], prev = ARTS[i+1], next = ARTS[i-1];
   return `<article class="article"><a class="back" href="#writing">← 全部文章</a>${editBtn(a,'big')}
     ${a.cover?`<img class="cover" src="${esc(img(a.cover))}" alt="">`:`<div style="margin-top:14px">${doodle(a.cat)}</div>`}
@@ -436,7 +436,7 @@ function hello(){
 }
 
 function route(){
-  const h = (location.hash||'#home').slice(1);
+  const h = (location.hash||'#'+START).slice(1);
   let v = h.startsWith('a-') ? 'writing' : (['home','writing','teaching','travel','hello'].includes(h)?h:'home');
   document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
   if(h.startsWith('a-')) app.innerHTML = article(h.slice(2));
