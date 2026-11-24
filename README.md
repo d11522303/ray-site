@@ -2,8 +2,8 @@
 
 旅運系老師的筆記本：方格子與 Facebook 文章的個人網站，用 GitHub Pages 架設。
 
-- 網站（英文版，主要首頁）：https://d11522303.github.io/ray-site/
-- 中文版：https://d11522303.github.io/ray-site/zh/
+- 網站（中文版，首頁打開先看 HELLO）：https://d11522303.github.io/ray-site/
+- 英文版：https://d11522303.github.io/ray-site/en/
 - 後台：https://d11522303.github.io/ray-site/admin/
 
 ## 用後台更新文章
