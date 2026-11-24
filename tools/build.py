@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 把 content/articles/ 裡的文章合併進 src/template.html，產生網站：
-  index.html     英文版（網站主要首頁）
-  zh/index.html  中文版
+  index.html     中文版（網站首頁，打開先看 HELLO 關於頁）
+  en/index.html  英文版
 中文版看中文文章的「公開」，英文版看英文翻譯的「在英文版公開」，兩邊各自獨立。
 還沒有英文翻譯的文章，只有在中文公開時才會在英文版顯示（先顯示中文）。
 後台每次存檔後，GitHub 會自動執行這支程式並更新網站。
@@ -87,22 +87,22 @@ def js(o):
 
 
 LANG_LINK = {
-    "zh": '<a href="../" class="lang hand" data-lang="1" title="English version">EN</a>',
-    "en": '<a href="zh/" class="lang hand" data-lang="1" title="中文版">中文</a>',
+    "zh": '<a href="en/" class="lang hand" data-lang="1" title="English version">EN</a>',
+    "en": '<a href="../" class="lang hand" data-lang="1" title="中文版">中文</a>',
 }
 
 
 def render(tpl, arts, home, about, out, base, lang, switch=True):
-    # 內文裡從後台插入的圖片是 /images/...，改成相對路徑，網站放在子路徑（例如 /ray-site/zh/）也看得到
+    # 內文裡從後台插入的圖片是 /images/...，改成相對路徑，網站放在子路徑（例如 /ray-site/en/）也看得到
     fix = lambda h: re.sub(r'(src|href)="/(images/)', r'\1="' + base + r'\2', h)
     arts = [dict(a, body=fix(a["body"])) for a in arts]
     about = prep_about(about)
     about = dict(about, body=fix(about["body"]), boxes=[dict(b, text=fix(b["text"])) for b in about["boxes"]])
     head = ('<!doctype html>\n<html lang="%s">\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
-            '<link rel="alternate" hreflang="en" href="%s">\n<link rel="alternate" hreflang="zh-Hant" href="%szh/">\n'
+            '<link rel="alternate" hreflang="zh-Hant" href="%s">\n<link rel="alternate" hreflang="en" href="%sen/">\n'
             % ("en" if lang == "en" else "zh-Hant", base or "./", base or ""))
-    tpl = head + tpl.replace("<!--EN-->", LANG_LINK[lang] if switch else "").replace("__BASE__", base)
+    tpl = head + tpl.replace("<!--EN-->", LANG_LINK[lang] if switch else "").replace("__BASE__", base).replace("__START__", "hello" if lang == "zh" else "home")
     tpl = tpl.replace("__HOME__", js(home)).replace("__ABOUT__", js(about))
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
@@ -149,7 +149,7 @@ def english(arts, tpl, zh_home, switch):
             home[k] = zh_home.get(k, "")
     if home.get("series_category"):
         home["series_category"] = t(home["series_category"])
-    render(tpl, out, home, about, os.path.join(ROOT, "index.html"), "", "en", switch)
+    render(tpl, out, home, about, os.path.join(ROOT, "en", "index.html"), "../", "en", switch)
     return out
 
 
@@ -162,14 +162,13 @@ def main():
     with open(os.path.join(ROOT, "src", "template.html"), encoding="utf-8") as f:
         tpl = f.read()
     zh_home = read_yml("content", "home.yml")
-    render(tpl, arts, zh_home, read_yml("content", "about.yml"), os.path.join(ROOT, "zh", "index.html"), "../", "zh")
-    # 中文版一篇公開的文章都沒有時，英文版先不放「中文」切換按鈕
-    en = english(all_arts, tpl, zh_home, switch=bool(arts))
+    render(tpl, arts, zh_home, read_yml("content", "about.yml"), os.path.join(ROOT, "index.html"), "", "zh")
+    en = english(all_arts, tpl, zh_home, switch=True)
     cats = {}
     for a in arts:
         cats[a["cat"]] = cats.get(a["cat"], 0) + 1
     untr = sum(1 for a in en if a.get("untr"))
-    print(f"完成：中文版 zh/index.html 公開 {len(arts)} 篇 {cats}；英文版 index.html {len(en)} 篇（其中 {untr} 篇還沒翻譯，先顯示中文）")
+    print(f"完成：中文版 index.html 公開 {len(arts)} 篇 {cats}；英文版 en/index.html {len(en)} 篇（其中 {untr} 篇還沒翻譯，先顯示中文）")
 
 
 if __name__ == "__main__":
