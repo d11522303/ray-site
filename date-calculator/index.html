@@ -110,8 +110,14 @@ footer { color: var(--muted); font-size: .8rem; text-align: center; }
     </div>
   </header>
 
+  <section aria-labelledby="t3">
+    <h2 id="t3">一、實習招募截止倒數<small>Internship Application Deadlines</small></h2>
+    <div id="deadlines"><p class="meta">載入中… Loading…</p></div>
+    <p class="meta" id="dl-updated"></p>
+  </section>
+
   <section aria-labelledby="t1">
-    <h2 id="t1">一、計算兩日期相隔天數<small>Date Difference Calculator</small></h2>
+    <h2 id="t1">二、計算兩日期相隔天數<small>Date Difference Calculator</small></h2>
     <div class="field">
       <label for="d1-start">開始日期<span>Start Date</span></label>
       <input type="date" id="d1-start">
@@ -125,7 +131,7 @@ footer { color: var(--muted); font-size: .8rem; text-align: center; }
   </section>
 
   <section aria-labelledby="t2">
-    <h2 id="t2">二、起始日期加天數後的日期<small>Calculate Date After Adding Days</small></h2>
+    <h2 id="t2">三、起始日期加天數後的日期<small>Calculate Date After Adding Days</small></h2>
     <div class="field">
       <label for="d2-start">起始日期<span>Start Date</span></label>
       <input type="date" id="d2-start">
@@ -145,11 +151,6 @@ footer { color: var(--muted); font-size: .8rem; text-align: center; }
     <div class="result" id="res-add" aria-live="polite"></div>
   </section>
 
-  <section aria-labelledby="t3">
-    <h2 id="t3">三、實習招募截止倒數<small>Internship Application Deadlines</small></h2>
-    <div id="deadlines"><p class="meta">載入中… Loading…</p></div>
-    <p class="meta" id="dl-updated"></p>
-  </section>
 
   <footer>天數以日曆日計算，不含開始當天。Counts calendar days, start day excluded.</footer>
 </div>
@@ -219,7 +220,7 @@ $("d2-start").value = iso(t);
 $("d2-days").value = "100";
 calcDiff(); calcAdd();
 
-// 三、實習招募截止倒數：資料由網站每天自動抓取醒吾旅運系公告
+// 一、實習招募截止倒數：資料由網站每天自動抓取醒吾旅運系公告
 function renderDeadlines(data) {
   const box = $("deadlines"), t0 = today();
   const esc = x => String(x).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
