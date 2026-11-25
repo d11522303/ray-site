@@ -18,16 +18,17 @@
   --accent-fg: #ffffff;
   --result-bg: #e6f2ec;
   --error: #b3261e;
+  --warn: #c2410c;
   --font-body: "Noto Sans TC", system-ui, -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
   --font-num: "Space Grotesk", "Noto Sans TC", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #121614; --surface: #1b211e; --fg: #e8eeea; --muted: #9aa8a1; --line: #2e3833;
-  --accent: #4fbf94; --accent-fg: #0b1a14; --result-bg: #1d3329; --error: #f2b8b5; color-scheme: dark;
+  --accent: #4fbf94; --accent-fg: #0b1a14; --result-bg: #1d3329; --error: #f2b8b5; --warn: #fdba74; color-scheme: dark;
 } }
 :root[data-theme="dark"] {
   --bg: #121614; --surface: #1b211e; --fg: #e8eeea; --muted: #9aa8a1; --line: #2e3833;
-  --accent: #4fbf94; --accent-fg: #0b1a14; --result-bg: #1d3329; --error: #f2b8b5; color-scheme: dark;
+  --accent: #4fbf94; --accent-fg: #0b1a14; --result-bg: #1d3329; --error: #f2b8b5; --warn: #fdba74; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body {
@@ -80,6 +81,20 @@ input[aria-invalid="true"] { border-color: var(--error); }
 .result .big { font-family: var(--font-num); font-size: 2rem; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
 .result .sub { color: var(--muted); font-size: .9rem; }
 .error { color: var(--error); font-weight: 500; }
+.group { display: grid; gap: 8px; }
+.group h3 { margin: 4px 0 0; font-size: 1rem; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.group h3 a { font-size: .8rem; font-weight: 400; color: var(--accent); }
+.dl { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; }
+.dl .who { flex: 1; min-width: 0; display: grid; }
+.dl .who b { font-weight: 500; overflow-wrap: anywhere; }
+.dl .who span { color: var(--muted); font-size: .85rem; font-family: var(--font-num); }
+.dl .left { flex: none; text-align: right; font-family: var(--font-num); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.dl .left strong { display: block; font-size: 1.6rem; color: var(--accent); }
+.dl .left small { color: var(--muted); font-size: .75rem; }
+.dl.soon .left strong { color: var(--warn); }
+.dl.done { opacity: .55; }
+.dl.done .left strong { font-size: .95rem; color: var(--muted); }
+.meta { color: var(--muted); font-size: .8rem; }
 footer { color: var(--muted); font-size: .8rem; text-align: center; }
 @media (prefers-reduced-motion: reduce) { .btn:active { transform: none; } }
 </style>
@@ -128,6 +143,12 @@ footer { color: var(--muted); font-size: .8rem; text-align: center; }
     </div>
     <button class="btn" id="btn-add" type="button">計算結果日期 / Calculate Result Date</button>
     <div class="result" id="res-add" aria-live="polite"></div>
+  </section>
+
+  <section aria-labelledby="t3">
+    <h2 id="t3">三、實習招募截止倒數<small>Internship Application Deadlines</small></h2>
+    <div id="deadlines"><p class="meta">載入中… Loading…</p></div>
+    <p class="meta" id="dl-updated"></p>
   </section>
 
   <footer>天數以日曆日計算，不含開始當天。Counts calendar days, start day excluded.</footer>
@@ -197,6 +218,38 @@ $("d1-end").value = `${new Date(t).getUTCFullYear() + 1}-12-31`;
 $("d2-start").value = iso(t);
 $("d2-days").value = "100";
 calcDiff(); calcAdd();
+
+// 三、實習招募截止倒數：資料由網站每天自動抓取醒吾旅運系公告
+function renderDeadlines(data) {
+  const box = $("deadlines"), t0 = today();
+  const esc = x => String(x).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  box.innerHTML = "";
+  (data.groups || []).forEach(g => {
+    const items = (g.items || []).map(it => {
+      const t = parse(it.date); if (t === null) return null;
+      const n = Math.round((t - t0) / DAY);
+      return { ...it, t, n, done: it.closed || n < 0 };
+    }).filter(Boolean).sort((a, b) => (a.done - b.done) || (a.done ? b.t - a.t : a.t - b.t));
+    const div = document.createElement("div"); div.className = "group";
+    div.innerHTML = `<h3>${esc(g.title)}<a href="${esc(g.url)}" target="_blank" rel="noopener">看原公告 ↗</a></h3>` +
+      items.map(it => {
+        const d = new Date(it.t), w = d.getUTCDay();
+        const when = `${d.getUTCMonth() + 1}/${d.getUTCDate()}（${WEEK_ZH[w]}）截止`;
+        const left = it.done ? `<strong>已截止</strong><small>Closed</small>`
+          : it.n === 0 ? `<strong>今天</strong><small>Due today</small>`
+          : `<strong>${it.n}</strong><small>天 · days left</small>`;
+        const cls = it.done ? "dl done" : it.n <= 7 ? "dl soon" : "dl";
+        return `<div class="${cls}"><div class="who"><b>${esc(it.name)}</b><span>${when}</span></div><div class="left">${left}</div></div>`;
+      }).join("");
+    box.appendChild(div);
+  });
+  if (!box.children.length) box.innerHTML = `<p class="meta">目前沒有招募資料。No deadlines listed right now.</p>`;
+  if (data.updated) $("dl-updated").textContent = `資料更新：${data.updated.replace("T", " ").slice(0, 16)}（每天自動更新）· Updated daily`;
+}
+fetch("deadlines.json", { cache: "no-store" })
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(renderDeadlines)
+  .catch(() => { $("deadlines").innerHTML = `<p class="error">讀不到截止日資料，請稍後重新整理。</p><p class="meta">Could not load deadlines. Please refresh later.</p>`; });
 </script>
 </body>
 </html>

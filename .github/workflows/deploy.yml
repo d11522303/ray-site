@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # 每天台灣時間早上 6 點、晚上 6 點重新抓實習公告的截止日
+  schedule:
+    - cron: "0 22,10 * * *"
 
 permissions:
   contents: read
@@ -24,6 +27,9 @@ jobs:
           python-version: "3.12"
       - run: pip install pyyaml markdown
       - run: python tools/build.py
+      - name: 抓取實習招募截止日
+        run: python tools/fetch_deadlines.py
+        continue-on-error: true
       - name: 整理要上線的檔案
         run: |
           mkdir -p _site

@@ -1,0 +1,29 @@
+{
+  "updated": "2026-11-25T21:10+08:00",
+  "groups": [
+    {
+      "title": "航空運輸業實習",
+      "url": "https://c008.hwu.edu.tw/Post?PId=107762&IsPreview=true",
+      "items": [
+        {"name": "台灣高鐵公司", "date": "2026-12-18", "closed": false},
+        {"name": "華膳空廚公司", "date": "2026-12-16", "closed": false},
+        {"name": "立榮航空", "date": "2026-12-09", "closed": false},
+        {"name": "中華航空_高雄分公司", "date": "2026-12-02", "closed": false},
+        {"name": "STARLUX 星宇航空", "date": "2026-11-06", "closed": true},
+        {"name": "EVA AIR 長榮航空", "date": "2026-11-02", "closed": true},
+        {"name": "中華航空", "date": "2026-10-16", "closed": true}
+      ]
+    },
+    {
+      "title": "旅行社實習",
+      "url": "https://c008.hwu.edu.tw/Post?PId=107763&IsPreview=true",
+      "items": [
+        {"name": "可樂旅行社", "date": "2026-12-18", "closed": false},
+        {"name": "五福旅行社", "date": "2026-12-18", "closed": false},
+        {"name": "東南旅行社", "date": "2026-12-18", "closed": false},
+        {"name": "凱旋旅行社(巨匠旅遊)", "date": "2026-12-18", "closed": false},
+        {"name": "雄獅旅遊", "date": "2026-11-20", "closed": false}
+      ]
+    }
+  ]
+}
