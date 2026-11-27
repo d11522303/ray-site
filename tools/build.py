@@ -92,6 +92,14 @@ LANG_LINK = {
 }
 
 
+# 網址旁的小圖示（站長的頭像），檔案在 images/favicon/
+FAVICON = ('<link rel="icon" href="__B__images/favicon/favicon.ico" sizes="48x48">\n'
+           '<link rel="icon" type="image/png" sizes="32x32" href="__B__images/favicon/favicon-32.png">\n'
+           '<link rel="icon" type="image/png" sizes="16x16" href="__B__images/favicon/favicon-16.png">\n'
+           '<link rel="icon" type="image/png" sizes="192x192" href="__B__images/favicon/icon-192.png">\n'
+           '<link rel="apple-touch-icon" href="__B__images/favicon/apple-touch-icon.png">\n')
+
+
 def render(tpl, arts, home, about, out, base, lang, switch=True):
     # 內文裡從後台插入的圖片是 /images/...，改成相對路徑，網站放在子路徑（例如 /ray-site/en/）也看得到
     fix = lambda h: re.sub(r'(src|href)="/(images/)', r'\1="' + base + r'\2', h)
@@ -101,7 +109,7 @@ def render(tpl, arts, home, about, out, base, lang, switch=True):
     head = ('<!doctype html>\n<html lang="%s">\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
             '<link rel="alternate" hreflang="zh-Hant" href="%s">\n<link rel="alternate" hreflang="en" href="%sen/">\n'
-            % ("en" if lang == "en" else "zh-Hant", base or "./", base or ""))
+            % ("en" if lang == "en" else "zh-Hant", base or "./", base or "")) + FAVICON.replace("__B__", base)
     tpl = head + tpl.replace("<!--EN-->", LANG_LINK[lang] if switch else "").replace("__BASE__", base).replace("__START__", "home")
     tpl = tpl.replace("__HOME__", js(home)).replace("__ABOUT__", js(about))
     os.makedirs(os.path.dirname(out), exist_ok=True)

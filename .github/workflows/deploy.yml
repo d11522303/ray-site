@@ -35,6 +35,7 @@ jobs:
           mkdir -p _site
           # 中文版是網站首頁（index.html），英文版在 en/；zh/ 只是轉址到首頁
           cp index.html .nojekyll _site/
+          cp images/favicon/favicon.ico _site/
           cp -r en zh admin images date-calculator _site/
           [ -f CNAME ] && cp CNAME _site/ || true
       - uses: actions/upload-pages-artifact@v3
