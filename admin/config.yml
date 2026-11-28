@@ -34,7 +34,7 @@ collections:
           - name: series_category
             label: 點系列標題時要打開的分類
             widget: select
-            options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
+            options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案, 學習歷程]
       - name: about
         label: 關於頁（HELLO）
         file: content/about.yml
@@ -95,7 +95,7 @@ collections:
           - name: series_category
             label: 點系列標題時要打開的分類
             widget: select
-            options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
+            options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案, 學習歷程]
       - name: about
         label: 英文關於頁
         file: content/en/about.yml
@@ -159,6 +159,7 @@ collections:
       - { label: 生活記憶, field: category, pattern: 生活記憶 }
       - { label: 理財情報, field: category, pattern: 理財情報 }
       - { label: 老後提案, field: category, pattern: 老後提案 }
+      - { label: 學習歷程, field: category, pattern: 學習歷程 }
     fields:
       - { name: title, label: 標題, widget: string }
       - name: date
@@ -169,14 +170,14 @@ collections:
       - name: category
         label: 分類
         widget: select
-        options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
+        options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案, 學習歷程]
       - name: also
         label: 其他分類（可複選）
         widget: select
         multiple: true
         required: false
         hint: 這篇文章也想出現在哪些分類？可以選好幾個。上面的「分類」是主要分類
-        options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案]
+        options: [證照考試, 技職教育, 旅行郵輪, 每日晨讀, 遊戲學習, 生活記憶, 理財情報, 老後提案, 學習歷程]
       - { name: subcategory, label: 子分類, widget: string, required: false, hint: 例如：導遊領隊、企業實習、我的旅行、家庭。打新的名稱就會多一個子分類 }
       - { name: detail, label: 細分類, widget: string, required: false, hint: 例如：考前陪跑解題、高鐵實習、泰國曼谷。可以留空 }
       - { name: published, label: 公開, widget: boolean, default: true, hint: 只控制中文版（/zh/）。英文版要到「英文版文章 English」裡開關 }
